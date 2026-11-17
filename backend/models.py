@@ -9,6 +9,8 @@ class Concept(BaseModel):
     highlights: List[str]
     source_id: str
     category: str = ""
+    category_name: str = ""
+    source_title: str = ""
     chapter: str = ""
     has_interactive: bool = False
     widget: Optional[str] = None

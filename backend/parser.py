@@ -81,6 +81,41 @@ def _parse_sources(text: str) -> list[Source]:
     return sources
 
 
+def _parse_source_map(raw: str) -> tuple[dict[str, str], dict[str, str]]:
+    """Parse the Source map table to get category->name and source->title mappings.
+
+    Source titles come from the matching ``## Source`` heading (not the table
+    cell), with markdown syntax stripped.
+    """
+    cat_map: dict[str, str] = {}
+    src_map: dict[str, str] = {}
+    lines = raw.split("\n")
+    in_table = False
+    for line in lines:
+        if re.match(r"^\|\s*ID\s*\|", line):
+            in_table = True
+            continue
+        if in_table:
+            if not line.startswith("|"):
+                break
+            if re.match(r"^\|[\s\-:|]+\|$", line):
+                continue
+            cols = [c.strip() for c in line.strip("|").split("|")]
+            if len(cols) >= 4:
+                src_id = cols[0]
+                cat_name = cols[1]
+                m = re.match(r"^(\d+)\.", src_id)
+                if m:
+                    cat_map[m.group(1)] = cat_name
+                src_map[src_id] = ""
+    # Fill titles from the ## Source headings
+    for line in lines:
+        m = re.match(r"^## Source\s+(\d+\.\d+)\s*[—–]\s*(.+)$", line)
+        if m:
+            src_map[m.group(1)] = _strip_markdown(m.group(2))
+    return cat_map, src_map
+
+
 def _extract_related(body: str) -> list[str]:
     """Pull related concept IDs from a 'Related:' line, e.g. 1.1.10–1.1.12."""
     related: list[str] = []
@@ -131,9 +166,13 @@ def parse_markdown(md_path: Path) -> EconomicsData:
     sources = _parse_sources(raw)
     cross_links = _parse_cross_links(raw)
 
+    # Parse source map for category names and source titles
+    cat_map, src_map = _parse_source_map(raw)
+
     # Scan line by line, tracking current category and source heading
     current_category = ""
     current_source = ""
+    current_chapter = ""
     concepts: list[Concept] = []
 
     lines = raw.split("\n")
@@ -145,12 +184,15 @@ def parse_markdown(md_path: Path) -> EconomicsData:
             current_category = line.lstrip("# ").strip()
         elif line.startswith("## Source "):
             current_source = re.sub(r"^## Source\s+", "", line).strip()
+        elif line.startswith("### Chapter "):
+            current_chapter = re.sub(r"^### Chapter\s+", "", line).strip()
 
         if line.startswith("#### "):
             title = line.lstrip("# ").strip()
             body_lines: list[str] = []
             i += 1
-            while i < len(lines) and not lines[i].startswith("#### "):
+            while i < len(lines) and not lines[i].startswith("#### ") \
+                    and not lines[i].startswith("# Cross-source links"):
                 body_lines.append(lines[i])
                 i += 1
             body = "\n".join(body_lines).strip()
@@ -172,12 +214,29 @@ def parse_markdown(md_path: Path) -> EconomicsData:
             widget = WIDGET_MAP.get(src_id)
             has_interactive = widget is not None
 
+            # Derive category (first digit) and source (first two parts)
+            parts = src_id.split(".")
+            cat_digit = parts[0] if len(parts) >= 1 else ""
+            src_two_part = ".".join(parts[:2]) if len(parts) >= 2 else ""
+
+            category_name = cat_map.get(cat_digit, "")
+            source_title = src_map.get(src_two_part, "")
+
+            # Chapter only for Source 1.1
+            chapter = ""
+            if src_two_part == "1.1" and len(parts) >= 3:
+                chapter = current_chapter
+
             concepts.append(Concept(
                 id=concept_id,
                 title=title,
                 summary=summary,
                 highlights=highlights,
                 source_id=src_id,
+                category=cat_digit,
+                category_name=category_name,
+                source_title=source_title,
+                chapter=chapter,
                 has_interactive=has_interactive,
                 widget=widget,
                 related_concepts=related,
