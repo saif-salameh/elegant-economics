@@ -182,6 +182,9 @@ def parse_concepts(md_path: Path) -> list[dict]:
     # Parse source map for category names and source titles
     cat_map_from_table, src_map_from_table = _parse_source_map(raw)
 
+    # Parse cross-source links section into related-concept and group maps
+    related_map, group_map = _parse_cross_links(raw)
+
     current_category = ""
     current_source = ""
     current_chapter = ""
@@ -239,6 +242,8 @@ def parse_concepts(md_path: Path) -> list[dict]:
                 "summary": summary,
                 "highlights": highlights,
                 "related": related,
+                "related_concepts": related_map.get(concept_src_id, []),
+                "link_groups": group_map.get(concept_src_id, []),
                 "body": body,
                 "source": src_two_part,
                 "source_title": source_title,

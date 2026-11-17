@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>A‑Z Index – Economics Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/cards.css">
   <script defer src="js/api.js"></script>
   <script defer src="js/theme.js"></script>
 </head>
@@ -18,7 +19,6 @@
       <a href="/track_financing.html">Financing</a>
       <a href="/track_global.html">Global Economy</a>
       <a href="/sources.html">Sources</a>
-      <button id="theme-switcher" aria-label="Switch Theme">Switch Theme</button>
     </nav>
   </header>
   <main>
@@ -30,23 +30,31 @@
     </section>
     <script type="module">
     import { fetchConcepts } from './js/api.js';
+
     const grid = document.getElementById('concept-grid');
     const searchInput = document.getElementById('search');
     let allConcepts = [];
+
+    function renderCard(c) {
+      const article = document.createElement('article');
+      article.className = 'concept-card';
+      article.innerHTML = `
+        <h3 class="cc-title">${c.title}</h3>
+        <p class="cc-summary">${c.summary}</p>
+        <div class="cc-meta">
+          <span class="cc-source-tag"><span class="src-id">${c.source_id}</span> · ${c.source_title}</span>
+          ${c.has_interactive ? '<span class="badge interactive">interactive</span>' : ''}
+        </div>
+        <a href="/concept_detail.html?id=${c.id}" class="cc-cta">View →</a>
+      `;
+      return article;
+    }
+
     function render(concepts) {
       grid.innerHTML = '';
-      concepts.forEach(c => {
-        const article = document.createElement('article');
-        article.className = 'track-card';
-        article.innerHTML = `
-          <h3 class="track-title">${c.title}</h3>
-          <p class="track-summary">${c.summary}</p>
-          ${c.has_interactive ? '<span class="badge interactive">interactive</span>' : ''}
-          <a href="/concept_detail.html?id=${c.id}" class="cta">View →</a>
-        `;
-        grid.appendChild(article);
-      });
+      concepts.forEach(c => grid.appendChild(renderCard(c)));
     }
+
     function filter() {
       const term = searchInput.value.toLowerCase();
       const filtered = allConcepts.filter(c =>
@@ -54,6 +62,7 @@
       );
       render(filtered);
     }
+
     fetchConcepts().then(data => {
       allConcepts = data;
       render(allConcepts);

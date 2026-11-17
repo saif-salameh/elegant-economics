@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>Economics Track – Economics Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/cards.css">
   <script defer src="js/api.js"></script>
   <script defer src="js/theme.js"></script>
 </head>
@@ -19,7 +20,6 @@
       <a href="/track_financing.html">Financing</a>
       <a href="/track_global.html">Global Economy</a>
       <a href="/sources.html">Sources</a>
-      <button id="theme-switcher" aria-label="Switch Theme">Switch Theme</button>
     </nav>
   </header>
   <main>
@@ -28,22 +28,29 @@
     </section>
     <script type="module">
     import { fetchConcepts } from './js/api.js';
+
     const grid = document.getElementById('concept-grid');
-    fetchConcepts().then(all => {
-      // Economics track = sources 1.1, 1.2, 2.1
-      const concepts = all.filter(c => /^(1\.1|1\.2|2\.1)/.test(c.source_id));
-      grid.innerHTML = '';
-      concepts.forEach(c => {
-        const article = document.createElement('article');
-        article.className = 'track-card';
-        article.innerHTML = `
-          <h3 class="track-title">${c.title}</h3>
-          <p class="track-summary">${c.summary}</p>
+
+    function renderCard(c) {
+      const article = document.createElement('article');
+      article.className = 'concept-card';
+      article.innerHTML = `
+        <h3 class="cc-title">${c.title}</h3>
+        <p class="cc-summary">${c.summary}</p>
+        <div class="cc-meta">
+          <span class="cc-source-tag"><span class="src-id">${c.source_id}</span> · ${c.source_title}</span>
           ${c.has_interactive ? '<span class="badge interactive">interactive</span>' : ''}
-          <a href="/concept_detail.html?id=${c.id}" class="cta">Explore →</a>
-        `;
-        grid.appendChild(article);
-      });
+        </div>
+        <a href="/concept_detail.html?id=${c.id}" class="cc-cta">Explore →</a>
+      `;
+      return article;
+    }
+
+    fetchConcepts().then(all => {
+      // Economics track = categories 1 and 2 (sources 1.1, 1.2, 2.1)
+      const concepts = all.filter(c => c.category === '1' || c.category === '2');
+      grid.innerHTML = '';
+      concepts.forEach(c => grid.appendChild(renderCard(c)));
     }).catch(err => {
       grid.innerHTML = `<p style='color:red;'>Failed to load: ${err.message}</p>`;
     });
