@@ -1,0 +1,88 @@
+/* Theme tokens: 5 palettes x light/dark.
+   Each theme defines exactly four core tokens:
+     --primary  dominant brand colour (header, borders, CTA)
+     --accent   secondary highlight (badge, hover, links)
+     --bg       page background
+     --text     body copy colour
+   Dark mode is selected by appending "dark" to data-theme, e.g.
+   <html data-theme="theme-3 dark">.
+*/
+
+/* ---- Theme 1: Royal purple / white / sunglow gold ---- */
+[data-theme="theme-1"] {
+  --primary: #4A154B;
+  --accent: #F5A623;
+  --bg: #FFFFFF;
+  --text: #1A1A1A;
+}
+[data-theme="theme-1 dark"] {
+  --primary: #2C0D30;
+  --accent: #C58400;
+  --bg: #1B1B1B;
+  --text: #F2F2F2;
+}
+
+/* ---- Theme 2: Blue / white / lemon ---- */
+[data-theme="theme-2"] {
+  --primary: #1B365D;
+  --accent: #F4D03F;
+  --bg: #FFFFFF;
+  --text: #1A1A1A;
+}
+[data-theme="theme-2 dark"] {
+  --primary: #113340;
+  --accent: #AF9000;
+  --bg: #1B1B1B;
+  --text: #F2F2F2;
+}
+
+/* ---- Theme 3: Forest green / cream / terracotta ---- */
+[data-theme="theme-3"] {
+  --primary: #2C5E3B;
+  --accent: #C85A32;
+  --bg: #FDFBF7;
+  --text: #1A1A1A;
+}
+[data-theme="theme-3 dark"] {
+  --primary: #1C3B26;
+  --accent: #9C3B09;
+  --bg: #1B1B1B;
+  --text: #F2F2F2;
+}
+
+/* ---- Theme 4: Slate gray / warm white / amber gold ---- */
+[data-theme="theme-4"] {
+  --primary: #3E4C59;
+  --accent: #D99B00;
+  --bg: #F7F9FA;
+  --text: #1A1A1A;
+}
+[data-theme="theme-4 dark"] {
+  --primary: #283443;
+  --accent: #A67200;
+  --bg: #1B1B1B;
+  --text: #F2F2F2;
+}
+
+/* ---- Theme 5: Burgundy / soft gray / warm rose ---- */
+[data-theme="theme-5"] {
+  --primary: #5B1E31;
+  --accent: #D96B75;
+  --bg: #F4F4F6;
+  --text: #1A1A1A;
+}
+[data-theme="theme-5 dark"] {
+  --primary: #3A0F1D;
+  --accent: #A43A43;
+  --bg: #1B1B1B;
+  --text: #F2F2F2;
+}
+
+/* ---- Element defaults ---- */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+}

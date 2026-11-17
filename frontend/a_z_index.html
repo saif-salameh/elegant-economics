@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="theme-1">
+<head>
+  <meta charset="utf-8">
+  <title>A‑Z Index – Economics Research</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script defer src="js/api.js"></script>
+  <script defer src="js/theme.js"></script>
+</head>
+<body>
+  <header>
+    <h1>A‑Z Index</h1>
+    <nav id="main-nav">
+      <a href="/">Home</a>
+      <a href="/track_economics.html">Economics</a>
+      <a href="/track_financing.html">Financing</a>
+      <a href="/track_global.html">Global Economy</a>
+      <a href="/sources.html">Sources</a>
+      <button id="theme-switcher" aria-label="Switch Theme">Switch Theme</button>
+    </nav>
+  </header>
+  <main>
+    <section class="card" style="margin-bottom:2rem;">
+      <input type="text" id="search" placeholder="Search concepts..." style="width:100%; padding:0.5rem; font-size:1rem;" />
+    </section>
+    <section class="grid" id="concept-grid">
+      <!-- Dynamically populated concepts -->
+    </section>
+    <script type="module">
+    import { fetchConcepts } from './js/api.js';
+    const grid = document.getElementById('concept-grid');
+    const searchInput = document.getElementById('search');
+    let allConcepts = [];
+    function render(concepts) {
+      grid.innerHTML = '';
+      concepts.forEach(c => {
+        const article = document.createElement('article');
+        article.className = 'track-card';
+        article.innerHTML = `
+          <h3 class="track-title">${c.title}</h3>
+          <p class="track-summary">${c.summary}</p>
+          ${c.has_interactive ? '<span class="badge interactive">interactive</span>' : ''}
+          <a href="/concept_detail.html?id=${c.id}" class="cta">View →</a>
+        `;
+        grid.appendChild(article);
+      });
+    }
+    function filter() {
+      const term = searchInput.value.toLowerCase();
+      const filtered = allConcepts.filter(c =>
+        c.title.toLowerCase().includes(term) || c.summary.toLowerCase().includes(term)
+      );
+      render(filtered);
+    }
+    fetchConcepts().then(data => {
+      allConcepts = data;
+      render(allConcepts);
+      searchInput.addEventListener('input', filter);
+    }).catch(err => {
+      grid.innerHTML = `<p style='color:red;'>Failed to load concepts: ${err.message}</p>`;
+    });
+    </script>
+  </main>
+  <footer>
+    <p>&copy; 2026 Economics Research Site</p>
+  </footer>
+</body>
+</html>

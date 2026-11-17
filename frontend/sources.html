@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="theme-1">
+<head>
+  <meta charset="utf-8">
+  <title>Sources – Economics Research</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script defer src="js/api.js"></script>
+  <script defer src="js/theme.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Sources</h1>
+    <nav id="main-nav">
+      <a href="/">Home</a>
+      <a href="/a_z_index.html">A‑Z Index</a>
+      <a href="/track_economics.html">Economics</a>
+      <a href="/track_financing.html">Financing</a>
+      <a href="/track_global.html">Global Economy</a>
+      <a href="/sources.html">Sources</a>
+      <button id="theme-switcher" aria-label="Switch Theme">Switch Theme</button>
+    </nav>
+  </header>
+  <main>
+    <section class="card">
+      <h2>Source List</h2>
+      <table class="source-table" style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th style="border-bottom:1px solid var(--primary-light); text-align:left;">ID</th>
+            <th style="border-bottom:1px solid var(--primary-light); text-align:left;">Category</th>
+            <th style="border-bottom:1px solid var(--primary-light); text-align:left;">Title</th>
+            <th style="border-bottom:1px solid var(--primary-light); text-align:left;">Status</th>
+          </tr>
+        </thead>
+        <tbody id="source-table">
+          <tr><td colspan="4">Loading sources…</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="card" style="margin-top:2rem;">
+      <p><strong>Content cautions:</strong></p>
+      <ul>
+        <li>Investopedia (4.2) was NOT read</li>
+        <li>IMF chapter data is from 2004</li>
+        <li>2.1 is a rough translation of an academic paper</li>
+        <li>FutureLearn country labels need verifying</li>
+        <li>Source 1.1 examples use Ethiopia/birr – replace for Jordan context</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Economics Research Site</p>
+  </footer>
+  <script type="module">
+  import { fetchSources } from './js/api.js';
+  fetchSources().then(sources => {
+    const tbody = document.getElementById('source-table');
+    tbody.innerHTML = '';
+    sources.forEach(s => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${s.id}</td>
+        <td>${s.category}</td>
+        <td>${s.title}</td>
+        <td>${s.status}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }).catch(err => {
+    document.getElementById('source-table').innerHTML =
+      `<tr><td colspan="4" style="color:red;">Failed to load: ${err.message}</td></tr>`;
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="theme-1">
+<head>
+  <meta charset="utf-8">
+  <title>Concept Detail – Economics Research</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script defer src="js/api.js"></script>
+  <script defer src="js/theme.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1><span id="concept-title">Loading...</span></h1>
+    <nav id="main-nav">
+      <a href="/">Home</a>
+      <a href="/a_z_index.html">A‑Z Index</a>
+      <a href="/track_economics.html">Economics</a>
+      <a href="/track_financing.html">Financing</a>
+      <a href="/track_global.html">Global Economy</a>
+      <a href="/sources.html">Sources</a>
+      <button id="theme-switcher" aria-label="Switch Theme">Switch Theme</button>
+    </nav>
+  </header>
+  <main>
+    <section class="card">
+      <div id="concept-content">
+        <p>Loading concept details...</p>
+      </div>
+      <div id="widget-container" style="margin-top:2rem; border-top:1px solid var(--primary-light); padding-top:1rem;">
+        <!-- Widget injected here -->
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Economics Research Site</p>
+  </footer>
+  <script type="module">
+    // Simple script to fetch concept by URL param and load widget if available
+    import { fetchConcept } from './js/api.js';
+    const params = new URLSearchParams(window.location.search);
+    const conceptId = params.get('id');
+    const widgetContainer = document.getElementById('widget-container');
+    if (conceptId) {
+      fetchConcept(conceptId)
+        .then(data => {
+            document.getElementById('concept-title').innerText = data.title;
+            document.getElementById('concept-content').innerHTML = `
+                <p>${data.summary}</p>
+                <h3>Highlights</h3>
+                <p>${Array.isArray(data.highlights) ? data.highlights.join('<br>') : data.highlights}</p>
+            `;
+            // Dynamically import widget module if the concept has one
+            if (data.widget) {
+                import(`./js/widgets/${data.widget}.js`).then(mod => {
+                    if (mod && typeof mod.init === 'function') {
+                        mod.init(widgetContainer);
+                    }
+                }).catch(() => {
+                    // Widget module missing – silently ignore
+                });
+            }
+        })
+        .catch(err => {
+            document.getElementById('concept-content').innerHTML = `<p style='color:red;'>Failed to load concept: ${err.message}</p>`;
+        });
+    }
+  </script>
+</body>
+</html>

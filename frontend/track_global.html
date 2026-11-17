@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="theme-1">
+<head>
+  <meta charset="utf-8">
+  <title>Global Economy Track – Economics Research</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script defer src="js/api.js"></script>
+  <script defer src="js/theme.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Global Economy, Money & Markets (Category 3)</h1>
+    <nav id="main-nav">
+      <a href="/">Home</a>
+      <a href="/a_z_index.html">A‑Z Index</a>
+      <a href="/track_economics.html">Economics</a>
+      <a href="/track_financing.html">Financing</a>
+      <a href="/track_global.html">Global Economy</a>
+      <a href="/sources.html">Sources</a>
+      <button id="theme-switcher" aria-label="Switch Theme">Switch Theme</button>
+    </nav>
+  </header>
+  <main>
+    <section class="grid" id="concept-grid">
+      <p>Loading concepts…</p>
+    </section>
+    <script type="module">
+    import { fetchConcepts } from './js/api.js';
+    const grid = document.getElementById('concept-grid');
+    fetchConcepts().then(all => {
+      const concepts = all.filter(c => /^3\.1/.test(c.source_id));
+      grid.innerHTML = '';
+      concepts.forEach(c => {
+        const article = document.createElement('article');
+        article.className = 'track-card';
+        article.innerHTML = `
+          <h3 class="track-title">${c.title}</h3>
+          <p class="track-summary">${c.summary}</p>
+          ${c.has_interactive ? '<span class="badge interactive">interactive</span>' : ''}
+          <a href="/concept_detail.html?id=${c.id}" class="cta">Explore →</a>
+        `;
+        grid.appendChild(article);
+      });
+    }).catch(err => {
+      grid.innerHTML = `<p style='color:red;'>Failed to load: ${err.message}</p>`;
+    });
+    </script>
+  </main>
+  <footer>
+    <p>&copy; 2026 Economics Research Site</p>
+  </footer>
+</body>
+</html>
