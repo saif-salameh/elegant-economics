@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>Sources – Economics Research</title>
+  <script src="js/theme.js"></script>
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
-  <script defer src="js/api.js"></script>
-  <script defer src="js/theme.js"></script>
 </head>
 <body>
   <header>
@@ -25,13 +24,13 @@
   <main>
     <section class="card">
       <h2>Source List</h2>
-      <table class="source-table" style="width:100%; border-collapse:collapse;">
+      <table class="source-table">
         <thead>
           <tr>
-            <th style="border-bottom:1px solid var(--primary); text-align:left;">ID</th>
-            <th style="border-bottom:1px solid var(--primary); text-align:left;">Category</th>
-            <th style="border-bottom:1px solid var(--primary); text-align:left;">Title</th>
-            <th style="border-bottom:1px solid var(--primary); text-align:left;">Status</th>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody id="source-table">
@@ -39,7 +38,7 @@
         </tbody>
       </table>
     </section>
-    <section class="card" style="margin-top:2rem;">
+    <section class="card source-cautions">
       <p><strong>Content cautions:</strong></p>
       <ul>
         <li>Investopedia (4.2) was NOT read</li>
@@ -57,21 +56,25 @@
   import { fetchSources } from './js/api.js';
   fetchSources().then(sources => {
     const tbody = document.getElementById('source-table');
-    tbody.innerHTML = '';
-    sources.forEach(s => {
+    const rows = sources.map(s => {
       const tr = document.createElement('tr');
       tr.id = `source-${s.id.replaceAll('.', '-')}`;
-      tr.innerHTML = `
-        <td>${s.id}</td>
-        <td>${s.category}</td>
-        <td>${s.title}</td>
-        <td>${s.status}</td>
-      `;
-      tbody.appendChild(tr);
+      [s.id, s.category, s.title, s.status].forEach(value => {
+        const cell = document.createElement('td');
+        cell.textContent = value;
+        tr.appendChild(cell);
+      });
+      return tr;
     });
+    tbody.replaceChildren(...rows);
   }).catch(err => {
-    document.getElementById('source-table').innerHTML =
-      `<tr><td colspan="4" style="color:red;">Failed to load: ${err.message}</td></tr>`;
+    const cell = document.createElement('td');
+    cell.colSpan = 4;
+    cell.className = 'source-load-error';
+    cell.textContent = `Failed to load: ${err.message}`;
+    const row = document.createElement('tr');
+    row.appendChild(cell);
+    document.getElementById('source-table').replaceChildren(row);
   });
   </script>
 </body>

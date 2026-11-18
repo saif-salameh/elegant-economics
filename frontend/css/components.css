@@ -15,7 +15,7 @@
 }
 .track-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 12px color-mix(in srgb, var(--text) 12%, var(--color-clear));
 }
 .track-card .track-title {
   font-family: "Merriweight", serif;
@@ -68,7 +68,7 @@
 }
 .track-overview-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 12px color-mix(in srgb, var(--text) 12%, var(--color-clear));
 }
 .track-overview-card h3 {
   font-family: "Merriweight", serif;
@@ -84,7 +84,7 @@
 
 /* ---- Content cautions (visible warnings about source caveats) ---- */
 .content-caution {
-  background-color: rgba(var(--accent), 0.15);
+  background-color: color-mix(in srgb, var(--accent) 15%, var(--bg));
   border-left: 3px solid var(--accent);
   padding: 0.5rem 1rem;
   margin: 1rem 0;
@@ -96,7 +96,7 @@
 
 /* ---- Concept highlight (summary call-out on detail pages) ---- */
 .concept-highlight {
-  background-color: rgba(var(--primary), 0.08);
+  background-color: color-mix(in srgb, var(--primary) 8%, var(--bg));
   border-left: 3px solid var(--primary);
   padding: 0.5rem 1rem;
   margin: 1rem 0;
@@ -110,7 +110,7 @@
   margin-top: 1rem;
 }
 .related-concept {
-  background-color: rgba(var(--primary), 0.1);
+  background-color: color-mix(in srgb, var(--primary) 10%, var(--bg));
   color: var(--primary);
   padding: 0.3rem 0.8rem;
   border-radius: 20px;

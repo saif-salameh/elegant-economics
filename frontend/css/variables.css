@@ -1,70 +1,30 @@
-/* Theme tokens: 5 palettes x light/dark.
-   Each theme defines exactly four core tokens:
-     --primary  dominant brand colour (header, borders, CTA)
-     --accent   secondary highlight (badge, hover, links)
-     --bg       page background
-     --text     body copy colour
-   Dark mode is selected by appending "dark" to data-theme, e.g.
-   <html data-theme="theme-3 dark">.
-*/
-
-/* ---- Theme 1: Royal purple / white / sunglow gold ---- */
-[data-theme="theme-1"] {
+/* Theme keys: each selector matches the complete data-theme attribute value. */
+[data-theme="theme-1"], [data-theme="purple-gold"] {
   --primary: #4A154B;
   --accent: #F5A623;
   --bg: #FFFFFF;
   --text: #1A1A1A;
 }
-[data-theme="theme-1 dark"] {
+[data-theme="theme-1 dark"], [data-theme="purple-gold dark"] {
   --primary: #2C0D30;
   --accent: #C58400;
   --bg: #1B1B1B;
   --text: #F2F2F2;
 }
 
-/* ---- Alias: purple-gold (same palette as Theme 1) ---- */
-[data-theme="purple-gold"] {
-  --primary: #4A154B;
-  --accent: #F5A623;
-  --bg: #FFFFFF;
-  --text: #1A1A1A;
-}
-[data-theme="purple-gold dark"] {
-  --primary: #2C0D30;
-  --accent: #C58400;
-  --bg: #1B1B1B;
-  --text: #F2F2F2;
-}
-
-/* ---- Theme 2: Blue / white / lemon ---- */
-[data-theme="theme-2"] {
+[data-theme="theme-2"], [data-theme="blue-lemon"] {
   --primary: #1B365D;
   --accent: #F4D03F;
   --bg: #FFFFFF;
   --text: #1A1A1A;
 }
-[data-theme="theme-2 dark"] {
+[data-theme="theme-2 dark"], [data-theme="blue-lemon dark"] {
   --primary: #113340;
   --accent: #AF9000;
   --bg: #1B1B1B;
   --text: #F2F2F2;
 }
 
-/* ---- Alias: blue-lemon (same palette as Theme 2) ---- */
-[data-theme="blue-lemon"] {
-  --primary: #1B365D;
-  --accent: #F4D03F;
-  --bg: #FFFFFF;
-  --text: #1A1A1A;
-}
-[data-theme="blue-lemon dark"] {
-  --primary: #113340;
-  --accent: #AF9000;
-  --bg: #1B1B1B;
-  --text: #F2F2F2;
-}
-
-/* ---- Theme 3: Forest green / cream / terracotta ---- */
 [data-theme="theme-3"] {
   --primary: #2C5E3B;
   --accent: #C85A32;
@@ -78,7 +38,6 @@
   --text: #F2F2F2;
 }
 
-/* ---- Theme 4: Slate gray / warm white / amber gold ---- */
 [data-theme="theme-4"] {
   --primary: #3E4C59;
   --accent: #D99B00;
@@ -92,7 +51,6 @@
   --text: #F2F2F2;
 }
 
-/* ---- Theme 5: Burgundy / soft gray / warm rose ---- */
 [data-theme="theme-5"] {
   --primary: #5B1E31;
   --accent: #D96B75;

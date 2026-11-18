@@ -12,7 +12,7 @@
 }
 .concept-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 12px color-mix(in srgb, var(--text) 12%, var(--color-clear));
 }
 
 .concept-card .cc-title {
@@ -36,7 +36,7 @@
   font-family: "Inter", system-ui, sans-serif;
   font-size: 0.75rem;
   color: var(--text);
-  background: rgba(var(--accent), 0.06);
+  background: color-mix(in srgb, var(--accent) 6%, var(--bg));
   padding: 0.15rem 0.5rem;
   border-radius: 12px;
 }
@@ -81,7 +81,7 @@
 }
 .track-overview-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 12px color-mix(in srgb, var(--text) 12%, var(--color-clear));
 }
 .track-overview-card h3 {
   font-family: "Merriweather", serif;
@@ -97,7 +97,7 @@
 
 /* ---- Content cautions ---- */
 .content-caution {
-  background-color: rgba(var(--accent), 0.15);
+  background-color: color-mix(in srgb, var(--accent) 15%, var(--bg));
   border-left: 3px solid var(--accent);
   padding: 0.5rem 1rem;
   margin: 1rem 0;
@@ -109,7 +109,7 @@
 
 /* ---- Concept highlight ---- */
 .concept-highlight {
-  background-color: rgba(var(--primary), 0.08);
+  background-color: color-mix(in srgb, var(--primary) 8%, var(--bg));
   border-left: 3px solid var(--primary);
   padding: 0.5rem 1rem;
   margin: 1rem 0;
@@ -123,7 +123,7 @@
   margin-top: 1rem;
 }
 .related-concept {
-  background-color: rgba(var(--primary), 0.1);
+  background-color: color-mix(in srgb, var(--primary) 10%, var(--bg));
   color: var(--primary);
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
