@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="theme-1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A card design preview for the economics research site">
+  <title>Glass Card Design Preview</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/glass-cards.css">
+  <script defer src="js/theme.js"></script>
+</head>
+<body>
+  <main class="test-shell">
+    <header class="site-header">
+      <a class="brand-mark" href="/" aria-label="Economics Research home">ER</a>
+      <p class="header-label">Economics Research · Card preview</p>
+      <nav aria-label="Preview navigation">
+        <a href="/">Back to site</a>
+      </nav>
+    </header>
+
+    <section class="hero-showcase" aria-labelledby="hero-title">
+      <p class="eyebrow">Ideas worth carrying</p>
+      <h1 id="hero-title">Elegant Economics</h1>
+      <p class="hero-intro">A first look at the concepts, models, and choices behind our economy.</p>
+      <div class="featured-fan" id="featured-cards" aria-label="One featured concept from each category">
+        <p class="loading-state">Loading featured concepts…</p>
+      </div>
+    </section>
+
+    <section class="concept-preview" aria-labelledby="concept-heading">
+      <div class="section-heading">
+        <p class="eyebrow">From the research library</p>
+        <h2 id="concept-heading">Concept cards</h2>
+        <p>Six concepts from across the four categories.</p>
+      </div>
+      <div class="concept-grid" id="concept-cards" aria-live="polite">
+        <p class="loading-state">Loading concepts…</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>Economics Research</span>
+      <span>Card design preview</span>
+    </footer>
+  </main>
+
+  <script type="module">
+    const featuredHost = document.getElementById("featured-cards");
+    const gridHost = document.getElementById("concept-cards");
+    const chipIcon = "http://www.w3.org/2000/svg";
+
+    function makeCard(concept, featured = false) {
+      const card = document.createElement("article");
+      card.className = featured ? "glass-card featured-card" : "glass-card grid-card";
+      card.dataset.category = concept.category || "1";
+
+      const head = document.createElement("div");
+      head.className = "card-head";
+      const source = document.createElement("span");
+      source.className = "source-tag";
+      source.textContent = `Source ${concept.source_id.split(".").slice(0, 2).join(".")}`;
+      head.append(source);
+
+      if (concept.has_interactive) {
+        const badge = document.createElement("span");
+        badge.className = "interactive-chip";
+        badge.setAttribute("aria-label", "Interactive concept");
+        badge.title = "Interactive concept";
+        const icon = document.createElementNS(chipIcon, "svg");
+        icon.setAttribute("viewBox", "0 0 24 24");
+        icon.setAttribute("aria-hidden", "true");
+        icon.innerHTML = '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 4V2m6 2V2M9 22v-2m6 2v-2M4 9H2m2 6H2m20-6h-2m2 6h-2M9 9h6v6H9z"/>';
+        badge.append(icon);
+        head.append(badge);
+      }
+
+      const content = document.createElement("div");
+      content.className = "card-copy";
+      const title = document.createElement("h3");
+      title.className = "card-title";
+      title.textContent = concept.title.replace(/^\d+\.\d+\.\d+\s*/, "");
+      const summary = document.createElement("p");
+      summary.className = "card-summary";
+      summary.textContent = concept.summary;
+      content.append(title, summary);
+
+      const band = document.createElement("div");
+      band.className = "card-band";
+      band.innerHTML = '<span class="band-pair"><span class="band-label">Category</span><span class="band-value"></span></span><span class="band-pair concept-pair"><span class="band-label">Concept</span><span class="band-value"></span></span>';
+      band.querySelectorAll(".band-value")[0].textContent = concept.category_name;
+      band.querySelectorAll(".band-value")[1].textContent = concept.source_id;
+
+      card.append(head, content, band);
+      card.setAttribute("aria-label", `${title.textContent}. ${concept.category_name}. Concept ${concept.source_id}.`);
+      return card;
+    }
+
+    function oneFromEachCategory(concepts) {
+      return ["1", "2", "3", "4"].map(category =>
+        concepts.find(item => item.category === category && item.has_interactive) ||
+        concepts.find(item => item.category === category)
+      ).filter(Boolean);
+    }
+
+    function sixConcepts(concepts, featured) {
+      const selected = [...featured];
+      for (const item of concepts.filter(concept => concept.has_interactive)) {
+        if (selected.length >= 6) break;
+        if (!selected.some(existing => existing.source_id === item.source_id)) selected.push(item);
+      }
+      for (const item of concepts) {
+        if (selected.length >= 6) break;
+        if (!selected.some(existing => existing.source_id === item.source_id)) selected.push(item);
+      }
+      return selected.slice(0, 6);
+    }
+
+    function showLoadError(message) {
+      for (const host of [featuredHost, gridHost]) {
+        const error = document.createElement("p");
+        error.className = "loading-state error-state";
+        error.setAttribute("role", "alert");
+        error.textContent = message;
+        host.replaceChildren(error);
+      }
+    }
+
+    async function loadConcepts() {
+      let response;
+      try {
+        console.info("[card_test] Page origin:", window.location.origin);
+        console.info("[card_test] API URL:", new URL("/api/concepts", window.location.href).href);
+        console.info(
+          "[card_test] API uses same origin:",
+          new URL("/api/concepts", window.location.href).origin === window.location.origin
+        );
+        response = await fetch("/api/concepts", { headers: { Accept: "application/json" } });
+      } catch (error) {
+        throw new Error(
+          `Could not reach /api/concepts from this page. HTTP status: unavailable (no response). ${error.message}`
+        );
+      }
+
+      if (!response.ok) {
+        throw new Error(
+          `Could not load /api/concepts. HTTP ${response.status} ${response.statusText || "request failed"}.`
+        );
+      }
+
+      let payload;
+      try {
+        payload = await response.json();
+      } catch (error) {
+        throw new Error(`The API response was not valid JSON. HTTP ${response.status}.`);
+      }
+
+      const concepts = Array.isArray(payload) ? payload : payload?.concepts;
+      if (!Array.isArray(concepts)) {
+        throw new Error(`Unexpected API JSON shape. HTTP ${response.status}; expected an array of concepts.`);
+      }
+      if (concepts.length === 0) {
+        throw new Error(`The API returned no concepts. HTTP ${response.status}.`);
+      }
+
+      console.info("[card_test] First concept fields:", Object.keys(concepts[0]));
+      const featured = oneFromEachCategory(concepts);
+      featuredHost.replaceChildren(...featured.map(item => makeCard(item, true)));
+      gridHost.replaceChildren(...sixConcepts(concepts, featured).map(item => makeCard(item)));
+    }
+
+    loadConcepts().catch(error => showLoadError(error.message));
+  </script>
+</body>
+</html>

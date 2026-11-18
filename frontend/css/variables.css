@@ -110,6 +110,11 @@
 :root {
   --muted: #6B7280;
   --border: #D1D5DB;
+  --color-clear: transparent;
+  --card-glass-edge: rgba(255, 255, 255, 0.84);
+  --card-inner-edge: rgba(255, 255, 255, 0.78);
+  --card-band-text: #FFFFFF;
+  --card-band-label: rgba(255, 255, 255, 0.78);
 }
 :root[data-theme="theme-1 dark"],
 :root[data-theme="theme-2 dark"],
@@ -120,6 +125,200 @@
 :root[data-theme="blue-lemon dark"] {
   --muted: #9CA3AF;
   --border: #4B5563;
+  --card-glass-edge: rgba(255, 255, 255, 0.28);
+  --card-inner-edge: rgba(255, 255, 255, 0.2);
+  --card-band-text: #FFFFFF;
+  --card-band-label: rgba(255, 255, 255, 0.78);
+}
+
+/* Category card gradients, glows, and bands: theme 1, light and dark. */
+[data-theme="theme-1"], [data-theme="purple-gold"] {
+  --category-1-start: #F1E3F5;
+  --category-1-end: #E5D5EE;
+  --category-1-glow: rgba(111, 52, 121, 0.24);
+  --category-1-band: #4A154B;
+  --category-2-start: #FAEBC7;
+  --category-2-end: #F4DDA8;
+  --category-2-glow: rgba(183, 125, 22, 0.24);
+  --category-2-band: #795000;
+  --category-3-start: #E8E1F0;
+  --category-3-end: #DBD1E8;
+  --category-3-glow: rgba(96, 63, 130, 0.24);
+  --category-3-band: #53336A;
+  --category-4-start: #F3E6D8;
+  --category-4-end: #EBD7C4;
+  --category-4-glow: rgba(156, 99, 43, 0.22);
+  --category-4-band: #72421F;
+}
+[data-theme="theme-1 dark"], [data-theme="purple-gold dark"] {
+  --category-1-start: #3B2A42;
+  --category-1-end: #4B3454;
+  --category-1-glow: rgba(194, 112, 213, 0.38);
+  --category-1-band: #6A3472;
+  --category-2-start: #42351F;
+  --category-2-end: #574621;
+  --category-2-glow: rgba(230, 181, 83, 0.38);
+  --category-2-band: #8B6315;
+  --category-3-start: #372C46;
+  --category-3-end: #4A385C;
+  --category-3-glow: rgba(180, 133, 221, 0.36);
+  --category-3-band: #695082;
+  --category-4-start: #433127;
+  --category-4-end: #573D2E;
+  --category-4-glow: rgba(216, 152, 89, 0.36);
+  --category-4-band: #805032;
+}
+
+/* Theme 2: blue and lemon. */
+[data-theme="theme-2"], [data-theme="blue-lemon"] {
+  --category-1-start: #DCEBFA;
+  --category-1-end: #CDE0F5;
+  --category-1-glow: rgba(58, 113, 176, 0.24);
+  --category-1-band: #1B365D;
+  --category-2-start: #FFF3BF;
+  --category-2-end: #F7E69D;
+  --category-2-glow: rgba(191, 157, 38, 0.25);
+  --category-2-band: #765C00;
+  --category-3-start: #E5EAF7;
+  --category-3-end: #D5DDF0;
+  --category-3-glow: rgba(69, 91, 151, 0.24);
+  --category-3-band: #334A78;
+  --category-4-start: #D9F0EF;
+  --category-4-end: #C7E6E5;
+  --category-4-glow: rgba(42, 126, 132, 0.23);
+  --category-4-band: #265B67;
+}
+[data-theme="theme-2 dark"], [data-theme="blue-lemon dark"] {
+  --category-1-start: #1A2A3C;
+  --category-1-end: #223C55;
+  --category-1-glow: rgba(84, 151, 223, 0.38);
+  --category-1-band: #285486;
+  --category-2-start: #3C351D;
+  --category-2-end: #514821;
+  --category-2-glow: rgba(235, 202, 91, 0.38);
+  --category-2-band: #806A1A;
+  --category-3-start: #212A41;
+  --category-3-end: #303C58;
+  --category-3-glow: rgba(113, 143, 224, 0.36);
+  --category-3-band: #405B91;
+  --category-4-start: #1B3439;
+  --category-4-end: #28464C;
+  --category-4-glow: rgba(83, 188, 193, 0.36);
+  --category-4-band: #2C747B;
+}
+
+/* Theme 3: forest green, cream, and terracotta. */
+[data-theme="theme-3"] {
+  --category-1-start: #E1EFE4;
+  --category-1-end: #CEE4D3;
+  --category-1-glow: rgba(55, 115, 72, 0.23);
+  --category-1-band: #2C5E3B;
+  --category-2-start: #F5E0D6;
+  --category-2-end: #EFCFC0;
+  --category-2-glow: rgba(185, 91, 55, 0.23);
+  --category-2-band: #8E3E22;
+  --category-3-start: #E7EEE0;
+  --category-3-end: #D5E4CA;
+  --category-3-glow: rgba(91, 127, 61, 0.23);
+  --category-3-band: #3A6337;
+  --category-4-start: #F1EADA;
+  --category-4-end: #E8DFC8;
+  --category-4-glow: rgba(156, 124, 57, 0.22);
+  --category-4-band: #6B5728;
+}
+[data-theme="theme-3 dark"] {
+  --category-1-start: #20372A;
+  --category-1-end: #2D4935;
+  --category-1-glow: rgba(103, 188, 119, 0.38);
+  --category-1-band: #376E46;
+  --category-2-start: #3D2922;
+  --category-2-end: #553529;
+  --category-2-glow: rgba(232, 130, 88, 0.37);
+  --category-2-band: #8E4B31;
+  --category-3-start: #2C3826;
+  --category-3-end: #3B4A30;
+  --category-3-glow: rgba(153, 194, 102, 0.35);
+  --category-3-band: #58753A;
+  --category-4-start: #3A3425;
+  --category-4-end: #4E452D;
+  --category-4-glow: rgba(211, 179, 95, 0.35);
+  --category-4-band: #79632E;
+}
+
+/* Theme 4: slate, warm white, and amber. */
+[data-theme="theme-4"] {
+  --category-1-start: #E2EBF2;
+  --category-1-end: #D2E0EB;
+  --category-1-glow: rgba(75, 104, 129, 0.23);
+  --category-1-band: #3E4C59;
+  --category-2-start: #F8E9C9;
+  --category-2-end: #F0DDAF;
+  --category-2-glow: rgba(187, 134, 29, 0.24);
+  --category-2-band: #795500;
+  --category-3-start: #E6E9ED;
+  --category-3-end: #D8DEE4;
+  --category-3-glow: rgba(86, 102, 119, 0.23);
+  --category-3-band: #465565;
+  --category-4-start: #F0E7D5;
+  --category-4-end: #E7D8BB;
+  --category-4-glow: rgba(171, 126, 42, 0.22);
+  --category-4-band: #725622;
+}
+[data-theme="theme-4 dark"] {
+  --category-1-start: #25313B;
+  --category-1-end: #34434F;
+  --category-1-glow: rgba(128, 166, 194, 0.38);
+  --category-1-band: #4A657B;
+  --category-2-start: #3C321E;
+  --category-2-end: #514223;
+  --category-2-glow: rgba(231, 188, 87, 0.38);
+  --category-2-band: #80641C;
+  --category-3-start: #2E343B;
+  --category-3-end: #404850;
+  --category-3-glow: rgba(158, 173, 188, 0.36);
+  --category-3-band: #5B6874;
+  --category-4-start: #393326;
+  --category-4-end: #4B422E;
+  --category-4-glow: rgba(218, 181, 94, 0.35);
+  --category-4-band: #79632E;
+}
+
+/* Theme 5: burgundy, soft gray, and warm rose. */
+[data-theme="theme-5"] {
+  --category-1-start: #F2DDE2;
+  --category-1-end: #EACBD4;
+  --category-1-glow: rgba(146, 56, 83, 0.24);
+  --category-1-band: #5B1E31;
+  --category-2-start: #E9E8EC;
+  --category-2-end: #DCDCE2;
+  --category-2-glow: rgba(102, 92, 109, 0.23);
+  --category-2-band: #514854;
+  --category-3-start: #F0E0E5;
+  --category-3-end: #E7D1D9;
+  --category-3-glow: rgba(158, 75, 104, 0.23);
+  --category-3-band: #712D49;
+  --category-4-start: #EFE4E0;
+  --category-4-end: #E6D6D1;
+  --category-4-glow: rgba(132, 83, 71, 0.22);
+  --category-4-band: #67443B;
+}
+[data-theme="theme-5 dark"] {
+  --category-1-start: #39242C;
+  --category-1-end: #4E2D39;
+  --category-1-glow: rgba(219, 104, 140, 0.38);
+  --category-1-band: #77364D;
+  --category-2-start: #302E35;
+  --category-2-end: #413D47;
+  --category-2-glow: rgba(166, 154, 177, 0.35);
+  --category-2-band: #62576C;
+  --category-3-start: #3E2732;
+  --category-3-end: #533141;
+  --category-3-glow: rgba(231, 126, 160, 0.37);
+  --category-3-band: #823E59;
+  --category-4-start: #392C2B;
+  --category-4-end: #4D3835;
+  --category-4-glow: rgba(207, 147, 128, 0.35);
+  --category-4-band: #765146;
 }
 
 /* ---- Element defaults ---- */
