@@ -2,17 +2,16 @@
 <html lang="en" data-theme="theme-1">
 <head>
   <meta charset="utf-8">
-  <title>A‑Z Index – Economics Research</title>
+  <title>A–Z Index – Economics Research</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/cards.css">
-  <script defer src="js/api.js"></script>
+  <link rel="stylesheet" href="css/glass-cards.css">
   <script defer src="js/theme.js"></script>
 </head>
 <body>
   <header>
-    <h1>A‑Z Index</h1>
+    <h1>A–Z Index</h1>
     <nav id="main-nav">
       <a href="/">Home</a>
       <a href="/track_economics.html">Economics</a>
@@ -22,54 +21,126 @@
     </nav>
   </header>
   <main>
-    <section class="card" style="margin-bottom:2rem;">
-      <input type="text" id="search" placeholder="Search concepts..." style="width:100%; padding:0.5rem; font-size:1rem;" />
+    <section class="az-tools" aria-label="Search and jump to concepts">
+      <label for="search">Search concepts</label>
+      <input type="search" id="search" placeholder="Type a concept or keyword…" autocomplete="off">
+      <p id="concept-count" class="concept-count" aria-live="polite">Loading concepts…</p>
+      <nav id="letter-jump" class="letter-jump" aria-label="Jump to a letter"></nav>
+      <div id="search-error" aria-live="polite" hidden></div>
     </section>
-    <section class="grid" id="concept-grid">
-      <!-- Dynamically populated concepts -->
-    </section>
+    <div id="letter-groups" class="letter-groups" aria-live="polite">
+      <p class="loading-state">Loading concepts…</p>
+    </div>
     <script type="module">
-    import { fetchConcepts } from './js/api.js';
+      import {
+        buildConceptCard,
+        fetchConcepts,
+        searchConcepts,
+        showCardLoadError,
+      } from './js/components/card.js';
 
-    const grid = document.getElementById('concept-grid');
-    const searchInput = document.getElementById('search');
-    let allConcepts = [];
+      const searchInput = document.getElementById('search');
+      const count = document.getElementById('concept-count');
+      const jumpBar = document.getElementById('letter-jump');
+      const groupsHost = document.getElementById('letter-groups');
+      const errorHost = document.getElementById('search-error');
+      let allConcepts = [];
+      let requestNumber = 0;
+      let searchTimer;
 
-    function renderCard(c) {
-      const article = document.createElement('article');
-      article.className = 'concept-card';
-      article.innerHTML = `
-        <h3 class="cc-title">${c.title}</h3>
-        <p class="cc-summary">${c.summary}</p>
-        <div class="cc-meta">
-          <span class="cc-source-tag"><span class="src-id">${c.source_id}</span> · ${c.source_title}</span>
-          ${c.has_interactive ? '<span class="badge interactive">interactive</span>' : ''}
-        </div>
-        <a href="/concept_detail.html?id=${c.id}" class="cc-cta">View →</a>
-      `;
-      return article;
-    }
+      function displayTitle(concept) {
+        return String(concept.title || '').replace(/^\d+\.\d+\.\d+\s*/, '').trim();
+      }
 
-    function render(concepts) {
-      grid.innerHTML = '';
-      concepts.forEach(c => grid.appendChild(renderCard(c)));
-    }
+      function render(concepts) {
+        count.textContent = `${concepts.length} concepts`;
+        errorHost.hidden = true;
+        errorHost.replaceChildren();
 
-    function filter() {
-      const term = searchInput.value.toLowerCase();
-      const filtered = allConcepts.filter(c =>
-        c.title.toLowerCase().includes(term) || c.summary.toLowerCase().includes(term)
-      );
-      render(filtered);
-    }
+        const grouped = new Map();
+        for (const concept of concepts) {
+          const letter = (displayTitle(concept).charAt(0) || '#').toLocaleUpperCase('en');
+          if (!grouped.has(letter)) grouped.set(letter, []);
+          grouped.get(letter).push(concept);
+        }
 
-    fetchConcepts().then(data => {
-      allConcepts = data;
-      render(allConcepts);
-      searchInput.addEventListener('input', filter);
-    }).catch(err => {
-      grid.innerHTML = `<p style='color:red;'>Failed to load concepts: ${err.message}</p>`;
-    });
+        const letters = [...grouped.keys()].sort((a, b) => a.localeCompare(b, 'en'));
+        const jumpLinks = letters.map(letter => {
+          const link = document.createElement('a');
+          link.href = `#letter-${encodeURIComponent(letter)}`;
+          link.textContent = letter;
+          link.setAttribute('aria-label', `Jump to ${letter}`);
+          return link;
+        });
+        jumpBar.replaceChildren(...jumpLinks);
+
+        if (letters.length === 0) {
+          const empty = document.createElement('p');
+          empty.className = 'loading-state';
+          empty.textContent = 'No concepts match your search.';
+          groupsHost.replaceChildren(empty);
+          return;
+        }
+
+        const sections = letters.map(letter => {
+          const section = document.createElement('section');
+          section.className = 'letter-group';
+          section.setAttribute('aria-labelledby', `letter-heading-${letter}`);
+
+          const heading = document.createElement('h2');
+          heading.id = `letter-heading-${letter}`;
+          heading.className = 'letter-heading';
+          heading.textContent = letter;
+          heading.tabIndex = -1;
+          section.id = `letter-${letter}`;
+
+          const cards = document.createElement('div');
+          cards.className = 'glass-card-grid compact-card-grid';
+          const sorted = grouped.get(letter).slice().sort((a, b) =>
+            displayTitle(a).localeCompare(displayTitle(b), 'en', { sensitivity: 'base' })
+          );
+          cards.replaceChildren(...sorted.map(concept => buildConceptCard(concept, { compact: true })));
+          section.append(heading, cards);
+          return section;
+        });
+        groupsHost.replaceChildren(...sections);
+      }
+
+      function showError(error) {
+        errorHost.hidden = false;
+        showCardLoadError(errorHost, error);
+      }
+
+      try {
+        allConcepts = await fetchConcepts();
+        render(allConcepts);
+      } catch (error) {
+        count.textContent = 'Concept count unavailable';
+        showError(error);
+        groupsHost.replaceChildren();
+      }
+
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.trim();
+        const thisRequest = ++requestNumber;
+        clearTimeout(searchTimer);
+        errorHost.hidden = true;
+        errorHost.replaceChildren();
+
+        if (!query) {
+          render(allConcepts);
+          return;
+        }
+
+        searchTimer = setTimeout(async () => {
+          try {
+            const results = await searchConcepts(query);
+            if (thisRequest === requestNumber) render(results);
+          } catch (error) {
+            if (thisRequest === requestNumber) showError(error);
+          }
+        }, 140);
+      });
     </script>
   </main>
   <footer>

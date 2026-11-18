@@ -2,70 +2,137 @@
 <html lang="en" data-theme="theme-1">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore an economics concept, its related ideas, and its source">
   <title>Concept Detail – Economics Research</title>
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <script defer src="js/api.js"></script>
+  <link rel="stylesheet" href="css/glass-cards.css">
   <script defer src="js/theme.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <header>
-    <h1><span id="concept-title">Loading...</span></h1>
+    <p class="site-label"><a href="/">Economics Research</a></p>
     <nav id="main-nav">
       <a href="/">Home</a>
-      <a href="/a_z_index.html">A‑Z Index</a>
+      <a href="/a_z_index.html">A–Z Index</a>
       <a href="/track_economics.html">Economics</a>
       <a href="/track_financing.html">Financing</a>
       <a href="/track_global.html">Global Economy</a>
       <a href="/sources.html">Sources</a>
-      <button id="theme-switcher" aria-label="Switch Theme">Switch Theme</button>
     </nav>
   </header>
   <main>
-    <section class="card">
-      <div id="concept-content">
-        <p>Loading concept details...</p>
-      </div>
-      <div id="widget-container" style="margin-top:2rem; border-top:1px solid var(--primary); padding-top:1rem;">
-        <!-- Widget injected here -->
-      </div>
-    </section>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/a_z_index.html">A–Z Index</a>
+      <span aria-hidden="true">›</span>
+      <span id="breadcrumb-title">Concept</span>
+    </nav>
+
+    <article class="concept-detail-page" id="concept-detail">
+      <header class="detail-hero">
+        <p class="eyebrow" id="concept-source-tag">Economics concept</p>
+        <h1 id="concept-title">Loading concept…</h1>
+        <p class="detail-summary" id="concept-summary"></p>
+        <a class="source-link" id="source-link" href="/sources.html">View source details</a>
+      </header>
+
+      <div id="detail-error" aria-live="polite"></div>
+      <div id="source-note-container"></div>
+
+      <section class="detail-section" id="highlights-section" aria-labelledby="highlights-title">
+        <h2 id="highlights-title">Highlights</h2>
+        <ul class="highlight-list" id="concept-highlights"></ul>
+      </section>
+
+      <section class="detail-section widget-section" id="widget-section" aria-labelledby="widget-title" hidden>
+        <p class="eyebrow">Illustrative model</p>
+        <h2 id="widget-title">Explore the model</h2>
+        <div id="widget-container" aria-live="polite"></div>
+      </section>
+
+      <section class="detail-section related-section" id="related-section" aria-labelledby="related-title" hidden>
+        <p class="eyebrow">Keep exploring</p>
+        <h2 id="related-title">Related concepts</h2>
+        <div class="glass-card-grid compact-card-grid" id="related-concepts"></div>
+      </section>
+
+      <aside class="jordan-context" aria-labelledby="jordan-context-title">
+        <h2 id="jordan-context-title">Jordan context: to be added</h2>
+      </aside>
+    </article>
   </main>
   <footer>
     <p>&copy; 2026 Economics Research Site</p>
   </footer>
+
   <script type="module">
-    // Simple script to fetch concept by URL param and load widget if available
-    import { fetchConcept } from './js/api.js';
+    import { buildConceptCard, fetchConcepts, showCardLoadError } from './js/components/card.js';
+    import { buildSourceNote } from './js/components/source_notes.js';
+
+    const errorHost = document.getElementById('detail-error');
     const params = new URLSearchParams(window.location.search);
-    const conceptId = params.get('id');
-    const widgetContainer = document.getElementById('widget-container');
-    if (conceptId) {
-      fetchConcept(conceptId)
-        .then(data => {
-            document.getElementById('concept-title').innerText = data.title;
-            document.getElementById('concept-content').innerHTML = `
-                <p>${data.summary}</p>
-                <h3>Highlights</h3>
-                <p>${Array.isArray(data.highlights) ? data.highlights.join('<br>') : data.highlights}</p>
-            `;
-            // Dynamically import widget module if the concept has one
-            if (data.widget) {
-                import(`./js/widgets/${data.widget}.js`).then(mod => {
-                    if (mod && typeof mod.init === 'function') {
-                        mod.init(widgetContainer);
-                    }
-                }).catch(() => {
-                    // Widget module missing – silently ignore
-                });
-            }
-        })
-        .catch(err => {
-            document.getElementById('concept-content').innerHTML = `<p style='color:red;'>Failed to load concept: ${err.message}</p>`;
-        });
+    const requestedId = params.get('id');
+
+    function showError(error) {
+      showCardLoadError(errorHost, error);
     }
+
+    async function loadConcept() {
+      if (!requestedId) throw new Error('No concept was selected. HTTP status unavailable.');
+
+      const concepts = await fetchConcepts();
+      const concept = concepts.find(item => item.id === requestedId || item.source_id === requestedId);
+      if (!concept) throw new Error(`Concept not found. HTTP 404.`);
+
+      document.title = `${concept.title} – Economics Research`;
+      document.getElementById('concept-title').textContent = concept.title;
+      document.getElementById('breadcrumb-title').textContent = concept.title;
+      document.getElementById('concept-source-tag').textContent = `Source ${concept.source_id.split('.').slice(0, 2).join('.')}`;
+      document.getElementById('concept-summary').textContent = concept.summary;
+
+      const sourceId = concept.source_id.split('.').slice(0, 2).join('.');
+      const sourceAnchor = `source-${sourceId.replaceAll('.', '-')}`;
+      const sourceLink = document.getElementById('source-link');
+      sourceLink.href = `/sources.html#${sourceAnchor}`;
+      sourceLink.textContent = `Source ${sourceId}: ${concept.source_title}`;
+
+      const highlights = document.getElementById('concept-highlights');
+      highlights.replaceChildren(...(concept.highlights || []).map(text => {
+        const item = document.createElement('li');
+        item.textContent = text;
+        return item;
+      }));
+
+      const sourceNote = buildSourceNote(concept);
+      if (sourceNote) document.getElementById('source-note-container').replaceChildren(sourceNote);
+
+      if (concept.widget) {
+        const widgetSection = document.getElementById('widget-section');
+        const widgetContainer = document.getElementById('widget-container');
+        widgetSection.hidden = false;
+        try {
+          const module = await import(`./js/widgets/${concept.widget}.js`);
+          if (typeof module.init === 'function') module.init(widgetContainer);
+          else showCardLoadError(widgetContainer, new Error('This interactive model is not available yet.'));
+        } catch (error) {
+          showCardLoadError(widgetContainer, new Error(`Could not load the interactive model. ${error.message}`));
+        }
+      }
+
+      const conceptByCode = new Map(concepts.map(item => [item.source_id, item]));
+      const related = [...new Set(concept.related_concepts || [])]
+        .map(code => conceptByCode.get(code))
+        .filter(item => item && item.id !== concept.id);
+      if (related.length) {
+        document.getElementById('related-concepts').replaceChildren(
+          ...related.map(item => buildConceptCard(item, { compact: true }))
+        );
+        document.getElementById('related-section').hidden = false;
+      }
+    }
+
+    loadConcept().catch(showError);
   </script>
 </body>
 </html>

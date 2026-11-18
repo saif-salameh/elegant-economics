@@ -41,7 +41,7 @@ function addInteractiveIcon(parent) {
   parent.append(badge);
 }
 
-export function buildConceptCard(concept, { featured = false } = {}) {
+export function buildConceptCard(concept, { featured = false, compact = false } = {}) {
   const conceptNumber = String(concept.source_id || "");
   const category = String(concept.category || conceptNumber.split(".")[0] || "1");
   const titleText = String(concept.title || "Untitled concept")
@@ -49,12 +49,20 @@ export function buildConceptCard(concept, { featured = false } = {}) {
   const categoryName = String(concept.category_name || `Category ${category}`);
 
   const link = document.createElement("a");
-  link.className = `glass-card-link${featured ? " featured-card-link" : ""}`;
+  link.className = [
+    "glass-card-link",
+    featured ? "featured-card-link" : "",
+    compact ? "compact-card-link" : "",
+  ].filter(Boolean).join(" ");
   link.href = `/concept_detail.html?id=${encodeURIComponent(concept.id)}`;
   link.setAttribute("aria-label", `${titleText}. ${categoryName}. Concept ${conceptNumber}.`);
 
   const card = document.createElement("article");
-  card.className = `glass-card ${featured ? "featured-card" : "grid-card"}`;
+  card.className = [
+    "glass-card",
+    featured ? "featured-card" : "grid-card",
+    compact ? "compact-card" : "",
+  ].filter(Boolean).join(" ");
   card.dataset.category = category;
 
   const head = document.createElement("div");
@@ -110,6 +118,33 @@ export async function fetchConcepts() {
   const concepts = Array.isArray(payload) ? payload : payload?.concepts;
   if (!Array.isArray(concepts)) {
     throw new Error(`Unexpected concepts API response. HTTP ${response.status}; expected an array of concepts.`);
+  }
+  return concepts;
+}
+
+export async function searchConcepts(query) {
+  const url = `/api/search?q=${encodeURIComponent(query)}`;
+  let response;
+  try {
+    response = await fetch(url, { headers: { Accept: "application/json" } });
+  } catch (error) {
+    throw new Error(`Could not reach /api/search. HTTP status unavailable. ${error.message}`);
+  }
+
+  if (!response.ok) {
+    throw new Error(`Could not search concepts. HTTP ${response.status} ${response.statusText || "request failed"}.`);
+  }
+
+  let payload;
+  try {
+    payload = await response.json();
+  } catch {
+    throw new Error(`The search API returned invalid JSON. HTTP ${response.status}.`);
+  }
+
+  const concepts = Array.isArray(payload) ? payload : payload?.concepts;
+  if (!Array.isArray(concepts)) {
+    throw new Error(`Unexpected search API response. HTTP ${response.status}; expected an array of concepts.`);
   }
   return concepts;
 }

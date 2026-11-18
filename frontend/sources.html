@@ -60,6 +60,7 @@
     tbody.innerHTML = '';
     sources.forEach(s => {
       const tr = document.createElement('tr');
+      tr.id = `source-${s.id.replaceAll('.', '-')}`;
       tr.innerHTML = `
         <td>${s.id}</td>
         <td>${s.category}</td>
