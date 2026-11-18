@@ -36,6 +36,7 @@ def _strip_markdown(md: str) -> str:
 
 # Concept IDs that get an interactive widget, mapped to their widget module name.
 WIDGET_MAP = {
+    "1.1.7":   "ppf",
     "1.1.8":   "ppf",
     "1.1.13":  "circular_flow",
     "1.1.14":  "supply_demand",
