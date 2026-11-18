@@ -1,11 +1,11 @@
-import re
-import json
-from flask import Flask, jsonify, send_from_directory, abort
+from flask import Flask, jsonify, send_from_directory, abort, request
 from pathlib import Path
 from .models import EconomicsData
 from .parser import parse_markdown
 
 app = Flask(__name__, static_folder='../frontend', static_url_path='')
+app.json.ensure_ascii = False
+app.json.mimetype = 'application/json; charset=utf-8'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 CONTENT_PATH = BASE_DIR / 'content' / 'economics-library.md'
@@ -15,6 +15,17 @@ econ_data = parse_markdown(CONTENT_PATH)
 @app.route('/api/concepts')
 def get_concepts():
     return jsonify([c.model_dump() for c in econ_data.concepts])
+
+@app.route('/api/search')
+def search_concepts():
+    query = request.args.get('q', '').strip().casefold()
+    if not query:
+        return jsonify([])
+    matches = [
+        c for c in econ_data.concepts
+        if query in c.title.casefold() or query in c.summary.casefold()
+    ]
+    return jsonify([c.model_dump() for c in matches])
 
 @app.route('/api/concepts/<concept_id>')
 def get_concept(concept_id):

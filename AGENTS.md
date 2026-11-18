@@ -52,13 +52,15 @@ with light/dark. Charts must read colors from the variables.
 - Add marked placeholders for Jordan-specific content
 
 ## Status so far
-- DONE: docx converted to Markdown, saved at content/economics-library.md
-- NOT DONE: everything else. No plan approved, no code written
-  (verify by inspecting the folder).
-- Known problem: `python` / `python3` commands failed on my
-  machine, and pip install timed out. Python may not be installed
-  or on PATH. Diagnose this before any Python work. Try `py
-  --version` on Windows. Do not assume the sandbox has internet.
+- DONE: source Markdown exists; Stage 0 checkpoint committed as
+  `aa49ef0`; Stage 1 parser/API changes are complete and verified.
+- VERIFIED: 81 concepts, 35 concepts with cross-source links, and
+  zero unmatched expanded codes. Flask JSON is UTF-8; all seven pages
+  include the UTF-8 charset declaration.
+- NEXT: Stage 2 card test page and A-Z index; wait for browser review
+  of the card test before applying card styling to the real pages.
+- Python: `python --version` reports 3.10.11; `py --version` reports
+  no installed Python. Use `python` for this project.
 
 ## Working rules
 - Plan first, wait for my approval, then build in small steps.

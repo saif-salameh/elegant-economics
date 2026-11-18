@@ -8,14 +8,24 @@ Extracts:
 
 For each concept the body is split into a summary (text between
 ``**Summary:**`` and ``**Key highlights**``) and a list of highlights
-(the ``- `` bullet lines). The Ethiopia/birr placeholder is replaced
-with Jordan/Dinar to satisfy the content cautions.
+(the ``- `` bullet lines). Source text is preserved as written; localization
+cautions belong in the site presentation rather than parsed source content.
 """
 import re
 from pathlib import Path
 from typing import List, Tuple
 
 from .models import Concept, Source, EconomicsData
+
+
+CHAPTERS_1_1 = {
+    "1": "Basics of Economics",
+    "2": "Theory of Demand and Supply",
+    "3": "Theory of Consumer Behaviour",
+    "4": "Theory of Production and Cost",
+    "5": "Market Structure",
+    "6": "Fundamental Concepts of Macroeconomics",
+}
 
 
 def _strip_markdown(md: str) -> str:
@@ -104,13 +114,14 @@ def _parse_source_map(raw: str) -> tuple[dict[str, str], dict[str, str]]:
             if len(cols) >= 4:
                 src_id = cols[0]
                 cat_name = cols[1]
+                source_title = _strip_markdown(cols[2])
                 m = re.match(r"^(\d+)\.", src_id)
                 if m:
                     cat_map[m.group(1)] = cat_name
-                src_map[src_id] = ""
+                src_map[src_id] = source_title
     # Fill titles from the ## Source headings
     for line in lines:
-        m = re.match(r"^## Source\s+(\d+\.\d+)\s*[—–]\s*(.+)$", line)
+        m = re.match(r"^## Source\s+(\d+\.\d+)\s*[—–�]\s*(.+)$", line)
         if m:
             src_map[m.group(1)] = _strip_markdown(m.group(2))
     return cat_map, src_map
@@ -137,12 +148,30 @@ def _extract_related(body: str) -> list[str]:
     return related
 
 
-def _parse_cross_links(text: str) -> dict[str, list[str]]:
-    """Parse the '# Cross-source links' section.
+def _expand_code(chunk: str) -> list[str]:
+    """Parse a concept code or an inclusive range of concept codes."""
+    chunk = chunk.strip()
+    single = re.fullmatch(r"\d+\.\d+\.\d+", chunk)
+    if single:
+        return [chunk]
 
-    Each bullet is ``- **Name** (1.1.13) ↔ other (1.2.8) ↔ term (1.2.1).``
-    Returns a mapping of source_id -> list of related source_ids.
-    """
+    match = re.fullmatch(
+        r"(\d+\.\d+)\.(\d+)\s*[–-]\s*(?:(\d+\.\d+)\.)?(\d+)",
+        chunk,
+    )
+    if not match:
+        return []
+    prefix, start, end_prefix, end = match.groups()
+    if end_prefix and end_prefix != prefix:
+        return []
+    start_num, end_num = int(start), int(end)
+    if end_num < start_num:
+        return []
+    return [f"{prefix}.{number}" for number in range(start_num, end_num + 1)]
+
+
+def _parse_cross_links(text: str) -> dict[str, list[str]]:
+    """Expand codes in the cross-source section into concept relationships."""
     links: dict[str, list[str]] = {}
     section = re.search(
         r"# Cross-source links.*?(?=\n# |\Z)", text, re.DOTALL
@@ -150,12 +179,16 @@ def _parse_cross_links(text: str) -> dict[str, list[str]]:
     if not section:
         return links
     for bullet in re.finditer(r"^\s*[-*]\s+(.+)$", section.group(0), re.MULTILINE):
-        ids = re.findall(r"\((\d+\.\d+(?:\.\d+)?)\)", bullet.group(1))
-        if len(ids) < 2:
+        codes: list[str] = []
+        for parenthetical in re.findall(r"\(([^)]*)\)", bullet.group(1)):
+            for chunk in re.split(r"[,;]", parenthetical):
+                codes.extend(_expand_code(chunk))
+        codes = list(dict.fromkeys(codes))
+        if len(codes) < 2:
             continue
-        for src_id in ids:
+        for src_id in codes:
             existing = links.setdefault(src_id, [])
-            for other in ids:
+            for other in codes:
                 if other != src_id and other not in existing:
                     existing.append(other)
     return links
@@ -170,8 +203,6 @@ def parse_markdown(md_path: Path) -> EconomicsData:
     cat_map, src_map = _parse_source_map(raw)
 
     # Scan line by line, tracking current category and source heading
-    current_category = ""
-    current_source = ""
     current_chapter = ""
     concepts: list[Concept] = []
 
@@ -180,12 +211,10 @@ def parse_markdown(md_path: Path) -> EconomicsData:
     while i < len(lines):
         line = lines[i]
 
-        if line.startswith("# Category "):
-            current_category = line.lstrip("# ").strip()
-        elif line.startswith("## Source "):
-            current_source = re.sub(r"^## Source\s+", "", line).strip()
-        elif line.startswith("### Chapter "):
-            current_chapter = re.sub(r"^### Chapter\s+", "", line).strip()
+        chapter_heading = re.match(r"^### Chapter\s+(\d+)\s*[—–�]\s*(.+)$", line)
+        if chapter_heading:
+            number, heading_name = chapter_heading.groups()
+            current_chapter = CHAPTERS_1_1.get(number, heading_name.strip())
 
         if line.startswith("#### "):
             title = line.lstrip("# ").strip()
@@ -201,9 +230,6 @@ def parse_markdown(md_path: Path) -> EconomicsData:
             src_id = m.group(1) if m else "unknown"
 
             summary, highlights = _split_body(body)
-            summary = summary.replace("Ethiopia/birr", "Jordan/Dinar")
-            highlights = [h.replace("Ethiopia/birr", "Jordan/Dinar") for h in highlights]
-
             related = _extract_related(body)
             related.extend(cross_links.get(src_id, []))
             # de-duplicate while preserving order
