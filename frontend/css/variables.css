@@ -106,6 +106,22 @@
   --text: #F2F2F2;
 }
 
+/* ---- Shared tokens used by widgets (same value in every palette) ---- */
+:root {
+  --muted: #6B7280;
+  --border: #D1D5DB;
+}
+:root[data-theme="theme-1 dark"],
+:root[data-theme="theme-2 dark"],
+:root[data-theme="theme-3 dark"],
+:root[data-theme="theme-4 dark"],
+:root[data-theme="theme-5 dark"],
+:root[data-theme="purple-gold dark"],
+:root[data-theme="blue-lemon dark"] {
+  --muted: #9CA3AF;
+  --border: #4B5563;
+}
+
 /* ---- Element defaults ---- */
 body {
   background-color: var(--bg);
