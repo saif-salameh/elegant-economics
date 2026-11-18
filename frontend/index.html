@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
-  <script defer src="js/api.js"></script>
+  <link rel="stylesheet" href="css/glass-cards.css">
   <script defer src="js/theme.js"></script>
 </head>
 <body>
@@ -24,28 +24,60 @@
     </nav>
   </header>
   <main>
-    <section class="hero">
-      <h1>Economics Research for Jordan</h1>
-      <p>Explore key economic concepts tailored for Jordanian students and the general public</p>
-      <a href="/a_z_index.html" class="cta">Explore Concepts</a>
+    <section class="hero-showcase home-hero" aria-labelledby="home-hero-title">
+      <p class="eyebrow">Economics research for Jordan</p>
+      <h1 id="home-hero-title">Elegant Economics</h1>
+      <p class="hero-intro">Explore the concepts, models, and choices behind our economy.</p>
+      <div class="featured-fan" id="home-featured-cards" aria-label="One featured concept from each category">
+        <p class="loading-state">Loading featured concepts…</p>
+      </div>
     </section>
-    <section class="track-overview">
-      <article class="track-overview-card">
-        <h3>Economics Track</h3>
-        <p>Core economic principles and theories</p>
-        <a href="/track_economics.html" class="cta">Explore Economics</a>
-      </article>
-      <article class="track-overview-card">
-        <h3>Financing Track</h3>
-        <p>Financial systems and instruments</p>
-        <a href="/track_financing.html" class="cta">Explore Financing</a>
-      </article>
-      <article class="track-overview-card">
-        <h3>Global Economy</h3>
-        <p>International economic relations</p>
-        <a href="/track_global.html" class="cta">Explore Global Economy</a>
-      </article>
+    <section class="concept-preview home-featured" aria-labelledby="featured-heading">
+      <div class="section-heading">
+        <p class="eyebrow">From the research library</p>
+        <h2 id="featured-heading">Featured concepts</h2>
+        <p>Six ideas from across the four categories.</p>
+      </div>
+      <div class="concept-grid" id="home-concept-cards" aria-live="polite">
+        <p class="loading-state">Loading concepts…</p>
+      </div>
     </section>
+    <script type="module">
+      import { buildConceptCard, fetchConcepts, showCardLoadError } from './js/components/card.js';
+
+      const fan = document.getElementById('home-featured-cards');
+      const grid = document.getElementById('home-concept-cards');
+
+      function pickFeatured(concepts) {
+        return ['1', '2', '3', '4'].map(category =>
+          concepts.find(concept => concept.category === category && concept.has_interactive) ||
+          concepts.find(concept => concept.category === category)
+        ).filter(Boolean);
+      }
+
+      function pickSix(concepts, featured) {
+        const chosen = [...featured];
+        for (const concept of concepts.filter(item => item.has_interactive)) {
+          if (chosen.length === 6) break;
+          if (!chosen.some(item => item.source_id === concept.source_id)) chosen.push(concept);
+        }
+        for (const concept of concepts) {
+          if (chosen.length === 6) break;
+          if (!chosen.some(item => item.source_id === concept.source_id)) chosen.push(concept);
+        }
+        return chosen.slice(0, 6);
+      }
+
+      try {
+        const concepts = await fetchConcepts();
+        const featured = pickFeatured(concepts);
+        fan.replaceChildren(...featured.map(concept => buildConceptCard(concept, { featured: true })));
+        grid.replaceChildren(...pickSix(concepts, featured).map(concept => buildConceptCard(concept)));
+      } catch (error) {
+        showCardLoadError(fan, error);
+        showCardLoadError(grid, error);
+      }
+    </script>
   </main>
   <footer>
     <p>&copy; 2026 Economics Research Site</p>

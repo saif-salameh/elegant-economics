@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/cards.css">
-  <script defer src="js/api.js"></script>
+  <link rel="stylesheet" href="css/glass-cards.css">
   <script defer src="js/theme.js"></script>
 </head>
 <body>
@@ -23,37 +23,20 @@
     </nav>
   </header>
   <main>
-    <section class="grid" id="concept-grid">
-      <p>Loading concepts…</p>
+    <section class="grid glass-card-grid" id="concept-grid" aria-live="polite">
+      <p class="loading-state">Loading concepts…</p>
     </section>
     <script type="module">
-    import { fetchConcepts } from './js/api.js';
+    import { buildConceptCard, fetchConcepts, showCardLoadError } from './js/components/card.js';
 
     const grid = document.getElementById('concept-grid');
-
-    function renderCard(c) {
-      const article = document.createElement('article');
-      article.className = 'concept-card';
-      article.innerHTML = `
-        <h3 class="cc-title">${c.title}</h3>
-        <p class="cc-summary">${c.summary}</p>
-        <div class="cc-meta">
-          <span class="cc-source-tag"><span class="src-id">${c.source_id}</span> · ${c.source_title}</span>
-          ${c.has_interactive ? '<span class="badge interactive">interactive</span>' : ''}
-        </div>
-        <a href="/concept_detail.html?id=${c.id}" class="cc-cta">Explore →</a>
-      `;
-      return article;
+    try {
+      const all = await fetchConcepts();
+      const concepts = all.filter(concept => concept.category === '3');
+      grid.replaceChildren(...concepts.map(concept => buildConceptCard(concept)));
+    } catch (error) {
+      showCardLoadError(grid, error);
     }
-
-    fetchConcepts().then(all => {
-      // Global Economy track = category 3 (source 3.1)
-      const concepts = all.filter(c => c.category === '3');
-      grid.innerHTML = '';
-      concepts.forEach(c => grid.appendChild(renderCard(c)));
-    }).catch(err => {
-      grid.innerHTML = `<p style='color:red;'>Failed to load: ${err.message}</p>`;
-    });
     </script>
   </main>
   <footer>
