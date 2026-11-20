@@ -42,7 +42,7 @@ export function init(widgetContainer) {
       .circular-flow-widget .cf-source { color: var(--muted); display: block; font-size: .88rem; margin-top: .25rem; }
       .circular-flow-widget .cf-context,
       .circular-flow-widget .cf-coverage { color: var(--muted); font-size: .92rem; margin: .75rem 0 0; }
-      .circular-flow-widget .cf-reference { color: var(--primary); background: transparent; border: 1px solid var(--border); border-radius: 999px; cursor: pointer; font: inherit; margin-top: .6rem; padding: .4rem .75rem; }
+      .circular-flow-widget .cf-reference { color: var(--primary); background: var(--color-clear); border: 1px solid var(--border); border-radius: 999px; cursor: pointer; font: inherit; margin-top: .6rem; padding: .4rem .75rem; }
       .circular-flow-widget .cf-caption { color: var(--muted); font-size: .9rem; margin: .75rem 0 0; }
       @media (prefers-reduced-motion: reduce) {
         .circular-flow-widget .cf-dot { display: none; }

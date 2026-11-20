@@ -52,15 +52,29 @@ with light/dark. Charts must read colors from the variables.
 - Add marked placeholders for Jordan-specific content
 
 ## Status so far
-- DONE: source Markdown exists; Stage 0 checkpoint committed as
-  `aa49ef0`; Stage 1 parser/API changes are complete and verified.
-- VERIFIED: 81 concepts, 35 concepts with cross-source links, and
-  zero unmatched expanded codes. Flask JSON is UTF-8; all seven pages
-  include the UTF-8 charset declaration.
-- NEXT: Stage 2 card test page and A-Z index; wait for browser review
-  of the card test before applying card styling to the real pages.
-- Python: `python --version` reports 3.10.11; `py --version` reports
-  no installed Python. Use `python` for this project.
+- DONE: Stages 0-6b and the final handoff are complete. The site includes the single Markdown
+  parser and JSON API, reusable glass cards, track and home pages, the
+  A-Z index, concept details and source notes, five light/dark palettes,
+  and widgets for supply/demand, PPF, circular flow, elasticity,
+  indifference curves, production stages, business cycles, and yield
+  curves.
+- VERIFIED: the library has 81 concepts; 35 have related concepts and
+  all expanded related codes match real concepts. Flask JSON uses UTF-8.
+  The final code-only checker is `tools/check_site.py`; run it with
+  `python tools/check_site.py` (it uses Flask's test client, not a server).
+- RUN: install dependencies with
+  `python -m pip install -r backend\requirements.txt`, then use `run.bat`
+  or `python -m flask --app backend.app run` from the project root.
+- KNOWN CONTENT LIMITATIONS: Investopedia (4.2) was not read; IMF chapter
+  data is from 2004; 2.1 is a rough translation; FutureLearn country
+  labels need verification; Source 1.1 examples use Ethiopia/birr; and
+  Jordan-specific context remains a placeholder until source material is
+  provided. Widget charts are illustrative models, not real data.
+- LATER IDEAS: add reviewed Jordan-specific examples, verify FutureLearn
+  labels and the 4.2 material, replace or contextualize Ethiopia/birr
+  examples, and refine widgets as the source notes are expanded.
+- Python: use `python` for this project (the `py` launcher was not
+  available in the original setup).
 
 ## Working rules
 - Plan first, wait for my approval, then build in small steps.

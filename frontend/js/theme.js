@@ -87,7 +87,7 @@ function buildControls() {
   toggle.style.cursor = "pointer";
   toggle.style.padding = "0.4rem 0.7rem";
   toggle.style.border = "1px solid var(--primary)";
-  toggle.style.background = "transparent";
+  toggle.style.background = "var(--color-clear)";
   toggle.style.color = "var(--bg)";
   toggle.style.borderRadius = "4px";
 
