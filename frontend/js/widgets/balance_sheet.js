@@ -2,6 +2,7 @@ import {
   applyBalanceSheetTransaction,
   computeBalanceSheetTotals,
 } from "./fin_model.js";
+import { renderFinTable } from "./fin_table.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const DEFINITION_FOR_KEY = {
@@ -14,6 +15,24 @@ const DEFINITION_FOR_KEY = {
   long_term_debt: "6.2.8",
   share_capital: "6.2.9",
   retained_earnings: "6.2.10",
+  total_current_assets: "6.2.4",
+  total_assets: "6.2.1",
+  total_current_liabilities: "6.2.7",
+  total_liabilities: "6.2.6",
+  total_equity: "6.2.9",
+  total_liabilities_and_equity: "6.2.2",
+  current_ratio: "6.2.12",
+  debt_to_equity: "6.2.12",
+  check: "6.2.2",
+  total_current_assets: "6.2.4",
+  total_assets: "6.2.1",
+  total_current_liabilities: "6.2.7",
+  total_liabilities: "6.2.6",
+  total_equity: "6.2.9",
+  total_liabilities_and_equity: "6.2.2",
+  current_ratio: "6.2.12",
+  debt_to_equity: "6.2.12",
+  check: "6.2.2",
 };
 const CONCEPT_HIGHLIGHTS = {
   "6.2.1": ["all"],
@@ -82,14 +101,19 @@ function makeTemplate() {
       .balance-sheet-widget .bs-equation.is-concept-match { box-shadow: 0 0 0 3px var(--accent); }
       .balance-sheet-widget .bs-equation-line { display: block; font-weight: 750; }
       .balance-sheet-widget .bs-balance-status { display: block; margin-top: .2rem; color: var(--muted); }
-      .balance-sheet-widget .bs-balance-status.is-balanced { color: var(--primary); font-weight: 750; }
-      .balance-sheet-widget .bs-balance-status.is-unbalanced { color: var(--accent); font-weight: 800; }
+      .balance-sheet-widget .bs-balance-status.is-balanced { color: var(--success); font-weight: 750; }
+      .balance-sheet-widget .bs-balance-status.is-unbalanced { color: var(--danger); font-weight: 800; }
       .balance-sheet-widget .bs-ratios { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; margin: 0 0 1rem; }
       .balance-sheet-widget .bs-ratio { border: 1px solid var(--border); border-radius: .75rem; background: var(--bg); color: var(--text); padding: .75rem; text-align: left; cursor: pointer; }
       .balance-sheet-widget .bs-ratio.is-concept-match { outline: 3px solid var(--accent); outline-offset: 2px; }
       .balance-sheet-widget .bs-ratio-label { display: block; color: var(--muted); font-size: .84rem; }
       .balance-sheet-widget .bs-ratio-value { display: block; margin-top: .2rem; font-size: 1.2rem; font-weight: 750; }
       .balance-sheet-widget .bs-chart-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: .9rem; background: var(--bg); padding: .5rem; }
+      .balance-sheet-widget .bs-table-section { margin-top: 1rem; }
+      .balance-sheet-widget .bs-table-section h3 { margin: 0 0 .6rem; color: var(--primary); font-size: 1.1rem; }
+      .balance-sheet-widget .bs-check-explanation { min-height: 1.4rem; margin: .65rem 0; color: var(--muted); font-size: .9rem; }
+      .balance-sheet-widget .bs-fix-hint { margin: .2rem 0 .9rem; border: 1px solid var(--border); border-radius: 999px; background: var(--bg); color: var(--text); cursor: pointer; padding: .5rem .8rem; }
+      .balance-sheet-widget .bs-fix-message { margin: .4rem 0; color: var(--muted); }
       .balance-sheet-widget .bs-chart { display: block; width: 100%; min-width: 680px; height: auto; }
       .balance-sheet-widget .bs-grid { stroke: var(--border); stroke-width: 1; }
       .balance-sheet-widget .bs-axis { stroke: var(--text); stroke-width: 1.2; }
@@ -154,6 +178,13 @@ function makeTemplate() {
       </button>
     </div>
     <div class="bs-chart-wrap"><svg class="bs-chart" role="img" aria-label="Assets compared with liabilities and equity"></svg></div>
+    <section class="bs-table-section" aria-labelledby="bs-table-heading">
+      <h3 id="bs-table-heading">Interactive balance sheet</h3>
+      <div class="bs-table-container"></div>
+      <p class="bs-check-explanation" data-check-explanation aria-live="polite"></p>
+      <button type="button" class="bs-fix-hint" data-fix-hint>Fix the balance</button>
+      <p class="bs-fix-message" data-fix-message role="status" aria-live="polite"></p>
+    </section>
     <section class="bs-definition" aria-live="polite" aria-atomic="true">
       <h3 data-definition-title>Line definition</h3>
       <p data-definition-text>Focus a block to read its source definition.</p>
@@ -351,6 +382,8 @@ export async function init(widgetContainer) {
     example: null,
     year: "begin_y1",
     balance: null,
+    periodBalances: {},
+    tableView: "all",
     definitions: new Map(),
     showLiquidityOrder: false,
     changedKeys: new Set(),
@@ -364,6 +397,86 @@ export async function init(widgetContainer) {
   const definitionText = get("[data-definition-text]");
   const error = get(".bs-error");
   const transactionMessage = get("[data-transaction-message]");
+  const checkExplanation = get("[data-check-explanation]");
+  const fixMessage = get("[data-fix-message]");
+
+  const balanceColumns = [
+    { key: "begin_y1", label: "Beginning of Year 1" },
+    { key: "end_y1", label: "End of Year 1" },
+    { key: "end_y2", label: "End of Year 2" },
+  ];
+
+  function tableRows() {
+    const balances = Object.fromEntries(balanceColumns.map(column => [column.key, state.periodBalances[column.key]]));
+    const values = key => Object.fromEntries(balanceColumns.map(column => [column.key, balances[column.key][key]]));
+    const inputRows = [
+      ["cash_and_equivalents", "Cash and equivalents", "6.2.3"],
+      ["accounts_receivable", "Accounts receivable", "6.2.3"],
+      ["inventory", "Inventory", "6.2.3"],
+      ["ppe_net", "PP&E (net)", "6.2.5"],
+      ["accounts_payable", "Accounts payable", "6.2.7"],
+      ["current_debt", "Current debt", "6.2.7"],
+      ["long_term_debt", "Long-term debt", "6.2.8"],
+      ["share_capital", "Share capital", "6.2.9"],
+      ["retained_earnings", "Retained earnings", "6.2.10"],
+    ].map(([key, label, definitionId]) => ({
+      key, label, kind: "input", format: "number", values: values(key), definitionId,
+    }));
+    const currentRatio = Object.fromEntries(balanceColumns.map(column => {
+      const balance = balances[column.key];
+      return [column.key, balance.total_current_liabilities
+        ? balance.total_current_assets / balance.total_current_liabilities : null];
+    }));
+    const debtToEquity = Object.fromEntries(balanceColumns.map(column => {
+      const balance = balances[column.key];
+      const debt = balance.current_debt + balance.long_term_debt;
+      return [column.key, balance.total_equity ? debt / balance.total_equity : null];
+    }));
+    const checkValues = Object.fromEntries(balanceColumns.map(column => {
+      const balance = balances[column.key];
+      return [column.key, balance.total_assets - balance.total_liabilities_and_equity];
+    }));
+    return [
+      ...inputRows,
+      { key: "total_current_assets", label: "Total current assets", kind: "subtotal", format: "number", values: values("total_current_assets"), definitionId: "6.2.4", dependsOn: ["cash_and_equivalents", "accounts_receivable", "inventory"], formula: ({ columnKey }) => `Current assets = ${displayAmount(balances[columnKey].cash_and_equivalents)} + ${displayAmount(balances[columnKey].accounts_receivable)} + ${displayAmount(balances[columnKey].inventory)} = ${displayAmount(balances[columnKey].total_current_assets)}` },
+      { key: "total_assets", label: "Total assets", kind: "subtotal", format: "number", values: values("total_assets"), definitionId: "6.2.1", dependsOn: ["total_current_assets", "ppe_net"], formula: ({ columnKey }) => `Assets = ${displayAmount(balances[columnKey].total_current_assets)} + ${displayAmount(balances[columnKey].ppe_net)} = ${displayAmount(balances[columnKey].total_assets)}` },
+      { key: "total_current_liabilities", label: "Total current liabilities", kind: "subtotal", format: "number", values: values("total_current_liabilities"), definitionId: "6.2.7", dependsOn: ["accounts_payable", "current_debt"], formula: ({ columnKey }) => `Current liabilities = ${displayAmount(balances[columnKey].accounts_payable)} + ${displayAmount(balances[columnKey].current_debt)} = ${displayAmount(balances[columnKey].total_current_liabilities)}` },
+      { key: "total_liabilities", label: "Total liabilities", kind: "subtotal", format: "number", values: values("total_liabilities"), definitionId: "6.2.6", dependsOn: ["total_current_liabilities", "long_term_debt"], formula: ({ columnKey }) => `Liabilities = ${displayAmount(balances[columnKey].total_current_liabilities)} + ${displayAmount(balances[columnKey].long_term_debt)} = ${displayAmount(balances[columnKey].total_liabilities)}` },
+      { key: "total_equity", label: "Total equity", kind: "subtotal", format: "number", values: values("total_equity"), definitionId: "6.2.9", dependsOn: ["share_capital", "retained_earnings"], formula: ({ columnKey }) => `Equity = ${displayAmount(balances[columnKey].share_capital)} + ${displayAmount(balances[columnKey].retained_earnings)} = ${displayAmount(balances[columnKey].total_equity)}` },
+      { key: "total_liabilities_and_equity", label: "Total liabilities and equity", kind: "subtotal", format: "number", values: values("total_liabilities_and_equity"), definitionId: "6.2.2", dependsOn: ["total_liabilities", "total_equity"], formula: ({ columnKey }) => `Liabilities + equity = ${displayAmount(balances[columnKey].total_liabilities)} + ${displayAmount(balances[columnKey].total_equity)} = ${displayAmount(balances[columnKey].total_liabilities_and_equity)}` },
+      { key: "current_ratio", label: "Current ratio", kind: "formula", format: "ratio", values: currentRatio, definitionId: "6.2.12", formula: ({ columnKey }) => `Current ratio = ${displayAmount(balances[columnKey].total_current_assets)} ÷ ${displayAmount(balances[columnKey].total_current_liabilities)} = ${currentRatio[columnKey]?.toFixed(2) ?? "Not defined"}` },
+      { key: "debt_to_equity", label: "Debt-to-equity", kind: "formula", format: "ratio", values: debtToEquity, definitionId: "6.2.12", formula: ({ columnKey }) => `Debt-to-equity = ${displayAmount(balances[columnKey].current_debt + balances[columnKey].long_term_debt)} ÷ ${displayAmount(balances[columnKey].total_equity)} = ${debtToEquity[columnKey]?.toFixed(2) ?? "Not defined"}` },
+      { key: "check", label: "Check · Assets − (Liabilities + Equity)", kind: "check", format: "signed", values: checkValues, definitionId: "6.2.2", balancedLabel: "Balanced", formula: ({ columnKey }) => `Assets minus liabilities and equity = ${displayAmount(balances[columnKey].total_assets)} - ${displayAmount(balances[columnKey].total_liabilities_and_equity)} = ${checkValues[columnKey]}` },
+    ];
+  }
+
+  function renderTable() {
+    renderFinTable(get(".bs-table-container"), {
+      title: "Balance sheet · Zayd Trading Co.",
+      columns: balanceColumns,
+      rows: tableRows(),
+      view: state.tableView,
+      onViewChange: view => {
+        state.tableView = view;
+        if (view !== "all") {
+          state.year = view;
+          yearSelect.value = view;
+          state.balance = state.periodBalances[view];
+        }
+        updateView();
+      },
+      onChange: ({ rowKey, columnKey, value }) => {
+        state.year = columnKey;
+        yearSelect.value = columnKey;
+        state.balance = pickBalance({ ...state.periodBalances[columnKey], [rowKey]: value });
+        state.periodBalances[columnKey] = state.balance;
+        state.changedKeys = new Set([rowKey]);
+        updateView();
+      },
+      onRowFocus: rowKey => showDefinition(DEFINITION_FOR_KEY[rowKey] || "6.2.2"),
+      onReset: () => resetToYear(state.year),
+    });
+  }
 
   function showDefinition(id, label = "Line definition") {
     const concept = state.definitions.get(id);
@@ -392,6 +505,9 @@ export async function init(widgetContainer) {
     get("[data-order-note]").textContent = "Assets are shown from most liquid to least liquid, bottom to top: cash, accounts receivable, inventory, then PP&E.";
     get("[data-liquidity]").closest("label").classList.toggle("is-concept-match", CONCEPT_HIGHLIGHTS[conceptId]?.includes("liquidity") || false);
     drawChart(svg, balance, state.showLiquidityOrder, conceptId, state.changedKeys);
+    const accountingEquation = state.definitions.get("6.2.2");
+    checkExplanation.textContent = accountingEquation?.definition || "The accounting equation explanation is unavailable until its source definition loads.";
+    renderTable();
     state.changedKeys.clear();
   }
 
@@ -425,6 +541,7 @@ export async function init(widgetContainer) {
     state.year = year;
     const checkpoint = state.example.balance_sheet[year];
     state.balance = pickBalance(checkpoint);
+    state.periodBalances[year] = state.balance;
     state.changedKeys = new Set([
       "cash_and_equivalents", "accounts_receivable", "inventory", "ppe_net",
       "accounts_payable", "current_debt", "long_term_debt", "share_capital", "retained_earnings",
@@ -433,12 +550,21 @@ export async function init(widgetContainer) {
     updateView();
   }
 
+  function selectYear(year) {
+    state.year = year;
+    state.tableView = year;
+    state.balance = state.periodBalances[year];
+    transactionMessage.hidden = true;
+    updateView();
+  }
+
   function executeTransaction(type) {
     const amount = whole(get("#bs-transaction-amount").value);
     const cost = whole(get("#bs-sale-cost").value);
     try {
-      const updated = applyBalanceSheetTransaction(state.balance, { type, amount, cost });
+      const updated = applyBalanceSheetTransaction(state.balance, { type, amount, cost }, { allowUnbalanced: true });
       state.balance = updated;
+      state.periodBalances[state.year] = updated;
       state.changedKeys = new Set(CHANGED_KEYS[type] || []);
       transactionMessage.textContent = transactionDescription(type, amount, cost);
       transactionMessage.hidden = false;
@@ -451,7 +577,7 @@ export async function init(widgetContainer) {
     }
   }
 
-  yearSelect.addEventListener("change", () => resetToYear(yearSelect.value));
+  yearSelect.addEventListener("change", () => selectYear(yearSelect.value));
   liquidityInput.addEventListener("change", () => {
     state.showLiquidityOrder = liquidityInput.checked;
     updateView();
@@ -460,6 +586,26 @@ export async function init(widgetContainer) {
     button.addEventListener("click", () => executeTransaction(button.dataset.transaction));
   }
   get("[data-reset]").addEventListener("click", () => resetToYear(yearSelect.value));
+  get("[data-fix-hint]").addEventListener("click", () => {
+    const balance = state.balance;
+    const difference = balance.total_assets - balance.total_liabilities_and_equity;
+    if (difference === 0) {
+      fixMessage.textContent = "The selected balance sheet is already balanced; no line change is needed.";
+      return;
+    }
+    const assetKeys = ["cash_and_equivalents", "accounts_receivable", "inventory", "ppe_net"];
+    const rhsKeys = ["accounts_payable", "current_debt", "long_term_debt", "share_capital", "retained_earnings"];
+    const candidates = difference > 0
+      ? [...rhsKeys.map(key => [key, balance[key] + difference]), ...assetKeys.map(key => [key, balance[key] - difference])]
+      : [...assetKeys.map(key => [key, balance[key] - difference]), ...rhsKeys.map(key => [key, balance[key] + difference])];
+    const [key, proposed] = candidates.find(([, value]) => value >= 0) || candidates[0];
+    const labels = {
+      cash_and_equivalents: "cash", accounts_receivable: "accounts receivable", inventory: "inventory",
+      ppe_net: "PP&E (net)", accounts_payable: "accounts payable", current_debt: "current debt",
+      long_term_debt: "long-term debt", share_capital: "share capital", retained_earnings: "retained earnings",
+    };
+    fixMessage.textContent = `One possible fix: change ${labels[key]} from ${displayAmount(balance[key])} to ${displayAmount(proposed)}. No value was changed.`;
+  });
 
   root.addEventListener("focusin", event => {
     const target = event.target.closest("[data-definition-id]");
@@ -482,6 +628,11 @@ export async function init(widgetContainer) {
 
   const initialHighlights = CONCEPT_HIGHLIGHTS[conceptId] || [];
   get(".bs-equation").classList.toggle("is-concept-match", initialHighlights.includes("equation"));
+  state.periodBalances = {
+    begin_y1: pickBalance(state.example.balance_sheet.begin_y1),
+    end_y1: pickBalance(state.example.balance_sheet.end_y1),
+    end_y2: pickBalance(state.example.balance_sheet.end_y2),
+  };
   yearSelect.value = "begin_y1";
   resetToYear("begin_y1");
   if (state.definitions.has(conceptId)) showDefinition(conceptId);

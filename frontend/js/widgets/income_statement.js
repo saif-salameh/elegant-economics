@@ -1,4 +1,5 @@
 import { computeIncomeStatement } from "./fin_model.js";
+import { renderFinTable } from "./fin_table.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const FORMAT_DEFINITION_IDS = ["6.1.3", "6.1.5", "6.1.7", "6.1.8"];
@@ -126,6 +127,10 @@ function makeTemplate() {
       </button>
     </div>
     <div class="is-chart-wrap"><svg class="is-chart" role="img" aria-label="Income statement waterfall chart"></svg></div>
+    <section class="is-table-section" aria-labelledby="is-table-heading">
+      <h3 id="is-table-heading">Interactive statement table</h3>
+      <div class="is-table-container"></div>
+    </section>
     <p class="is-da-note" data-da-note></p>
     <section class="is-definition" id="is-definition" aria-live="polite" aria-atomic="true">
       <h3 data-definition-title>Line definition</h3>
@@ -306,7 +311,14 @@ export async function init(widgetContainer) {
   const error = get(".is-error");
   const definitionContent = get("[data-definition-content]");
   const definitionTitle = get("[data-definition-title]");
-  const state = { example: null, year: "year_1", format: "multi", definitions: new Map() };
+  const state = {
+    example: null,
+    year: "year_1",
+    tableView: "year_1",
+    format: "multi",
+    definitions: new Map(),
+    inputValues: {},
+  };
   const conceptId = String(widgetContainer.dataset.conceptId || "");
 
   let exampleResponse;
@@ -338,17 +350,63 @@ export async function init(widgetContainer) {
     error.textContent = `Definitions could not be loaded from /api/concepts. ${loadError.message}`;
   }
 
+  function exampleInputs(year) {
+    const source = state.example.income_statement[year];
+    const yearOne = state.example.income_statement.year_1;
+    const taxRate = yearOne.pre_tax_income ? yearOne.income_taxes / yearOne.pre_tax_income : 0;
+    return {
+      revenue: Number(source.revenue),
+      cogs: Number(source.cogs),
+      operating_expenses: Number(source.operating_expenses),
+      interest_expense: Number(source.interest_expense),
+      tax_rate_percent: Math.round(taxRate * 100),
+    };
+  }
+
   function currentInputs() {
     return {
-      revenue: inputs.revenue.value,
-      cogs: inputs.cogs.value,
-      operating_expenses: inputs.operating_expenses.value,
-      interest_expense: inputs.interest_expense.value,
-      tax_rate: Number(inputs.tax_rate_percent.value) / 100,
+      ...state.inputValues[state.year],
+      tax_rate: Number(state.inputValues[state.year].tax_rate_percent) / 100,
       shares_outstanding: state.example.shares_outstanding || 100,
       depreciation_and_amortization_included_in_operating_expenses:
         state.example.cash_flow_statement[state.year].depreciation_and_amortization,
     };
+  }
+
+  function calculatedForYear(year) {
+    const values = state.inputValues[year];
+    return computeIncomeStatement({
+      ...values,
+      tax_rate: Number(values.tax_rate_percent) / 100,
+      shares_outstanding: state.example.shares_outstanding || 100,
+      depreciation_and_amortization_included_in_operating_expenses:
+        state.example.cash_flow_statement[year].depreciation_and_amortization,
+    });
+  }
+
+  function tableRows() {
+    const years = ["year_1", "year_2"];
+    const statements = Object.fromEntries(years.map(year => [year, calculatedForYear(year)]));
+    const values = key => Object.fromEntries(years.map(year => [year, statements[year][key]]));
+    const inputsByKey = key => Object.fromEntries(years.map(year => [year, state.inputValues[year][key]]));
+    const daValues = Object.fromEntries(years.map(year => [year, state.example.cash_flow_statement[year].depreciation_and_amortization]));
+    return [
+      { key: "revenue", label: "Revenue", kind: "input", format: "number", values: inputsByKey("revenue") },
+      { key: "cogs", label: "Cost of goods sold", kind: "input", format: "number", values: inputsByKey("cogs"), dependsOn: ["revenue"] },
+      { key: "gross_profit", label: "Gross profit", kind: "subtotal", format: "number", values: values("gross_profit"), dependsOn: ["revenue", "cogs"], formula: ({ columnKey }) => `Gross profit = ${formatMoney(statements[columnKey].revenue)} - ${formatMoney(statements[columnKey].cogs)} = ${formatMoney(statements[columnKey].gross_profit)}` },
+      { key: "operating_expenses", label: "Operating expenses", kind: "input", format: "number", values: inputsByKey("operating_expenses"), dependsOn: ["gross_profit"] },
+      { key: "depreciation_memo", label: "D&A (memo; included above)", kind: "formula", format: "number", values: daValues, formula: ({ columnKey }) => `Memo: ${formatMoney(daValues[columnKey])} of D&A is included in operating expenses; it is a non-cash expense.` },
+      { key: "operating_income", label: "Operating income", kind: "subtotal", format: "number", values: values("operating_income"), dependsOn: ["gross_profit", "operating_expenses"], formula: ({ columnKey }) => `Operating income = ${formatMoney(statements[columnKey].gross_profit)} - ${formatMoney(statements[columnKey].operating_expenses)} = ${formatMoney(statements[columnKey].operating_income)}` },
+      { key: "interest_expense", label: "Interest expense", kind: "input", format: "number", values: inputsByKey("interest_expense") },
+      { key: "pretax_income", label: "Pre-tax income", kind: "subtotal", format: "number", values: values("pre_tax_income"), dependsOn: ["operating_income", "interest_expense"], formula: ({ columnKey }) => `Pre-tax income = ${formatMoney(statements[columnKey].operating_income)} - ${formatMoney(statements[columnKey].interest_expense)} = ${formatMoney(statements[columnKey].pre_tax_income)}` },
+      { key: "tax_rate_percent", label: "Tax rate", kind: "input", format: "percent", values: inputsByKey("tax_rate_percent") },
+      { key: "income_taxes", label: "Income taxes", kind: "formula", format: "number", values: values("income_taxes"), dependsOn: ["pretax_income", "tax_rate_percent"], formula: ({ columnKey }) => `Income taxes = round(${formatMoney(statements[columnKey].pre_tax_income)} × ${formatPercent(state.inputValues[columnKey].tax_rate_percent)}) = ${formatMoney(statements[columnKey].income_taxes)}` },
+      { key: "net_income", label: "Net income", kind: "subtotal", format: "number", values: values("net_income"), dependsOn: ["pretax_income", "income_taxes"], formula: ({ columnKey }) => `Net income = ${formatMoney(statements[columnKey].pre_tax_income)} - ${formatMoney(statements[columnKey].income_taxes)} = ${formatMoney(statements[columnKey].net_income)}` },
+      { key: "earnings_per_share", label: "Earnings per share (100 shares)", kind: "formula", format: "eps", values: values("earnings_per_share"), dependsOn: ["net_income"], formula: ({ columnKey }) => `Earnings per share = ${formatMoney(statements[columnKey].net_income)} ÷ 100 shares = ${statements[columnKey].earnings_per_share.toFixed(2)}` },
+      { key: "gross_margin", label: "Gross margin", kind: "formula", format: "percent", values: Object.fromEntries(years.map(year => [year, statements[year].revenue ? statements[year].gross_profit / statements[year].revenue * 100 : 0])), dependsOn: ["gross_profit", "revenue"], formula: ({ columnKey }) => `Gross margin = ${formatMoney(statements[columnKey].gross_profit)} ÷ ${formatMoney(statements[columnKey].revenue)} = ${formatPercent(statements[columnKey].revenue ? statements[columnKey].gross_profit / statements[columnKey].revenue * 100 : 0)}` },
+      { key: "operating_margin", label: "Operating margin", kind: "formula", format: "percent", values: Object.fromEntries(years.map(year => [year, statements[year].revenue ? statements[year].operating_income / statements[year].revenue * 100 : 0])), dependsOn: ["operating_income", "revenue"], formula: ({ columnKey }) => `Operating margin = ${formatMoney(statements[columnKey].operating_income)} ÷ ${formatMoney(statements[columnKey].revenue)} = ${formatPercent(statements[columnKey].revenue ? statements[columnKey].operating_income / statements[columnKey].revenue * 100 : 0)}` },
+      { key: "net_margin", label: "Net margin", kind: "formula", format: "percent", values: Object.fromEntries(years.map(year => [year, statements[year].revenue ? statements[year].net_income / statements[year].revenue * 100 : 0])), dependsOn: ["net_income", "revenue"], formula: ({ columnKey }) => `Net margin = ${formatMoney(statements[columnKey].net_income)} ÷ ${formatMoney(statements[columnKey].revenue)} = ${formatPercent(statements[columnKey].revenue ? statements[columnKey].net_income / statements[columnKey].revenue * 100 : 0)}` },
+    ];
   }
 
   function showDefinition(lineKey, label) {
@@ -367,11 +425,36 @@ export async function init(widgetContainer) {
       `Depreciation and amortization of ${formatMoney(statement.depreciation_and_amortization_included_in_operating_expenses)} is included in operating expenses; it is a non-cash expense.`,
     );
     drawWaterfall(svg, statement, state.format, conceptId);
+    const tableContainer = get(".is-table-container");
+    renderFinTable(tableContainer, {
+      title: "Income statement · Zayd Trading Co.",
+      columns: [{ key: "year_1", label: "Year 1" }, { key: "year_2", label: "Year 2" }],
+      rows: tableRows(),
+      view: state.tableView,
+      onChange: ({ rowKey, columnKey, value }) => {
+        state.year = columnKey;
+        state.inputValues[columnKey][rowKey] = value;
+        for (const button of yearButtons) button.setAttribute("aria-pressed", String(button.dataset.year === state.year));
+        for (const [key, input] of Object.entries(inputs)) input.value = state.inputValues[state.year][key];
+        update();
+      },
+      onViewChange: nextView => {
+        state.tableView = nextView;
+        if (nextView === "year_1" || nextView === "year_2") setYear(nextView);
+        else update();
+      },
+      onReset: () => {
+        state.inputValues = { year_1: exampleInputs("year_1"), year_2: exampleInputs("year_2") };
+        for (const [key, input] of Object.entries(inputs)) input.value = state.inputValues[state.year][key];
+        update();
+      },
+    });
   }
 
   function setYear(year) {
     state.year = year;
-    const source = state.example.income_statement[year];
+    state.tableView = year;
+    const source = state.inputValues[year];
     for (const button of yearButtons) {
       button.setAttribute("aria-pressed", String(button.dataset.year === year));
     }
@@ -379,11 +462,7 @@ export async function init(widgetContainer) {
     inputs.cogs.value = source.cogs;
     inputs.operating_expenses.value = source.operating_expenses;
     inputs.interest_expense.value = source.interest_expense;
-    const sampleYear1 = state.example.income_statement.year_1;
-    const taxRate = sampleYear1.pre_tax_income
-      ? sampleYear1.income_taxes / sampleYear1.pre_tax_income
-      : 0;
-    inputs.tax_rate_percent.value = (taxRate * 100).toFixed(1);
+    inputs.tax_rate_percent.value = source.tax_rate_percent;
     update();
   }
 
@@ -406,7 +485,16 @@ export async function init(widgetContainer) {
     button.addEventListener("click", () => setFormat(button.dataset.format));
   }
   for (const input of Object.values(inputs)) {
-    input.addEventListener("input", update);
+    input.addEventListener("input", () => {
+      state.inputValues[state.year] = {
+        revenue: Number(inputs.revenue.value),
+        cogs: Number(inputs.cogs.value),
+        operating_expenses: Number(inputs.operating_expenses.value),
+        interest_expense: Number(inputs.interest_expense.value),
+        tax_rate_percent: Number(inputs.tax_rate_percent.value),
+      };
+      update();
+    });
   }
 
   svg.addEventListener("focusin", event => {
@@ -446,6 +534,7 @@ export async function init(widgetContainer) {
   } else if (conceptId === "6.1.11") {
     showDefinition("format", "Single-step and multi-step formats");
   }
+  state.inputValues = { year_1: exampleInputs("year_1"), year_2: exampleInputs("year_2") };
   setYear("year_1");
   setFormat(state.format);
 }

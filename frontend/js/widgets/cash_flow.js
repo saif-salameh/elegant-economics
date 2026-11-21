@@ -3,6 +3,7 @@ import {
   computeDirectOperatingCashFlow,
   reclassifyInterestPaid,
 } from "./fin_model.js";
+import { renderFinTable } from "./fin_table.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const DEFINITION_IDS = {
@@ -16,15 +17,21 @@ const DEFINITION_IDS = {
   cash_paid_to_suppliers: ["6.3.5", "6.4.3"],
   cash_paid_for_operating_expenses: ["6.3.5", "6.4.3"],
   interest_paid: ["6.3.5", "6.4.2"],
+  interest_paid_financing: ["6.4.2"],
+  interest_reclassified_from_operations: ["6.4.2"],
   income_taxes_paid: ["6.3.5", "6.4.3"],
   capital_expenditure: ["6.3.3"],
   cash_flow_from_investing_activities: ["6.3.3"],
   debt_repaid: ["6.3.4"],
   dividends_paid: ["6.3.4"],
+  debt_issued: ["6.3.4"],
+  debt_flow: ["6.3.4"],
   cash_flow_from_financing_activities: ["6.3.4"],
   net_change_in_cash: ["6.3.1"],
   ending_cash: ["6.3.11", "6.4.1"],
   free_cash_flow: ["6.3.10"],
+  beginning_cash: ["6.4.1", "6.4.5"],
+  reconciliation_to_balance_sheet: ["6.4.5"],
 };
 const CONCEPT_HIGHLIGHTS = {
   "6.3.1": ["all"],
@@ -92,6 +99,8 @@ function template() {
       .cash-flow-widget .cf-ifrs h3 { margin: 0 0 .5rem; color: var(--primary); font-size: 1.05rem; }
       .cash-flow-widget .cf-ifrs-note { margin: .55rem 0 0; color: var(--muted); font-size: .9rem; }
       .cash-flow-widget .cf-chart-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: .9rem; background: var(--bg); padding: .5rem; }
+      .cash-flow-widget .cf-table-section { margin-top: 1rem; }
+      .cash-flow-widget .cf-table-section h3 { margin: 0 0 .6rem; color: var(--primary); font-size: 1.1rem; }
       .cash-flow-widget .cf-chart { display: block; width: 100%; min-width: 1120px; height: auto; }
       .cash-flow-widget .cf-grid { stroke: var(--border); stroke-width: 1; }
       .cash-flow-widget .cf-axis { stroke: var(--text); stroke-width: 1.2; }
@@ -150,6 +159,7 @@ function template() {
       <p class="cf-reason" data-net-income-reason></p>
     </section>
     <div class="cf-chart-wrap"><svg class="cf-chart" role="img" aria-label="Indirect-method cash flow waterfall"></svg></div>
+    <section class="cf-table-section" aria-labelledby="cf-table-heading"><h3 id="cf-table-heading">Interactive cash flow table</h3><div class="cf-table-container"></div></section>
     <section class="cf-definition" id="cf-definition" aria-live="polite" aria-atomic="true">
       <h3 data-definition-title>Line definition</h3><div data-definition-content><p>Focus a line to read its source definition.</p></div>
     </section>
@@ -178,6 +188,7 @@ function waterfallBars(state, presentation, classification) {
     bars.push({ key: "cash_flow_from_operating_activities", definitionKey: "cash_flow_from_operating_activities", label: "Cash from operations", amount: cashFlow.cash_flow_from_operating_activities, start: 0, end: cashFlow.cash_flow_from_operating_activities, kind: "total" });
     addStep("capital_expenditure", "CapEx · investing", cashFlow.capital_expenditure);
     bars.push({ key: "cash_flow_from_investing_activities", definitionKey: "cash_flow_from_investing_activities", label: "Investing total", amount: cashFlow.cash_flow_from_investing_activities, start: 0, end: cashFlow.cash_flow_from_investing_activities, kind: "total" });
+    addStep("debt_issued", "Debt issued", cashFlow.debt_issued);
     addStep("debt_repaid", "Debt repaid", cashFlow.debt_repaid);
     addStep("dividends_paid", "Dividends", cashFlow.dividends_paid);
     if (classification === "financing") addStep("interest_paid", "Interest paid · financing", direct.interest_paid_in_financing_activities);
@@ -206,6 +217,7 @@ function waterfallBars(state, presentation, classification) {
   bars.push({ key: "cash_flow_from_operating_activities", definitionKey: "cash_flow_from_operating_activities", label: "Cash from operations", amount: cashFlow.cash_flow_from_operating_activities, start: 0, end: cashFlow.cash_flow_from_operating_activities, kind: "total" });
   addStep("capital_expenditure", "CapEx · investing", cashFlow.capital_expenditure);
   bars.push({ key: "cash_flow_from_investing_activities", definitionKey: "cash_flow_from_investing_activities", label: "Investing total", amount: cashFlow.cash_flow_from_investing_activities, start: 0, end: cashFlow.cash_flow_from_investing_activities, kind: "total" });
+  addStep("debt_issued", "Debt issued", cashFlow.debt_issued);
   addStep("debt_repaid", "Debt repaid", cashFlow.debt_repaid);
   addStep("dividends_paid", "Dividends", cashFlow.dividends_paid);
   if (classification === "financing") addStep("interest_paid", "Interest paid · financing", -Math.abs(income.interest_expense));
@@ -305,6 +317,8 @@ export async function init(widgetContainer) {
     presentation: "indirect",
     interestClassification: "operating",
     calculation: null,
+    periodInputs: {},
+    tableView: "year_1",
   };
   const conceptId = String(widgetContainer.dataset.conceptId || "");
   const svg = get(".cf-chart");
@@ -321,7 +335,9 @@ export async function init(widgetContainer) {
 
   function showDefinition(lineKey, label = "Line definition") {
     definitionContent.replaceChildren();
-    const ids = definitionByLine[lineKey] || DEFINITION_IDS[lineKey] || [];
+    const ids = state.definitions.has(lineKey)
+      ? [lineKey]
+      : definitionByLine[lineKey] || DEFINITION_IDS[lineKey] || [];
     const concepts = ids.map(id => state.definitions.get(id)).filter(Boolean);
     definitionTitle.textContent = concepts[0]?.title.replace(/^6\.[34]\.\d+\s*/, "") || label;
     if (!concepts.length) {
@@ -356,7 +372,7 @@ export async function init(widgetContainer) {
     const concepts = Array.isArray(payload) ? payload : payload?.concepts;
     if (!Array.isArray(concepts)) throw new Error("Unexpected concepts API response.");
     for (const concept of concepts) {
-      if (/^6\.(?:3\.(?:[1-9]|10|11)|4\.[1-4])$/.test(concept.source_id || "")) {
+      if (/^6\.(?:3\.(?:[1-9]|10|11)|4\.[1-5])$/.test(concept.source_id || "")) {
         state.definitions.set(concept.source_id, concept);
       }
     }
@@ -380,40 +396,177 @@ export async function init(widgetContainer) {
       accounts_payable_change: data.increase_in_accounts_payable,
       capital_expenditure: -data.capital_expenditure,
       debt_repaid: -data.debt_repaid,
+      debt_issued: data.debt_issued || 0,
       dividends_paid: -data.dividends_paid,
+      depreciation_and_amortization: data.depreciation_and_amortization,
     };
   }
+
+  state.periodInputs = {
+    year_1: sampleInputs("year_1"),
+    year_2: sampleInputs("year_2"),
+  };
 
   function currentInputs() {
     return Object.fromEntries(Object.entries(sliders).map(([key, input]) => [key, whole(input.value)]));
   }
 
-  function update() {
-    const income = state.example.income_statement[state.year];
-    const sampleCashFlow = state.example.cash_flow_statement[state.year];
-    const controls = currentInputs();
+  function loadPeriodControls(year) {
+    const values = state.periodInputs[year];
+    for (const [key, input] of Object.entries(sliders)) input.value = values[key];
+  }
+
+  function calculateYear(year) {
+    const income = state.example.income_statement[year];
+    const sourceCash = state.example.cash_flow_statement[year];
+    const controls = state.periodInputs[year];
     const baseCashFlow = computeCashFlowStatement({
       net_income: income.net_income,
-      depreciation_and_amortization: sampleCashFlow.depreciation_and_amortization,
-      ...controls,
-      beginning_cash: sampleCashFlow.beginning_cash,
+      depreciation_and_amortization: controls.depreciation_and_amortization,
+      accounts_receivable_change: controls.accounts_receivable_change,
+      inventory_change: controls.inventory_change,
+      accounts_payable_change: controls.accounts_payable_change,
+      capital_expenditure: controls.capital_expenditure,
+      debt_repaid: controls.debt_repaid,
+      debt_issued: controls.debt_issued,
+      dividends_paid: controls.dividends_paid,
+      beginning_cash: sourceCash.beginning_cash,
     });
-    const cashFlow = reclassifyInterestPaid(
-      baseCashFlow,
-      income.interest_expense,
-      state.interestClassification,
-    );
+    const cashFlow = reclassifyInterestPaid(baseCashFlow, income.interest_expense, state.interestClassification);
     const direct = computeDirectOperatingCashFlow({
       revenue: income.revenue,
       cogs: income.cogs,
       operating_expenses: income.operating_expenses,
-      depreciation_and_amortization: sampleCashFlow.depreciation_and_amortization,
+      depreciation_and_amortization: controls.depreciation_and_amortization,
       interest_expense: income.interest_expense,
       income_taxes: income.income_taxes,
-      ...controls,
+      accounts_receivable_change: controls.accounts_receivable_change,
+      inventory_change: controls.inventory_change,
+      accounts_payable_change: controls.accounts_payable_change,
       interest_classification: state.interestClassification,
     });
-    state.calculation = { income, cashFlow, direct, controls };
+    return { income, cashFlow, direct, controls };
+  }
+
+  function tableRows(calculations) {
+    const years = ["year_1", "year_2"];
+    const values = (section, transform = value => value) => Object.fromEntries(years.map(year => [year, transform(calculations[year][section], year)]));
+    const formatted = amount => amountText(amount);
+    const workingCapitalRows = [
+      { key: "increase_in_accounts_receivable", label: "Change in receivables", note: "An increase in receivables reduces operating cash flow.", concept: "6.3.8", value: controls => -controls.accounts_receivable_change, write: value => ({ accounts_receivable_change: -value }) },
+      { key: "increase_in_inventory", label: "Change in inventory", note: "An increase in inventory reduces operating cash flow.", concept: "6.3.8", value: controls => -controls.inventory_change, write: value => ({ inventory_change: -value }) },
+      { key: "increase_in_accounts_payable", label: "Change in payables", note: "An increase in accounts payable increases operating cash flow.", concept: "6.3.8", value: controls => controls.accounts_payable_change, write: value => ({ accounts_payable_change: value }) },
+    ].map(row => ({
+      key: row.key,
+      label: row.label,
+      note: row.note,
+      kind: "input",
+      format: "number",
+      definitionId: row.concept,
+      values: Object.fromEntries(years.map(year => [year, row.value(state.periodInputs[year])])),
+    }));
+    const rows = [
+      { key: "net_income", label: "Net income (linked from income statement)", kind: "formula", format: "number", definitionId: "6.3.9", values: values("income", result => result.net_income), formula: ({ columnKey }) => `Income statement example · net income ${formatted(calculations[columnKey].income.net_income)}` },
+      { key: "depreciation_and_amortization", label: "Depreciation and amortization", kind: "input", format: "number", definitionId: "6.3.7", values: values("controls", controls => controls.depreciation_and_amortization) },
+      ...workingCapitalRows,
+      { key: "capital_expenditure", label: "Capital expenditure", kind: "input", format: "number", definitionId: "6.3.3", values: values("controls", controls => -controls.capital_expenditure) },
+      { key: "debt_flow", label: "Debt issued / (repaid)", kind: "input", format: "signed", definitionId: "6.3.4", values: values("controls", controls => controls.debt_issued - controls.debt_repaid) },
+      { key: "dividends_paid", label: "Dividends paid", kind: "input", format: "number", definitionId: "6.3.4", values: values("controls", controls => -controls.dividends_paid) },
+    ];
+    if (state.presentation === "indirect" && state.interestClassification === "financing") {
+      rows.push({
+        key: "interest_reclassified_from_operations",
+        label: "Interest reclassified out of operating activities",
+        kind: "formula",
+        format: "number",
+        definitionId: "6.4.2",
+        values: values("income", result => result.interest_expense),
+        formula: ({ columnKey }) => `Financing classification adds back interest to CFO = ${formatted(calculations[columnKey].income.interest_expense)}`,
+      });
+    }
+    if (state.presentation === "direct") {
+      rows.push(
+        { key: "cash_received_from_customers", label: "Cash received from customers", kind: "formula", format: "number", definitionId: "6.3.5", values: values("direct", result => result.cash_received_from_customers), formula: ({ columnKey }) => `Revenue less the receivables increase = ${formatted(calculations[columnKey].direct.cash_received_from_customers)}` },
+        { key: "cash_paid_to_suppliers", label: "Cash paid to suppliers", kind: "formula", format: "number", definitionId: "6.3.5", values: values("direct", result => result.cash_paid_to_suppliers), formula: ({ columnKey }) => `Supplier cash payments = ${formatted(calculations[columnKey].direct.cash_paid_to_suppliers)}` },
+        { key: "cash_paid_for_operating_expenses", label: "Operating expenses paid", kind: "formula", format: "number", definitionId: "6.3.5", values: values("direct", result => result.cash_paid_for_operating_expenses), formula: ({ columnKey }) => `Operating expense cash payments, excluding non-cash D&A = ${formatted(calculations[columnKey].direct.cash_paid_for_operating_expenses)}` },
+      );
+      if (state.interestClassification === "operating") rows.push(
+        { key: "interest_paid", label: "Interest paid in operating activities", kind: "formula", format: "number", definitionId: "6.4.2", values: values("direct", result => result.interest_paid_in_operating_activities), formula: ({ columnKey }) => `Operating interest classification = ${formatted(calculations[columnKey].direct.interest_paid_in_operating_activities)}` },
+      );
+      rows.push({ key: "income_taxes_paid", label: "Income taxes paid", kind: "formula", format: "number", definitionId: "6.3.5", values: values("direct", result => result.income_taxes_paid), formula: ({ columnKey }) => `Cash taxes paid = ${formatted(calculations[columnKey].direct.income_taxes_paid)}` });
+    }
+    rows.push(
+      { key: "cash_flow_from_operating_activities", label: "Cash flow from operations (CFO)", kind: "subtotal", format: "number", definitionId: "6.3.2", values: values("cashFlow", (result, year) => state.presentation === "direct" ? calculations[year].direct.cash_flow_from_operating_activities : result.cash_flow_from_operating_activities), dependsOn: ["net_income", "depreciation_and_amortization", "increase_in_accounts_receivable", "increase_in_inventory", "increase_in_accounts_payable"], formula: ({ columnKey }) => `${state.presentation === "direct" ? "Direct" : "Indirect"} method CFO = ${formatted(state.presentation === "direct" ? calculations[columnKey].direct.cash_flow_from_operating_activities : calculations[columnKey].cashFlow.cash_flow_from_operating_activities)}` },
+      { key: "cash_flow_from_investing_activities", label: "Cash flow from investing (CFI)", kind: "subtotal", format: "number", definitionId: "6.3.3", values: values("cashFlow", result => result.cash_flow_from_investing_activities), dependsOn: ["capital_expenditure"], formula: ({ columnKey }) => `CFI = ${formatted(calculations[columnKey].cashFlow.cash_flow_from_investing_activities)}` },
+      { key: "cash_flow_from_financing_activities", label: "Cash flow from financing (CFF)", kind: "subtotal", format: "number", definitionId: "6.3.4", values: values("cashFlow", result => result.cash_flow_from_financing_activities), dependsOn: ["debt_flow", "dividends_paid", ...(state.interestClassification === "financing" ? ["interest_paid_financing"] : [])], formula: ({ columnKey }) => `CFF = ${formatted(calculations[columnKey].cashFlow.cash_flow_from_financing_activities)}` },
+      { key: "net_change_in_cash", label: "Net change in cash", kind: "subtotal", format: "number", definitionId: "6.3.1", values: values("cashFlow", result => result.net_change_in_cash), dependsOn: ["cash_flow_from_operating_activities", "cash_flow_from_investing_activities", "cash_flow_from_financing_activities"], formula: ({ columnKey }) => `CFO + CFI + CFF = ${formatted(calculations[columnKey].cashFlow.net_change_in_cash)}` },
+      { key: "beginning_cash", label: "Beginning cash", kind: "formula", format: "number", definitionId: "6.4.1", values: values("cashFlow", result => result.beginning_cash), formula: ({ columnKey }) => `Beginning cash = ${formatted(calculations[columnKey].cashFlow.beginning_cash)}` },
+      { key: "ending_cash", label: "Ending cash", kind: "subtotal", format: "number", definitionId: "6.3.11", values: values("cashFlow", result => result.ending_cash), dependsOn: ["beginning_cash", "net_change_in_cash"], formula: ({ columnKey }) => `Beginning cash + net change = ${formatted(calculations[columnKey].cashFlow.ending_cash)}` },
+      { key: "free_cash_flow", label: "Free cash flow", kind: "formula", format: "number", definitionId: "6.3.10", values: values("cashFlow", result => result.free_cash_flow), formula: ({ columnKey }) => `CFO minus capital expenditure = ${formatted(calculations[columnKey].cashFlow.free_cash_flow)}` },
+      { key: "reconciliation_to_balance_sheet", label: "Reconciles to balance sheet", kind: "check", format: "signed", definitionId: "6.4.5", balancedLabel: "Reconciles", values: values("cashFlow", (result, year) => result.ending_cash - state.example.balance_sheet[year === "year_1" ? "end_y1" : "end_y2"].cash_and_equivalents), formula: ({ columnKey }) => `Ending cash compared with balance-sheet cash = ${formatted(calculations[columnKey].cashFlow.ending_cash)} - ${formatted(state.example.balance_sheet[columnKey === "year_1" ? "end_y1" : "end_y2"].cash_and_equivalents)}` },
+    );
+    if (state.interestClassification === "financing") {
+      const financingIndex = rows.findIndex(row => row.key === "cash_flow_from_financing_activities");
+      rows.splice(financingIndex, 0, {
+        key: "interest_paid_financing",
+        label: "Interest paid in financing activities",
+        kind: "formula",
+        format: "number",
+        definitionId: "6.4.2",
+        values: values("direct", result => result.interest_paid_in_financing_activities),
+        formula: ({ columnKey }) => `Financing interest classification = ${formatted(calculations[columnKey].direct.interest_paid_in_financing_activities)}`,
+      });
+    }
+    return rows;
+  }
+
+  function renderTable(calculations) {
+    renderFinTable(get(".cf-table-container"), {
+      title: `Cash flow statement · ${state.presentation === "direct" ? "Direct" : "Indirect"} method`,
+      columns: [{ key: "year_1", label: "Year 1" }, { key: "year_2", label: "Year 2" }],
+      rows: tableRows(calculations),
+      view: state.tableView,
+      onViewChange: view => {
+        state.tableView = view;
+        if (view === "year_1" || view === "year_2") setYear(view);
+        else update();
+      },
+      onChange: ({ rowKey, columnKey, value }) => {
+        state.year = columnKey;
+        for (const button of yearButtons) button.setAttribute("aria-pressed", String(button.dataset.year === columnKey));
+        const period = state.periodInputs[columnKey];
+        if (rowKey === "increase_in_accounts_receivable") period.accounts_receivable_change = -value;
+        else if (rowKey === "increase_in_inventory") period.inventory_change = -value;
+        else if (rowKey === "increase_in_accounts_payable") period.accounts_payable_change = value;
+        else if (rowKey === "capital_expenditure") period.capital_expenditure = -value;
+        else if (rowKey === "debt_flow") {
+          period.debt_issued = Math.max(0, value);
+          period.debt_repaid = Math.max(0, -value);
+        } else if (rowKey === "dividends_paid") period.dividends_paid = -value;
+        else if (rowKey === "depreciation_and_amortization") period.depreciation_and_amortization = value;
+        loadPeriodControls(columnKey);
+        update();
+      },
+      onRowFocus: key => {
+        const row = tableRows(calculations).find(item => item.key === key);
+        showDefinition(row?.definitionId || key);
+      },
+      onReset: () => {
+        state.periodInputs[state.year] = sampleInputs(state.year);
+        loadPeriodControls(state.year);
+        update();
+      },
+    });
+  }
+
+  function update() {
+    const calculations = {
+      year_1: calculateYear("year_1"),
+      year_2: calculateYear("year_2"),
+    };
+    const active = calculations[state.year];
+    const { income, cashFlow, direct, controls } = active;
+    state.calculation = active;
 
     setText(get("[data-free-cash-flow]"), amountText(cashFlow.free_cash_flow));
     setText(get("[data-direct-cfo]"), amountText(direct.cash_flow_from_operating_activities));
@@ -433,15 +586,16 @@ export async function init(widgetContainer) {
     } else if (!error.textContent.startsWith("Definitions could not be loaded")) {
       error.hidden = true;
     }
-    const bars = waterfallBars(state, state.presentation, state.interestClassification);
+    const bars = waterfallBars({ ...state, calculation: active }, state.presentation, state.interestClassification);
     drawChart(svg, bars, conceptId, state.presentation);
+    renderTable(calculations);
   }
 
   function setYear(year) {
     state.year = year;
+    state.tableView = year;
     for (const button of yearButtons) button.setAttribute("aria-pressed", String(button.dataset.year === year));
-    const sample = sampleInputs(year);
-    for (const [key, value] of Object.entries(sample)) sliders[key].value = value;
+    loadPeriodControls(year);
     update();
   }
 
@@ -469,7 +623,10 @@ export async function init(widgetContainer) {
   for (const button of yearButtons) button.addEventListener("click", () => setYear(button.dataset.year));
   for (const button of presentationButtons) button.addEventListener("click", () => setPresentation(button.dataset.presentation));
   for (const button of interestButtons) button.addEventListener("click", () => setInterestClassification(button.dataset.interestClass));
-  for (const input of Object.values(sliders)) input.addEventListener("input", update);
+  for (const input of Object.values(sliders)) input.addEventListener("input", () => {
+    Object.assign(state.periodInputs[state.year], currentInputs());
+    update();
+  });
 
   root.addEventListener("focusin", event => {
     const target = event.target.closest("[data-definition-id]");

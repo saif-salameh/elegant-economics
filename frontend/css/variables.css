@@ -68,6 +68,8 @@
 :root {
   --muted: #6B7280;
   --border: #D1D5DB;
+  --success: #146C43;
+  --danger: #B42318;
   --color-clear: transparent;
   --card-glass-edge: rgba(255, 255, 255, 0.84);
   --card-inner-edge: rgba(255, 255, 255, 0.78);
@@ -83,6 +85,8 @@
 :root[data-theme="blue-lemon dark"] {
   --muted: #9CA3AF;
   --border: #4B5563;
+  --success: #72D9A0;
+  --danger: #FF8A80;
   --card-glass-edge: rgba(255, 255, 255, 0.28);
   --card-inner-edge: rgba(255, 255, 255, 0.2);
   --card-band-text: #FFFFFF;

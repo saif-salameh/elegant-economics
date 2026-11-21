@@ -90,6 +90,11 @@ WIDGET_MAP = {
     "6.4.2":   "cash_flow",
     "6.4.3":   "cash_flow",
     "6.4.4":   "cash_flow",
+    "6.4.5":   "three_statements",
+    "6.5.1":   "three_statements",
+    "6.5.2":   "three_statements",
+    "6.5.3":   "three_statements",
+    "6.5.4":   "three_statements",
 }
 
 

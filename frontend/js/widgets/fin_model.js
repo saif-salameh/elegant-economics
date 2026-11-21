@@ -86,9 +86,9 @@ export function computeBalanceSheetTotals(inputs = {}) {
   return balance;
 }
 
-export function applyBalanceSheetTransaction(balanceSheet = {}, transaction = {}) {
+export function applyBalanceSheetTransaction(balanceSheet = {}, transaction = {}, options = {}) {
   const starting = computeBalanceSheetTotals(balanceSheet);
-  if (!starting.balanced) {
+  if (!starting.balanced && !options.allowUnbalanced) {
     throw new Error("The starting balance sheet is not balanced.");
   }
 
@@ -146,8 +146,13 @@ export function applyBalanceSheetTransaction(balanceSheet = {}, transaction = {}
   }
 
   const result = computeBalanceSheetTotals(next);
-  if (!result.balanced) {
+  if (starting.balanced && !result.balanced) {
     throw new Error("Transaction rejected because it would unbalance the sheet.");
+  }
+  if (!starting.balanced && options.allowUnbalanced
+    && result.total_assets - result.total_liabilities_and_equity
+      !== starting.total_assets - starting.total_liabilities_and_equity) {
+    throw new Error("Transaction rejected because it changed the existing imbalance.");
   }
   return result;
 }
@@ -300,4 +305,17 @@ export function buildYear2(prevBalanceSheet = {}, inputs = {}) {
     balance_sheet: endingBalanceSheet,
     balanced: endingBalanceSheet.balanced,
   };
+}
+
+// Roll a sequence of period inputs forward from one opening balance sheet.
+// Each period's statements use the prior period's calculated ending balance.
+export function buildStatementSeries(openingBalanceSheet = {}, periodInputs = []) {
+  let priorBalanceSheet = openingBalanceSheet;
+  const results = [];
+  for (const inputs of periodInputs) {
+    const result = buildYear2(priorBalanceSheet, inputs);
+    results.push(result);
+    priorBalanceSheet = result.balance_sheet;
+  }
+  return results;
 }

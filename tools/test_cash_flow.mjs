@@ -56,6 +56,7 @@ for (const year of ["year_1", "year_2"]) {
     if (classification === "operating") {
       assert.equal(direct.cash_flow_from_operating_activities, data.cash_flow_from_operating_activities);
       assert.equal(indirect.cash_flow_from_financing_activities, data.cash_flow_from_financing_activities);
+      assert.equal(indirect.free_cash_flow, data.free_cash_flow);
     }
   }
 }
@@ -65,5 +66,28 @@ assert.equal(
   example.cash_flow_statement.year_1.net_change_in_cash,
 );
 
+for (const [year, cfo, netChange, endingCash, freeCashFlow] of [
+  ["year_1", 135, 30, 130, 75],
+  ["year_2", 212, 50, 180, 132],
+]) {
+  const data = example.cash_flow_statement[year];
+  const result = computeCashFlowStatement({
+    net_income: data.net_income,
+    depreciation_and_amortization: data.depreciation_and_amortization,
+    accounts_receivable_change: -data.increase_in_accounts_receivable,
+    inventory_change: -data.increase_in_inventory,
+    accounts_payable_change: data.increase_in_accounts_payable,
+    capital_expenditure: -data.capital_expenditure,
+    debt_repaid: -data.debt_repaid,
+    dividends_paid: -data.dividends_paid,
+    beginning_cash: data.beginning_cash,
+  });
+  assert.equal(result.cash_flow_from_operating_activities, cfo, `${year} CFO`);
+  assert.equal(result.net_change_in_cash, netChange, `${year} net change`);
+  assert.equal(result.ending_cash, endingCash, `${year} ending cash`);
+  assert.equal(result.free_cash_flow, freeCashFlow, `${year} free cash flow`);
+}
+
 console.log("PASS  Direct and indirect CFO match for Year 1 (135) and Year 2 (212)");
+console.log("PASS  Both years reproduce net change, ending cash, and free cash flow");
 console.log("PASS  Financing-classified interest changes CFO/CFF only; net change and ending cash are unchanged");
