@@ -75,6 +75,21 @@ WIDGET_MAP = {
     "6.2.10":  "balance_sheet",
     "6.2.11":  "balance_sheet",
     "6.2.12":  "balance_sheet",
+    "6.3.1":   "cash_flow",
+    "6.3.2":   "cash_flow",
+    "6.3.3":   "cash_flow",
+    "6.3.4":   "cash_flow",
+    "6.3.5":   "cash_flow",
+    "6.3.6":   "cash_flow",
+    "6.3.7":   "cash_flow",
+    "6.3.8":   "cash_flow",
+    "6.3.9":   "cash_flow",
+    "6.3.10":  "cash_flow",
+    "6.3.11":  "cash_flow",
+    "6.4.1":   "cash_flow",
+    "6.4.2":   "cash_flow",
+    "6.4.3":   "cash_flow",
+    "6.4.4":   "cash_flow",
 }
 
 

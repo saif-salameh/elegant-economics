@@ -18,6 +18,10 @@
  * Paired balance-sheet transactions move equal amounts between assets,
  * liabilities, or equity; a sale on credit increases retained earnings by
  * sale proceeds less the carrying cost removed from inventory.
+ * Direct CFO = cash from customers - cash to suppliers - cash operating costs
+ *               - interest paid in operations - taxes paid; financing interest
+ * is reclassified by adding it to CFO and subtracting it from CFF, with no
+ * change in total net cash.
  */
 
 const whole = value => Math.round(Number(value) || 0);
@@ -197,6 +201,59 @@ export function computeCashFlowStatement(inputs = {}) {
     net_change_in_cash: netChange,
     beginning_cash: beginningCash,
     ending_cash: whole(beginningCash + netChange),
+    free_cash_flow: whole(cfo - capex),
+  };
+}
+
+export function computeDirectOperatingCashFlow(inputs = {}) {
+  const revenue = whole(inputs.revenue);
+  const cogs = whole(inputs.cogs);
+  const operatingExpenses = whole(inputs.operating_expenses);
+  const depreciation = whole(inputs.depreciation_and_amortization);
+  const interestPaid = positiveAmount(inputs.interest_paid ?? inputs.interest_expense);
+  const incomeTaxesPaid = positiveAmount(inputs.income_taxes_paid ?? inputs.income_taxes);
+  const receivablesChange = whole(inputs.accounts_receivable_change);
+  const inventoryChange = whole(inputs.inventory_change);
+  const payablesChange = whole(inputs.accounts_payable_change);
+  const interestClassification = inputs.interest_classification === "financing"
+    ? "financing"
+    : "operating";
+
+  const cashReceivedFromCustomers = whole(revenue - receivablesChange);
+  const cashPaidToSuppliers = whole(-(cogs + inventoryChange - payablesChange));
+  const cashPaidForOperatingExpenses = whole(-(operatingExpenses - depreciation));
+  const signedInterestPaid = interestClassification === "operating" ? -interestPaid : 0;
+  const signedIncomeTaxesPaid = -incomeTaxesPaid;
+  const cfo = whole(cashReceivedFromCustomers + cashPaidToSuppliers
+    + cashPaidForOperatingExpenses + signedInterestPaid + signedIncomeTaxesPaid);
+
+  return {
+    cash_received_from_customers: cashReceivedFromCustomers,
+    cash_paid_to_suppliers: cashPaidToSuppliers,
+    cash_paid_for_operating_expenses: cashPaidForOperatingExpenses,
+    interest_paid_in_operating_activities: signedInterestPaid,
+    income_taxes_paid: signedIncomeTaxesPaid,
+    interest_paid_in_financing_activities: interestClassification === "financing" ? -interestPaid : 0,
+    cash_flow_from_operating_activities: cfo,
+  };
+}
+
+export function reclassifyInterestPaid(cashFlowStatement = {}, interestPaid = 0, classification = "operating") {
+  const baseCfo = whole(cashFlowStatement.cash_flow_from_operating_activities);
+  const baseCff = whole(cashFlowStatement.cash_flow_from_financing_activities);
+  const interest = positiveAmount(interestPaid);
+  const financing = classification === "financing";
+  const cfo = whole(baseCfo + (financing ? interest : 0));
+  const cff = whole(baseCff - (financing ? interest : 0));
+  const cfi = whole(cashFlowStatement.cash_flow_from_investing_activities);
+  const netChange = whole(cfo + cfi + cff);
+  const capex = positiveAmount(cashFlowStatement.capital_expenditure);
+  return {
+    ...cashFlowStatement,
+    cash_flow_from_operating_activities: cfo,
+    cash_flow_from_financing_activities: cff,
+    net_change_in_cash: netChange,
+    ending_cash: whole(cashFlowStatement.beginning_cash + netChange),
     free_cash_flow: whole(cfo - capex),
   };
 }
