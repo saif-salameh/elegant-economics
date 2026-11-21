@@ -123,6 +123,7 @@
       if (concept.widget) {
         const widgetSection = document.getElementById('widget-section');
         const widgetContainer = document.getElementById('widget-container');
+        widgetContainer.dataset.conceptId = concept.source_id;
         widgetSection.hidden = false;
         try {
           const module = await import(`./js/widgets/${concept.widget}.js`);

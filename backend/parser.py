@@ -51,6 +51,18 @@ WIDGET_MAP = {
     "1.1.26":  "production_stages",
     "1.1.38":  "business_cycle",
     "3.1.9":   "yield_curve",
+    "6.1.1":   "income_statement",
+    "6.1.2":   "income_statement",
+    "6.1.3":   "income_statement",
+    "6.1.4":   "income_statement",
+    "6.1.5":   "income_statement",
+    "6.1.6":   "income_statement",
+    "6.1.7":   "income_statement",
+    "6.1.8":   "income_statement",
+    "6.1.9":   "income_statement",
+    "6.1.10":  "income_statement",
+    "6.1.11":  "income_statement",
+    "6.1.12":  "income_statement",
 }
 
 
