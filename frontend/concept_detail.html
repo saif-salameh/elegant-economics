@@ -19,6 +19,8 @@
       <a href="/track_economics.html">Economics</a>
       <a href="/track_financing.html">Financing</a>
       <a href="/track_global.html">Global Economy</a>
+      <a href="/track_country_context.html">Country Context</a>
+      <a href="/track_financial_statements.html">Financial Statements</a>
       <a href="/sources.html">Sources</a>
     </nav>
   </header>
@@ -33,7 +35,16 @@
       <header class="detail-hero">
         <p class="eyebrow" id="concept-source-tag">Economics concept</p>
         <h1 id="concept-title">Loading concept…</h1>
-        <p class="detail-summary" id="concept-summary"></p>
+        <div class="detail-explanation" aria-label="Concept explanation">
+          <section class="detail-copy-block" aria-labelledby="definition-heading">
+            <h2 id="definition-heading">Definition</h2>
+            <p class="detail-summary" id="concept-definition"></p>
+          </section>
+          <section class="detail-copy-block" aria-labelledby="overview-heading">
+            <h2 id="overview-heading">Overview</h2>
+            <p class="detail-summary" id="concept-overview"></p>
+          </section>
+        </div>
         <a class="source-link" id="source-link" href="/sources.html">View source details</a>
       </header>
 
@@ -57,8 +68,9 @@
         <div class="glass-card-grid compact-card-grid" id="related-concepts"></div>
       </section>
 
-      <aside class="jordan-context" aria-labelledby="jordan-context-title">
-        <h2 id="jordan-context-title">Jordan context: to be added</h2>
+      <aside class="jordan-context" id="jordan-context" aria-labelledby="jordan-context-title" hidden>
+        <h2 id="jordan-context-title">Jordan context</h2>
+        <div class="glass-card-grid compact-card-grid" id="jordan-context-concepts"></div>
       </aside>
     </article>
   </main>
@@ -89,7 +101,8 @@
       document.getElementById('concept-title').textContent = concept.title;
       document.getElementById('breadcrumb-title').textContent = concept.title;
       document.getElementById('concept-source-tag').textContent = `Source ${concept.source_id.split('.').slice(0, 2).join('.')}`;
-      document.getElementById('concept-summary').textContent = concept.summary;
+      document.getElementById('concept-definition').textContent = concept.definition || concept.summary.replace(/^\s*Definition:\s*/i, '').split(/\s+Overview:\s*/i)[0];
+      document.getElementById('concept-overview').textContent = concept.overview || (concept.summary.match(/\s+Overview:\s*([\s\S]*)$/i)?.[1] || '');
 
       const sourceId = concept.source_id.split('.').slice(0, 2).join('.');
       const sourceAnchor = `source-${sourceId.replaceAll('.', '-')}`;
@@ -129,6 +142,14 @@
           ...related.map(item => buildConceptCard(item, { compact: true }))
         );
         document.getElementById('related-section').hidden = false;
+      }
+
+      const countryContext = related.filter(item => item.category === '5');
+      if (countryContext.length) {
+        document.getElementById('jordan-context-concepts').replaceChildren(
+          ...countryContext.map(item => buildConceptCard(item, { compact: true }))
+        );
+        document.getElementById('jordan-context').hidden = false;
       }
     }
 

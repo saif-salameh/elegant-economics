@@ -128,6 +128,40 @@
   border-bottom: 1px solid var(--primary);
 }
 
+.source-reading-detail {
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+}
+.source-reading-detail > summary {
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 700;
+}
+.source-reading-detail section {
+  margin-top: 1rem;
+}
+.source-reading-detail h3 {
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+.source-reading-detail ul {
+  padding-left: 1.4rem;
+}
+.source-reading-detail li {
+  margin: 0.35rem 0;
+  overflow-wrap: anywhere;
+}
+.source-reading-detail a {
+  color: var(--primary);
+}
+.source-publishing-note {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg));
+}
+
 /* ---- Search input ---- */
 #search {
   border: 1px solid var(--primary);

@@ -15,7 +15,7 @@ import re
 from pathlib import Path
 from typing import List, Tuple
 
-from .models import Concept, Source, EconomicsData
+from .models import Category, Concept, Source, EconomicsData
 
 
 CHAPTERS_1_1 = {
@@ -75,9 +75,22 @@ def _split_body(body: str) -> Tuple[str, List[str]]:
     return summary, highlights
 
 
+def _split_definition_overview(summary: str) -> tuple[str, str]:
+    """Separate the source summary's labeled definition and overview."""
+    match = re.match(
+        r"^\s*Definition:\s*(.*?)\s+Overview:\s*(.*?)\s*$",
+        summary,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if not match:
+        return summary.strip(), ""
+    return match.group(1).strip(), match.group(2).strip()
+
+
 def _parse_sources(text: str) -> list[Source]:
-    """Parse the source-map table."""
+    """Parse source-map rows and the source-specific reading lists."""
     sources = []
+    source_sections = _source_sections(text)
     lines = text.split("\n")
     in_table = False
     for line in lines:
@@ -92,10 +105,108 @@ def _parse_sources(text: str) -> list[Source]:
             cols = [c.strip() for c in line.strip("|").split("|")]
             if len(cols) >= 4:
                 src_id, category, title, status = cols[:4]
+                section = source_sections.get(src_id, "")
                 sources.append(Source(
-                    id=src_id, category=category, title=title, status=status, caveats=[],
+                    id=src_id,
+                    category=category,
+                    title=title,
+                    status=status,
+                    caveats=_source_caveats(src_id),
+                    consulted=_extract_source_list(section, "Sources consulted"),
+                    further_reading_leads=_extract_source_list(section, "Further reading leads"),
                 ))
     return sources
+
+
+def _source_sections(text: str) -> dict[str, str]:
+    """Return each source heading's text up to the next top-level section."""
+    lines = text.splitlines()
+    sections: dict[str, str] = {}
+    index = 0
+    while index < len(lines):
+        heading = re.match(r"^## Source\s+(\d+\.\d+)\b", lines[index])
+        if not heading:
+            index += 1
+            continue
+        source_id = heading.group(1)
+        start = index + 1
+        end = start
+        while end < len(lines) and not lines[end].startswith("# ") \
+                and not re.match(r"^## Source\b", lines[end]):
+            end += 1
+        sections[source_id] = "\n".join(lines[start:end])
+        index = end
+    return sections
+
+
+def _extract_source_list(section: str, label: str) -> list[str]:
+    """Extract a labeled bullet list, stopping at the next content heading."""
+    items: list[str] = []
+    collecting = False
+    for line in section.splitlines():
+        if re.match(rf"^\*\*{re.escape(label)}\b", line.strip(), re.I):
+            collecting = True
+            continue
+        if not collecting:
+            continue
+        if line.startswith("#### ") or re.match(r"^\*\*[^*].*\*\*", line.strip()):
+            break
+        bullet = re.match(r"^\s*[-*]\s+(.+?)\s*$", line)
+        if bullet:
+            items.append(bullet.group(1))
+        elif line.strip():
+            break
+    return items
+
+
+def _source_caveats(source_id: str) -> list[str]:
+    if source_id == "4.2":
+        return [
+            "This source was read via Perplexity and not independently reopened. Check its URL and current market information before publishing."
+        ]
+    if source_id.startswith("5."):
+        return [
+            "Figures may be time-sensitive or second-hand. Check figures and cited URLs against the source publishers before publishing."
+        ]
+    if source_id.startswith("6."):
+        if source_id == "6.4":
+            return [
+                "Check supplied URLs and any figures against current source material before publishing. The IAS 7 summary was not read clause by clause; verify claims against the current text."
+            ]
+        return [
+            "Check supplied URLs and any figures against current source material before publishing."
+        ]
+    return []
+
+
+def _parse_categories(sources: list[Source]) -> list[Category]:
+    """Build categories from the source map without duplicating its labels."""
+    tracks = {
+        "1": "Economics",
+        "2": "Economics",
+        "3": "Global Economy",
+        "4": "Financing",
+        "5": "Country context",
+        "6": "Financial statements",
+    }
+    names: dict[str, str] = {}
+    source_ids: dict[str, list[str]] = {}
+    for source in sources:
+        match = re.match(r"^(\d+)\.", source.id)
+        if not match:
+            continue
+        category_id = match.group(1)
+        names.setdefault(category_id, source.category)
+        source_ids.setdefault(category_id, []).append(source.id)
+    return [
+        Category(
+            id=category_id,
+            name=names[category_id],
+            track=tracks.get(category_id, ""),
+            source_ids=source_ids[category_id],
+        )
+        for category_id in sorted(names, key=int)
+    ]
 
 
 def _parse_source_map(raw: str) -> tuple[dict[str, str], dict[str, str]]:
@@ -204,6 +315,7 @@ def _parse_cross_links(text: str) -> dict[str, list[str]]:
 def parse_markdown(md_path: Path) -> EconomicsData:
     raw = md_path.read_text(encoding="utf-8")
     sources = _parse_sources(raw)
+    categories = _parse_categories(sources)
     cross_links = _parse_cross_links(raw)
 
     # Parse source map for category names and source titles
@@ -237,6 +349,7 @@ def parse_markdown(md_path: Path) -> EconomicsData:
             src_id = m.group(1) if m else "unknown"
 
             summary, highlights = _split_body(body)
+            definition, overview = _split_definition_overview(summary)
             related = _extract_related(body)
             related.extend(cross_links.get(src_id, []))
             # de-duplicate while preserving order
@@ -264,6 +377,8 @@ def parse_markdown(md_path: Path) -> EconomicsData:
                 id=concept_id,
                 title=title,
                 summary=summary,
+                definition=definition,
+                overview=overview,
                 highlights=highlights,
                 source_id=src_id,
                 category=cat_digit,
@@ -277,4 +392,4 @@ def parse_markdown(md_path: Path) -> EconomicsData:
             continue
         i += 1
 
-    return EconomicsData(concepts=concepts, sources=sources, categories=[])
+    return EconomicsData(concepts=concepts, sources=sources, categories=categories)

@@ -83,7 +83,7 @@ export function buildConceptCard(concept, { featured = false, compact = false } 
 
   const summary = document.createElement("p");
   summary.className = "card-summary";
-  summary.textContent = String(concept.summary || "");
+  summary.textContent = String(concept.definition || concept.summary || "").replace(/^\s*Definition:\s*/i, "");
   copy.append(title, summary);
 
   const band = document.createElement("div");

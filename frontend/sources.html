@@ -17,6 +17,8 @@
       <a href="/track_economics.html">Economics</a>
       <a href="/track_financing.html">Financing</a>
       <a href="/track_global.html">Global Economy</a>
+      <a href="/track_country_context.html">Country Context</a>
+      <a href="/track_financial_statements.html">Financial Statements</a>
       <a href="/sources.html">Sources</a>
       <button id="theme-switcher" aria-label="Switch Theme">Switch Theme</button>
     </nav>
@@ -38,14 +40,22 @@
         </tbody>
       </table>
     </section>
+    <section class="card source-reading-lists" aria-labelledby="source-reading-title">
+      <h2 id="source-reading-title">Sources consulted and further reading</h2>
+      <div id="source-details" aria-live="polite">
+        <p>Loading source reading lists…</p>
+      </div>
+    </section>
     <section class="card source-cautions">
       <p><strong>Content cautions:</strong></p>
       <ul>
-        <li>Investopedia (4.2) was NOT read</li>
+        <li>Investopedia (4.2) was read via Perplexity but not independently reopened; verify its URL and current market information before publishing.</li>
         <li>IMF chapter data is from 2004</li>
         <li>2.1 is a rough translation of an academic paper</li>
         <li>FutureLearn country labels need verifying</li>
         <li>Source 1.1 examples use Ethiopia/birr – replace for Jordan context</li>
+        <li>Category 5 figures may be time-sensitive or second-hand; check the figures and cited URLs against source publishers before publishing.</li>
+        <li>Category 6 URLs and any figures need checking against current source material before publishing; verify IAS 7 claims against its current text.</li>
       </ul>
     </section>
   </main>
@@ -67,6 +77,63 @@
       return tr;
     });
     tbody.replaceChildren(...rows);
+
+    const detailHost = document.getElementById('source-details');
+    const details = sources.map(source => {
+      const disclosure = document.createElement('details');
+      disclosure.className = 'source-reading-detail';
+      disclosure.id = `reading-${source.id.replaceAll('.', '-')}`;
+      const summary = document.createElement('summary');
+      summary.textContent = `Source ${source.id} · ${source.title}`;
+      disclosure.append(summary);
+
+      for (const [heading, key] of [
+        ['Sources consulted', 'consulted'],
+        ['Further reading leads', 'further_reading_leads'],
+      ]) {
+        const section = document.createElement('section');
+        const title = document.createElement('h3');
+        title.textContent = heading;
+        section.append(title);
+        const items = Array.isArray(source[key]) ? source[key] : [];
+        if (items.length) {
+          const list = document.createElement('ul');
+          for (const entry of items) {
+            const item = document.createElement('li');
+            const text = String(entry).replace(/\*([^*]+)\*/g, '$1');
+            const urlMatch = text.match(/https?:\/\/\S+/i);
+            if (urlMatch) {
+              const url = urlMatch[0].replace(/[),.;]+$/, '');
+              const start = text.indexOf(url);
+              item.append(document.createTextNode(text.slice(0, start)));
+              const link = document.createElement('a');
+              link.href = url;
+              link.textContent = url;
+              link.rel = 'noopener noreferrer';
+              item.append(link, document.createTextNode(text.slice(start + url.length)));
+            } else {
+              item.textContent = text;
+            }
+            list.append(item);
+          }
+          section.append(list);
+        } else {
+          const empty = document.createElement('p');
+          empty.textContent = 'Not listed in the supplied source notes.';
+          section.append(empty);
+        }
+        disclosure.append(section);
+      }
+
+      if (Array.isArray(source.caveats) && source.caveats.length) {
+        const notes = document.createElement('p');
+        notes.className = 'source-publishing-note';
+        notes.textContent = source.caveats.join(' ');
+        disclosure.append(notes);
+      }
+      return disclosure;
+    });
+    detailHost.replaceChildren(...details);
   }).catch(err => {
     const cell = document.createElement('td');
     cell.colSpan = 4;
@@ -75,6 +142,11 @@
     const row = document.createElement('tr');
     row.appendChild(cell);
     document.getElementById('source-table').replaceChildren(row);
+    const detailsError = document.createElement('p');
+    detailsError.className = 'source-load-error';
+    detailsError.setAttribute('role', 'alert');
+    detailsError.textContent = `Failed to load source lists: ${err.message}`;
+    document.getElementById('source-details').replaceChildren(detailsError);
   });
   </script>
 </body>

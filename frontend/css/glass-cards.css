@@ -858,6 +858,25 @@ body {
   line-height: 1.7;
 }
 
+.detail-explanation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 34px);
+  margin: 22px 0 20px;
+}
+
+.detail-copy-block h2 {
+  margin: 0 0 6px;
+  color: var(--primary);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.detail-copy-block .detail-summary {
+  margin: 0;
+}
+
 .source-link {
   display: inline-flex;
   align-items: center;
@@ -975,6 +994,10 @@ body {
 
   .concept-detail-page {
     padding: 22px 18px;
+  }
+
+  .detail-explanation {
+    grid-template-columns: 1fr;
   }
 
   .widget-section {

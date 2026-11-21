@@ -16,6 +16,8 @@
       <p class="header-label">Economics Research · Card preview</p>
       <nav aria-label="Preview navigation">
         <a href="/">Back to site</a>
+        <a href="/track_country_context.html">Country Context</a>
+        <a href="/track_financial_statements.html">Financial Statements</a>
       </nav>
     </header>
 
@@ -82,7 +84,7 @@
       title.textContent = concept.title.replace(/^\d+\.\d+\.\d+\s*/, "");
       const summary = document.createElement("p");
       summary.className = "card-summary";
-      summary.textContent = concept.summary;
+      summary.textContent = String(concept.definition || concept.summary || "").replace(/^\s*Definition:\s*/i, "");
       content.append(title, summary);
 
       const band = document.createElement("div");

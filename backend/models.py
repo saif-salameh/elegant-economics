@@ -6,6 +6,8 @@ class Concept(BaseModel):
     id: str
     title: str
     summary: str
+    definition: str = ""
+    overview: str = ""
     highlights: List[str]
     source_id: str
     category: str = ""
@@ -26,6 +28,8 @@ class Source(BaseModel):
     category: str
     whole_source_summary: str = ""
     key_points: List[str] = []
+    consulted: List[str] = []
+    further_reading_leads: List[str] = []
 
 
 class Category(BaseModel):
