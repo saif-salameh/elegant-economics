@@ -63,6 +63,18 @@ WIDGET_MAP = {
     "6.1.10":  "income_statement",
     "6.1.11":  "income_statement",
     "6.1.12":  "income_statement",
+    "6.2.1":   "balance_sheet",
+    "6.2.2":   "balance_sheet",
+    "6.2.3":   "balance_sheet",
+    "6.2.4":   "balance_sheet",
+    "6.2.5":   "balance_sheet",
+    "6.2.6":   "balance_sheet",
+    "6.2.7":   "balance_sheet",
+    "6.2.8":   "balance_sheet",
+    "6.2.9":   "balance_sheet",
+    "6.2.10":  "balance_sheet",
+    "6.2.11":  "balance_sheet",
+    "6.2.12":  "balance_sheet",
 }
 
 

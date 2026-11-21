@@ -15,6 +15,9 @@
  * Year-end roll-forwards: cash = prior cash + net change; retained earnings =
  * prior retained earnings + net income - dividends; PP&E = prior PP&E + CapEx
  * - D&A; debt = prior debt - repayment. Cash-flow outflows are negative.
+ * Paired balance-sheet transactions move equal amounts between assets,
+ * liabilities, or equity; a sale on credit increases retained earnings by
+ * sale proceeds less the carrying cost removed from inventory.
  */
 
 const whole = value => Math.round(Number(value) || 0);
@@ -77,6 +80,72 @@ export function computeBalanceSheetTotals(inputs = {}) {
   balance.total_liabilities_and_equity = whole(balance.total_liabilities + balance.total_equity);
   balance.balanced = balance.total_assets === balance.total_liabilities_and_equity;
   return balance;
+}
+
+export function applyBalanceSheetTransaction(balanceSheet = {}, transaction = {}) {
+  const starting = computeBalanceSheetTotals(balanceSheet);
+  if (!starting.balanced) {
+    throw new Error("The starting balance sheet is not balanced.");
+  }
+
+  const next = { ...starting };
+  const rawAmount = Number(transaction.amount);
+  const rawCost = Number(transaction.cost ?? 0);
+  if (!Number.isFinite(rawAmount) || rawAmount <= 0) {
+    throw new RangeError("Enter a transaction amount greater than zero.");
+  }
+  if (!Number.isFinite(rawCost) || rawCost < 0) {
+    throw new RangeError("Transaction cost cannot be negative.");
+  }
+  const amount = whole(rawAmount);
+  const cost = whole(rawCost);
+  if (!amount) throw new RangeError("Enter a transaction amount greater than zero.");
+
+  switch (transaction.type) {
+    case "borrow_cash":
+      next.cash_and_equivalents += amount;
+      next.long_term_debt += amount;
+      break;
+    case "buy_equipment_with_cash":
+      if (amount > next.cash_and_equivalents) throw new RangeError("There is not enough cash for this equipment purchase.");
+      next.cash_and_equivalents -= amount;
+      next.ppe_net += amount;
+      break;
+    case "buy_inventory_on_credit":
+      next.inventory += amount;
+      next.accounts_payable += amount;
+      break;
+    case "sell_on_credit":
+      if (cost > next.inventory) throw new RangeError("The sale cost cannot exceed current inventory.");
+      next.accounts_receivable += amount;
+      next.inventory -= cost;
+      next.retained_earnings += amount - cost;
+      break;
+    case "collect_from_customers":
+      if (amount > next.accounts_receivable) throw new RangeError("The collection cannot exceed accounts receivable.");
+      next.cash_and_equivalents += amount;
+      next.accounts_receivable -= amount;
+      break;
+    case "pay_dividend":
+      if (amount > next.cash_and_equivalents || amount > next.retained_earnings) {
+        throw new RangeError("The dividend cannot exceed cash or retained earnings.");
+      }
+      next.cash_and_equivalents -= amount;
+      next.retained_earnings -= amount;
+      break;
+    case "issue_shares":
+      next.cash_and_equivalents += amount;
+      next.share_capital += amount;
+      break;
+    default:
+      throw new TypeError(`Unknown balance-sheet transaction: ${transaction.type || "(missing type)"}`);
+  }
+
+  const result = computeBalanceSheetTotals(next);
+  if (!result.balanced) {
+    throw new Error("Transaction rejected because it would unbalance the sheet.");
+  }
+  return result;
 }
 
 export function computeCashFlowStatement(inputs = {}) {
