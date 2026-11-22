@@ -23,6 +23,7 @@
     .source-page-note { margin: .15rem 0; padding: .7rem .8rem; border: 1px solid var(--accent); border-left-width: 4px; border-radius: .65rem; background: var(--bg); }
     .source-page-note h3 { display: flex; align-items: center; gap: .5rem; margin: 0 0 .35rem; color: var(--primary); font-size: .98rem; }
     .source-page-note p { margin: 0; }
+    .source-page-note .source-note-icon { display: inline-grid; width: 1.35rem; height: 1.35rem; flex: 0 0 auto; place-items: center; border: 1px solid var(--accent); border-radius: 50%; color: var(--accent); font-size: .85rem; font-weight: 800; line-height: 1; }
     @media (max-width: 640px) { .citation-table { min-width: 620px; } }
   </style>
 </head>
@@ -79,6 +80,7 @@
   </footer>
   <script type="module">
   import { fetchSources, fetchSourcesPageData } from './js/api.js';
+  import { buildSourceNote } from './js/components/source_notes.js';
 
   const sourcesPromise = fetchSources();
   const sourcePageDataPromise = fetchSourcesPageData();
@@ -244,28 +246,31 @@
     sourcePageDataPromise.then(data => {
       for (const source of sources) {
         const noteText = data.source_notes?.[source.id];
-        if (!noteText) continue;
         const sourceRow = document.getElementById(`source-${source.id.replaceAll('.', '-')}`);
-        if (!sourceRow || document.getElementById(`source-note-${source.id.replaceAll('.', '-')}`)) continue;
+        if (!sourceRow || !noteText || document.getElementById(`source-note-${source.id.replaceAll('.', '-')}`)) continue;
         const noteRow = document.createElement('tr');
         noteRow.id = `source-note-${source.id.replaceAll('.', '-')}`;
         const noteCell = document.createElement('td');
         noteCell.colSpan = 3;
-        const note = document.createElement('aside');
-        note.className = 'source-page-note';
-        note.setAttribute('role', 'note');
-        const heading = document.createElement('h3');
-        const icon = document.createElement('span');
-        icon.className = 'source-note-icon';
-        icon.setAttribute('aria-hidden', 'true');
-        icon.textContent = 'i';
-        heading.append(icon, document.createTextNode('About this source'));
-        const paragraph = document.createElement('p');
-        paragraph.textContent = noteText;
-        note.append(heading, paragraph);
-        noteCell.append(note);
+        noteCell.append(buildSourceNote(noteText));
         noteRow.append(noteCell);
         sourceRow.after(noteRow);
+      }
+
+      const finalCategorySixSource = sources.filter(source => String(source.id).startsWith('6.'))
+        .sort((left, right) => left.id.localeCompare(right.id, undefined, { numeric: true })).at(-1);
+      const categorySixNote = data.category_notes?.['6'];
+      if (finalCategorySixSource && categorySixNote) {
+        const sourceId = finalCategorySixSource.id.replaceAll('.', '-');
+        const finalSourceRow = document.getElementById(`source-note-${sourceId}`)
+          || document.getElementById(`source-${sourceId}`);
+        const noteRow = document.createElement('tr');
+        noteRow.id = 'category-note-6';
+        const noteCell = document.createElement('td');
+        noteCell.colSpan = 3;
+        noteCell.append(buildSourceNote(categorySixNote, 'About Category 6'));
+        noteRow.append(noteCell);
+        finalSourceRow?.after(noteRow);
       }
     });
 

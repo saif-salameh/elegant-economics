@@ -49,8 +49,6 @@
       </header>
 
       <div id="detail-error" aria-live="polite"></div>
-      <div id="source-note-container"></div>
-
       <section class="detail-section" id="highlights-section" aria-labelledby="highlights-title">
         <h2 id="highlights-title">Highlights</h2>
         <ul class="highlight-list" id="concept-highlights"></ul>
@@ -80,7 +78,6 @@
 
   <script type="module">
     import { buildConceptCard, fetchConcepts, showCardLoadError } from './js/components/card.js';
-    import { buildSourceNotes } from './js/components/source_notes.js';
 
     const errorHost = document.getElementById('detail-error');
     const params = new URLSearchParams(window.location.search);
@@ -116,9 +113,6 @@
         item.textContent = text;
         return item;
       }));
-
-      const sourceNotes = await buildSourceNotes(concept);
-      document.getElementById('source-note-container').replaceChildren(...sourceNotes);
 
       if (concept.widget) {
         const widgetSection = document.getElementById('widget-section');
