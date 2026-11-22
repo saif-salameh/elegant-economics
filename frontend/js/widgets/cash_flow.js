@@ -4,6 +4,7 @@ import {
   reclassifyInterestPaid,
 } from "./fin_model.js";
 import { renderFinTable } from "./fin_table.js";
+import { fetchConcepts, fetchFinancialExample } from "../api.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const DEFINITION_IDS = {
@@ -354,11 +355,8 @@ export async function init(widgetContainer) {
     }
   }
 
-  let exampleResponse;
   try {
-    exampleResponse = await fetch("/api/financial-example", { headers: { Accept: "application/json" } });
-    if (!exampleResponse.ok) throw new Error(`HTTP ${exampleResponse.status}`);
-    state.example = await exampleResponse.json();
+    state.example = await fetchFinancialExample();
   } catch (loadError) {
     error.hidden = false;
     error.textContent = `Could not load the financial example. ${loadError.message}`;
@@ -366,11 +364,7 @@ export async function init(widgetContainer) {
   }
 
   try {
-    const response = await fetch("/api/concepts", { headers: { Accept: "application/json" } });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const payload = await response.json();
-    const concepts = Array.isArray(payload) ? payload : payload?.concepts;
-    if (!Array.isArray(concepts)) throw new Error("Unexpected concepts API response.");
+    const concepts = await fetchConcepts();
     for (const concept of concepts) {
       if (/^6\.(?:3\.(?:[1-9]|10|11)|4\.[1-5])$/.test(concept.source_id || "")) {
         state.definitions.set(concept.source_id, concept);
@@ -380,7 +374,7 @@ export async function init(widgetContainer) {
     if (gapConcept) setText(get("[data-net-income-reason]"), gapConcept.definition);
   } catch (loadError) {
     error.hidden = false;
-    error.textContent = `Definitions could not be loaded from /api/concepts. ${loadError.message}`;
+    error.textContent = `Definitions could not be loaded from data/concepts.json. ${loadError.message}`;
   }
 
   const yearButtons = [...root.querySelectorAll("[data-year]")];

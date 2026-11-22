@@ -2,6 +2,7 @@
 <html lang="en" data-theme="theme-1">
 <head>
   <meta charset="utf-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="A card design preview for the economics research site">
   <title>Glass Card Design Preview</title>
@@ -12,12 +13,12 @@
 <body>
   <main class="test-shell">
     <header class="site-header">
-      <a class="brand-mark" href="/" aria-label="Economics Research home">ER</a>
+      <a class="brand-mark" href="index.html" aria-label="Economics Research home">ER</a>
       <p class="header-label">Economics Research · Card preview</p>
       <nav aria-label="Preview navigation">
-        <a href="/">Back to site</a>
-        <a href="/track_country_context.html">Country Context</a>
-        <a href="/track_financial_statements.html">Financial Statements</a>
+        <a href="index.html">Back to site</a>
+        <a href="track_country_context.html">Country Context</a>
+        <a href="track_financial_statements.html">Financial Statements</a>
       </nav>
     </header>
 
@@ -48,6 +49,8 @@
   </main>
 
   <script type="module">
+    import { fetchConcepts } from './js/api.js';
+
     const featuredHost = document.getElementById("featured-cards");
     const gridHost = document.getElementById("concept-cards");
     const chipIcon = "http://www.w3.org/2000/svg";
@@ -129,40 +132,9 @@
     }
 
     async function loadConcepts() {
-      let response;
-      try {
-        console.info("[card_test] Page origin:", window.location.origin);
-        console.info("[card_test] API URL:", new URL("/api/concepts", window.location.href).href);
-        console.info(
-          "[card_test] API uses same origin:",
-          new URL("/api/concepts", window.location.href).origin === window.location.origin
-        );
-        response = await fetch("/api/concepts", { headers: { Accept: "application/json" } });
-      } catch (error) {
-        throw new Error(
-          `Could not reach /api/concepts from this page. HTTP status: unavailable (no response). ${error.message}`
-        );
-      }
-
-      if (!response.ok) {
-        throw new Error(
-          `Could not load /api/concepts. HTTP ${response.status} ${response.statusText || "request failed"}.`
-        );
-      }
-
-      let payload;
-      try {
-        payload = await response.json();
-      } catch (error) {
-        throw new Error(`The API response was not valid JSON. HTTP ${response.status}.`);
-      }
-
-      const concepts = Array.isArray(payload) ? payload : payload?.concepts;
-      if (!Array.isArray(concepts)) {
-        throw new Error(`Unexpected API JSON shape. HTTP ${response.status}; expected an array of concepts.`);
-      }
+      const concepts = await fetchConcepts();
       if (concepts.length === 0) {
-        throw new Error(`The API returned no concepts. HTTP ${response.status}.`);
+        throw new Error("data/concepts.json contains no concepts.");
       }
 
       console.info("[card_test] First concept fields:", Object.keys(concepts[0]));

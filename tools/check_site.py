@@ -44,8 +44,8 @@ def check_page_responses(client) -> None:
         for href in re.findall(r"\bhref\s*=\s*['\"]([^'\"]+)['\"]", source, re.I):
             if re.search(r"(?:content[-_ ]?cautions?|reading[-_ ]notes)", href, re.I):
                 caution_links.append(f"{relative}: {href}")
-        for track_href in ("/track_country_context.html", "/track_financial_statements.html"):
-            if track_href not in source:
+        for track_href in ("track_country_context.html", "track_financial_statements.html"):
+            if relative != "404.html" and track_href not in source:
                 missing_track_links.append(f"{relative}: {track_href}")
     record("HTML pages return HTTP 200", not failures, "; ".join(failures) or f"{len(html_files)} pages")
     record(
@@ -375,6 +375,87 @@ def check_utf8_meta() -> None:
     record("Every HTML page declares UTF-8", not missing, "; ".join(missing) or "all pages declare UTF-8")
 
 
+def check_static_build() -> None:
+    docs = ROOT / "docs"
+    frontend_pages = sorted((ROOT / "frontend").rglob("*.html"))
+    missing_pages = [
+        str(page.relative_to(ROOT / "frontend"))
+        for page in frontend_pages
+        if not (docs / page.relative_to(ROOT / "frontend")).is_file()
+    ]
+    if not (docs / "404.html").is_file():
+        missing_pages.append("404.html")
+    record(
+        "Every frontend page exists in docs/",
+        docs.is_dir() and not missing_pages,
+        ", ".join(missing_pages) if missing_pages else f"{len(frontend_pages)} pages plus 404.html",
+    )
+
+    concepts_path = docs / "data" / "concepts.json"
+    concepts: list[dict] = []
+    data_error = ""
+    try:
+        concepts = json.loads(concepts_path.read_text(encoding="utf-8"))
+        if not isinstance(concepts, list):
+            data_error = "concepts.json is not an array"
+            concepts = []
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        data_error = str(error)
+    record(
+        f"Static concepts.json contains {EXPECTED_CONCEPT_COUNT} concepts",
+        len(concepts) == EXPECTED_CONCEPT_COUNT,
+        data_error or f"found {len(concepts)}",
+    )
+
+    missing_widgets = []
+    for concept in concepts:
+        widget = concept.get("widget")
+        if widget and not (docs / "js" / "widgets" / f"{widget}.js").is_file():
+            missing_widgets.append(f"{concept.get('source_id', concept.get('id'))}: {widget}.js")
+    record(
+        "Every static concept widget file exists",
+        bool(concepts) and not missing_widgets,
+        "; ".join(missing_widgets) if missing_widgets else f"checked {sum(bool(item.get('widget')) for item in concepts)} mapped widgets",
+    )
+
+    api_references = []
+    root_relative_references = []
+    root_path_patterns = [
+        re.compile(r"\b(?:href|src|action|poster|formaction)\s*=\s*['\"]/(?!/)", re.I),
+        re.compile(r"\b(?:href|src|action|poster|formaction)\s*=\s*`/(?!/)", re.I),
+        re.compile(r"\.(?:href|src)\s*=\s*[\"']/(?!/)", re.I),
+        re.compile(r"\.(?:href|src)\s*=\s*`/(?!/)", re.I),
+        re.compile(r"url\(\s*['\"]?/(?!/)", re.I),
+        re.compile(r"fetch\(\s*['\"]/(?!/)", re.I),
+    ]
+    files = sorted(path for path in docs.rglob("*") if path.is_file()) if docs.is_dir() else []
+    for path in files:
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (UnicodeDecodeError, OSError) as error:
+            root_relative_references.append(f"{path.relative_to(ROOT)}: unreadable file: {error}")
+            continue
+        if re.search(r"/api/", text, re.I):
+            api_references.append(str(path.relative_to(ROOT)))
+        for pattern in root_path_patterns:
+            match = pattern.search(text)
+            if match:
+                root_relative_references.append(
+                    f"{path.relative_to(ROOT)}:{text.count(chr(10), 0, match.start()) + 1}: {match.group(0)}"
+                )
+                break
+    record(
+        "No /api/ references in docs/",
+        not api_references,
+        ", ".join(api_references) if api_references else f"scanned {len(files)} files",
+    )
+    record(
+        "No root-relative local paths in docs/",
+        not root_relative_references,
+        "; ".join(root_relative_references) if root_relative_references else f"scanned {len(files)} files",
+    )
+
+
 def main() -> int:
     check_backend_requirements()
     with app.test_client() as client:
@@ -386,6 +467,7 @@ def main() -> int:
     check_hardcoded_colors()
     check_external_assets_and_chartjs()
     check_utf8_meta()
+    check_static_build()
     for name, passed, detail in results:
         print(f"{'PASS' if passed else 'FAIL'}  {name}: {detail}")
     passed_count = sum(passed for _, passed, _ in results)

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="theme-1">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>Economics Research – Jordan</title>
+  <meta name="description" content="Economics research tailored for students and general readers in Jordan">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/glass-cards.css">
+</head>
+<body>
+  <header>
+    <h1>Economics Research for Jordan</h1>
+    <nav id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="a_z_index.html">A‑Z Index</a>
+      <a href="track_economics.html">Economics</a>
+      <a href="track_financing.html">Financing</a>
+      <a href="track_global.html">Global Economy</a>
+      <a href="track_country_context.html">Country Context</a>
+      <a href="track_financial_statements.html">Financial Statements</a>
+      <a href="sources.html">Sources</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero-showcase home-hero" aria-labelledby="home-hero-title">
+      <p class="eyebrow">Economics research for Jordan</p>
+      <h1 id="home-hero-title">Elegant Economics</h1>
+      <p class="hero-intro">Explore the concepts, models, and choices behind our economy.</p>
+      <div class="featured-fan" id="home-featured-cards" aria-label="One featured concept from each category">
+        <p class="loading-state">Loading featured concepts…</p>
+      </div>
+    </section>
+    <section class="concept-preview home-featured" aria-labelledby="featured-heading">
+      <div class="section-heading">
+        <p class="eyebrow">From the research library</p>
+        <h2 id="featured-heading">Featured concepts</h2>
+        <p>Six ideas from across the four categories.</p>
+      </div>
+      <div class="concept-grid" id="home-concept-cards" aria-live="polite">
+        <p class="loading-state">Loading concepts…</p>
+      </div>
+    </section>
+    <script type="module">
+      import { buildConceptCard, fetchConcepts, showCardLoadError } from './js/components/card.js';
+
+      const fan = document.getElementById('home-featured-cards');
+      const grid = document.getElementById('home-concept-cards');
+
+      function pickFeatured(concepts) {
+        return ['1', '2', '3', '4'].map(category =>
+          concepts.find(concept => concept.category === category && concept.has_interactive) ||
+          concepts.find(concept => concept.category === category)
+        ).filter(Boolean);
+      }
+
+      function pickSix(concepts, featured) {
+        const chosen = [...featured];
+        for (const concept of concepts.filter(item => item.has_interactive)) {
+          if (chosen.length === 6) break;
+          if (!chosen.some(item => item.source_id === concept.source_id)) chosen.push(concept);
+        }
+        for (const concept of concepts) {
+          if (chosen.length === 6) break;
+          if (!chosen.some(item => item.source_id === concept.source_id)) chosen.push(concept);
+        }
+        return chosen.slice(0, 6);
+      }
+
+      try {
+        const concepts = await fetchConcepts();
+        const featured = pickFeatured(concepts);
+        fan.replaceChildren(...featured.map(concept => buildConceptCard(concept, { featured: true })));
+        grid.replaceChildren(...pickSix(concepts, featured).map(concept => buildConceptCard(concept)));
+      } catch (error) {
+        showCardLoadError(fan, error);
+        showCardLoadError(grid, error);
+      }
+    </script>
+  </main>
+  <footer>
+    <p>&copy; 2026 Economics Research Site</p>
+  </footer>
+</body>
+</html>

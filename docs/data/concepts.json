@@ -1,0 +1,3383 @@
+[
+  {
+    "id": "1-1-1-definition-of-economics",
+    "title": "1.1.1 Definition of economics",
+    "source_id": "1.1.1",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Economics is the social science that studies how people, firms and governments allocate scarce resources to satisfy unlimited wants.",
+    "overview": "The word comes from the Greek for managing a household, and the subject became distinct with Adam Smith's Wealth of Nations (1776). The field exists because wants outrun the means available to meet them, so every society needs some way of deciding what is produced and who gets it. Economists study those choices through four lenses the module names: wealth, welfare, scarcity and growth. The module also notes that no universally accepted definition exists.",
+    "highlights": [
+      "Four definitional lenses: wealth, welfare, scarcity, growth.",
+      "Called a \"science of choice\".",
+      "Objective: maximum fulfilment of wants through efficient allocation."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-2-the-rationale-for-studying-economics",
+    "title": "1.1.2 The rationale for studying economics",
+    "source_id": "1.1.2",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "The rationale for studying economics is that human material wants are unlimited while economic resources are limited, which forces choices on individuals, families and nations.",
+    "overview": "Because no one can have everything, every decision, from what to buy to how to tax, involves a tradeoff. Economics supplies a framework for judging those tradeoffs by efficiency (using resources well), equity (sharing outcomes fairly) and stability (avoiding sharp swings). It also looks for forms of economic organization that raise living standards or spread wellbeing more fairly.",
+    "highlights": [
+      "Choice sits at the heart of all decisionmaking.",
+      "Outcomes are judged by efficiency, equity, and stability.",
+      "Economists also look for forms of economic organization that raise living standards or spread wellbeing more fairly."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-3-microeconomics-vs-macroeconomics",
+    "title": "1.1.3 Microeconomics vs macroeconomics",
+    "source_id": "1.1.3",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Microeconomics analyzes individual decisionmaking units and how they interact in specific markets, while macroeconomics analyzes the aggregate behaviour of the whole economy.",
+    "overview": "The split exists because questions differ in scale: why one price changes is a micro question, while why a country's output, prices or jobs move together is a macro one. Micro uses the demand and supply of particular goods to explain individual prices, outputs and incomes. Macro uses aggregate demand and supply to explain national income, the general price level and employment. The two are complementary, and macro cannot be studied in isolation from micro.",
+    "highlights": [
+      "Micro: individual prices, outputs, and incomes; main tools are demand and supply of particular goods.",
+      "Macro: national income, general price level, employment; main tools are aggregate demand and supply.",
+      "Newer branches include development, environmental, and welfare economics."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-4-positive-vs-normative-analysis",
+    "title": "1.1.4 Positive vs normative analysis",
+    "source_id": "1.1.4",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Positive economics describes what was, is or will be and can be checked against facts, while normative economics says what ought to be and rests on value judgments.",
+    "overview": "The distinction exists so that factual disagreements can be separated from disagreements about values. A statement such as inflation is 12 percent can be settled with data, but a statement such as the poor should pay no taxes depends on one's view of fairness. Keeping the two apart helps readers see when an economic claim is a finding and when it is a policy preference.",
+    "highlights": [
+      "\"Inflation is 12 percent\" is positive; \"the poor should pay no taxes\" is normative.",
+      "Positive disagreements are settled with evidence; normative ones are matters of opinion.",
+      "Useful framing for any site section that mixes facts with policy opinion."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-5-inductive-vs-deductive-reasoning",
+    "title": "1.1.5 Inductive vs deductive reasoning",
+    "source_id": "1.1.5",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Inductive reasoning builds general theories from specific observations, while deductive reasoning starts from assumptions or axioms and derives specific conclusions.",
+    "overview": "A theory is a simplified picture of reality, and economists need systematic ways to build and test such pictures. The inductive route selects a problem, collects and analyzes data, and establishes cause and effect. The deductive route identifies a problem, states assumptions, forms hypotheses and tests them against facts. Both routes aim to produce theories of how economies behave.",
+    "highlights": [
+      "Inductive steps: select a problem, collect and analyze data, establish cause and effect.",
+      "Deductive steps: identify the problem, state assumptions, form hypotheses, test them."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-6-scarcity-and-economic-resources",
+    "title": "1.1.6 Scarcity and economic resources",
+    "source_id": "1.1.6",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Scarcity is the permanent imbalance between unlimited wants and the finite means of satisfying them.",
+    "overview": "It exists because the four factors of production (labour, land, capital and entrepreneurship) are limited while wants keep growing. A free resource, such as sunshine, exists in more than the desired amount at zero price, whereas an economic resource is scarce and has to be rationed. Scarcity is universal and lasting, unlike a shortage, which is a shortterm, specific problem at the going price. It is the reason societies must choose how to use their resources.",
+    "highlights": [
+      "Four factors of production and their rewards: labour (wage), land (rent), capital (interest), entrepreneurship (profit).",
+      "Entrepreneurs organize production, make policy decisions, innovate, and bear risk of loss.",
+      "Scarcity does not mean shortage."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-7-choice-and-opportunity-cost",
+    "title": "1.1.7 Choice and opportunity cost",
+    "source_id": "1.1.7",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Opportunity cost is the value of the next best alternative sacrificed in order to get one more unit of something.",
+    "overview": "Scarcity forces choice, and every choice gives up an alternative, so the chain runs from scarcity to limited output, to choice, to opportunity cost. It is measured in goods and services forgone rather than in money, which makes it usable even for options that have no price. When the opportunity cost of an activity rises, people tend to substitute away from it.",
+    "highlights": [
+      "Chain: scarcity → limited output → choice → opportunity cost.",
+      "Measured in goods and services forgone, not money.",
+      "When an activity's opportunity cost rises, people substitute away from it."
+    ],
+    "related_concepts": [],
+    "widget": "ppf",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-8-production-possibilities-frontier--ppf--and-economic-growth",
+    "title": "1.1.8 Production possibilities frontier (PPF) and economic growth",
+    "source_id": "1.1.8",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "The production possibilities frontier (PPF) is a curve showing the combinations of goods a society can produce when it uses all its resources efficiently with given technology.",
+    "overview": "It exists to show scarcity, choice and opportunity cost in a single picture. Points on the curve are efficient, points inside are attainable but waste resources, and points outside are unattainable. Moving along the curve means producing more of one good by giving up some of another, and the curve is concave because resources are not equally adaptable to every use (the law of increasing opportunity cost). Growth appears as an outward shift, caused by more or better resources or better technology.",
+    "highlights": [
+      "Illustrates scarcity, choice, and opportunity cost in one picture.",
+      "Law of increasing opportunity cost makes the PPF concave, because resources are not equally adaptable to every use.",
+      "Growth comes from more or better resources, or better technology; gains in one sector alone cause asymmetric growth."
+    ],
+    "related_concepts": [],
+    "widget": "ppf",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-9-the-three-basic-economic-questions",
+    "title": "1.1.9 The three basic economic questions",
+    "source_id": "1.1.9",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "The three basic economic questions are what to produce, how to produce it, and for whom.",
+    "overview": "Every economy must answer them because resources are scarce. What is the allocation of resources among uses, such as consumer versus capital goods, civil versus military, necessities versus luxuries. How is the choice of technique, labourintensive or capitalintensive, which depends on factor supplies and relative prices. For whom is the distribution of the national product. Economic systems are best understood as different ways of answering these questions.",
+    "highlights": [
+      "What: allocation of resources (consumer vs capital goods, civil vs military, necessities vs luxuries).",
+      "How: choice of technique, labourintensive or capitalintensive, depending on factor supplies and relative prices.",
+      "For whom: distribution of the national product."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-10-capitalist--market--economy",
+    "title": "1.1.10 Capitalist (market) economy",
+    "source_id": "1.1.10",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "A capitalist (market) economy is a system in which the means of production are privately owned, activity is driven by private profit and government intervention is minimal.",
+    "overview": "It is one answer to the basic economic questions, with the price mechanism answering them instead of a planner. Private property, consumer sovereignty, the profit motive, competition and selfinterest guide what is produced and how. The module credits it with flexibility, entrepreneurship, higher percapita income and capital formation, and faults it for income inequality, unbalanced development, labour exploitation and negative externalities such as pollution.",
+    "highlights": [
+      "Features: private property, consumer sovereignty, profit motive, competition, selfinterest.",
+      "Strengths: flexibility, entrepreneurship, higher percapita income, capital formation.",
+      "Weaknesses: income inequality, unbalanced development, labour exploitation, negative externalities such as pollution."
+    ],
+    "related_concepts": [
+      "1.1.11",
+      "1.1.12",
+      "1.2.5",
+      "1.2.6",
+      "2.1.3",
+      "2.1.2"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-11-command--socialist--economy",
+    "title": "1.1.11 Command (socialist) economy",
+    "source_id": "1.1.11",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "A command (socialist) economy is a system in which the state owns and controls production and distribution, and central planning allocates resources.",
+    "overview": "It aims to direct resources toward social goals rather than private profit. Collective ownership and a strong government role are meant to give relative income equality, avoid wasteful competition and spread growth across regions. Because there is no automatic price mechanism, planners must make the decisions, and the module points to weak incentives, little economic freedom and red tape as the costs.",
+    "highlights": [
+      "Features: collective ownership, central planning, strong government role, relative income equality.",
+      "Strengths: no wasteful competition, balanced regional growth, fewer private monopolies.",
+      "Weaknesses: no automatic price mechanism, weak incentives, little economic freedom, red tape."
+    ],
+    "related_concepts": [
+      "1.1.10",
+      "1.1.12",
+      "1.2.5",
+      "1.2.6",
+      "2.1.3"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-12-mixed-economy",
+    "title": "1.1.12 Mixed economy",
+    "source_id": "1.1.12",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "A mixed economy is a system in which the public and private sectors coexist.",
+    "overview": "It exists to combine the benefits of market and command systems. Strategic industries tend to be public while consumer and smallscale industry are private, the price mechanism works in the private sector, and the government regulates essential goods and prices. Governments can use progressive taxation, subsidies and limits on property holdings to promote equality. The risks are inefficiency in both sectors, economic fluctuations, and corruption and black markets if rules are weakly enforced.",
+    "highlights": [
+      "Price mechanism works in the private sector; the government regulates essential goods and prices.",
+      "Tools for equality: progressive taxation, subsidies, limits on property holdings.",
+      "Risks: inefficiency in both sectors, economic fluctuations, corruption, and black markets if rules are weakly enforced."
+    ],
+    "related_concepts": [
+      "1.1.10",
+      "1.1.11",
+      "1.2.5",
+      "1.2.6",
+      "2.1.3"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-13-decision-making-units-and-the-circular-flow-model",
+    "title": "1.1.13 Decision-making units and the circular flow model",
+    "source_id": "1.1.13",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "The circular flow model is a diagram of how households, firms and government exchange resources, goods and money in an economy.",
+    "overview": "In a closed economy these three are the decisionmakers, and they meet in the product market (goods and services) and the factor market (inputs). Households sell resources and buy goods, and firms buy resources and sell goods, so resources and goods move one way while money moves the other. In the twosector version, household income equals firms' spending on factors and firm revenue equals household consumption. Government provides public goods and can influence households, firms and markets.",
+    "highlights": [
+      "Households sell resources and buy goods; firms buy resources and sell goods.",
+      "Twosector model: household income equals firms' spending on factors; firm revenue equals household consumption.",
+      "Government provides public goods and can influence households, firms, and markets."
+    ],
+    "related_concepts": [
+      "1.2.8",
+      "1.2.1"
+    ],
+    "widget": "circular_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-14-demand-and-the-law-of-demand",
+    "title": "1.1.14 Demand and the law of demand",
+    "source_id": "1.1.14",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Demand is desire for a good backed by purchasing power, meaning the buyer must be both willing and able to pay; the law of demand says that, other things equal, quantity demanded rises as price falls.",
+    "overview": "The concept exists because wants only affect a market when buyers can afford them. Demand can be shown as a schedule, a downwardsloping curve or a function of price, and market demand is the horizontal sum of individual demands. The key assumption is ceteris paribus (other things equal), which lets the curve isolate the effect of price alone.",
+    "highlights": [
+      "Shown as a schedule, a downwardsloping curve, or a function$Q{d}\\  = \\ f(P)$.",
+      "Market demand is the horizontal sum of individual demands.",
+      "Ceteris paribus (other things equal) is the key assumption."
+    ],
+    "related_concepts": [],
+    "widget": "supply_demand",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-15-determinants-of-demand-and-shifts-of-the-curve",
+    "title": "1.1.15 Determinants of demand and shifts of the curve",
+    "source_id": "1.1.15",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "The determinants of demand are the nonprice factors (tastes, income, prices of related goods, expectations and the number of buyers) that shift the whole demand curve.",
+    "overview": "A price change moves you along a given demand curve, but a change in any other determinant shifts the entire curve. For normal goods demand rises with income, and for inferior goods it falls. A change in the price of a substitute moves demand in the same direction, while a change in the price of a complement moves it the opposite way. The module also notes Giffen goods as an exception to the usual demand pattern.",
+    "highlights": [
+      "Normal goods: demand rises with income. Inferior goods: demand falls with income.",
+      "Substitutes: price of one moves demand for the other in the same direction. Complements: opposite direction.",
+      "The summary also notes Giffen goods as an exception to the usual demand pattern."
+    ],
+    "related_concepts": [
+      "5.2.1",
+      "5.2.2",
+      "1.1.19",
+      "4.1.8"
+    ],
+    "widget": "supply_demand",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-16-elasticity-of-demand",
+    "title": "1.1.16 Elasticity of demand",
+    "source_id": "1.1.16",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Elasticity of demand is a unitfree measure of how strongly quantity demanded responds to a change in price (price elasticity), income (income elasticity) or another good's price (cross elasticity).",
+    "overview": "It exists because the law of demand gives only the direction of a response, not its size. It is a ratio of percentage changes. Price elasticity above 1 is elastic (luxurylike), between 0 and 1 is inelastic (necessitylike), and equal to 1 is unitary. How elastic demand is depends on the availability of substitutes, whether the good is a necessity or a luxury, the share of income spent on it, and time, since demand is more elastic in the long run.",
+    "highlights": [
+      "Price elasticity above 1 is elastic (luxurylike); between 0 and 1 is inelastic (necessitylike); equal to 1 is unitary.",
+      "Drivers: availability of substitutes, necessity vs luxury, share of income spent, and time (more elastic in the long run).",
+      "Cross elasticity is positive for substitutes, negative for complements, and zero for unrelated goods; negative income elasticity marks an inferior good."
+    ],
+    "related_concepts": [],
+    "widget": "elasticity",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-17-supply-and-the-law-of-supply",
+    "title": "1.1.17 Supply and the law of supply",
+    "source_id": "1.1.17",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Supply is the quantity of a good producers are willing and able to offer at each price; the law of supply says that, other things equal, quantity supplied rises as price rises.",
+    "overview": "Higher prices make production more rewarding, which is why sellers offer more. The curve shifts when its determinants change: input prices, technology, prices of related products, taxes and subsidies, expectations and the number of sellers (and weather, for agriculture). Cheaper inputs or better technology shift supply outward, and market supply is the horizontal sum of individual supplies.",
+    "highlights": [
+      "Determinants: input prices, technology, prices of related products, taxes and subsidies, expectations, and number of sellers (weather matters for agriculture).",
+      "Cheaper inputs or better technology shift supply outward.",
+      "Market supply is the horizontal sum of individual supplies."
+    ],
+    "related_concepts": [],
+    "widget": "supply_demand",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-18-elasticity-of-supply",
+    "title": "1.1.18 Elasticity of supply",
+    "source_id": "1.1.18",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Elasticity of supply measures how responsive quantity supplied is to a change in price.",
+    "overview": "It exists to show how easily producers can expand or cut output when prices move. Supply can be elastic (a small price change causes a large change in output), inelastic, unitary, perfectly elastic (horizontal) or perfectly inelastic (vertical). The module notes that the point method is the one most commonly used to measure it.",
+    "highlights": [
+      "Elastic supply: a small price change causes a large change in output.",
+      "The point method is the one most commonly used."
+    ],
+    "related_concepts": [],
+    "widget": "elasticity",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-19-market-equilibrium",
+    "title": "1.1.19 Market equilibrium",
+    "source_id": "1.1.19",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Market equilibrium is the price and quantity at which quantity demanded equals quantity supplied.",
+    "overview": "It matters because it is where the market clears. Above the equilibrium price there is a surplus, which pushes the price down, and below it there is a shortage, which pushes the price up. Higher demand raises both price and quantity, while higher supply lowers price and raises quantity. When demand and supply both increase, quantity clearly rises but the effect on price depends on which shift is larger. The module works through numerical equilibrium examples.",
+    "highlights": [
+      "Higher demand raises both price and quantity; higher supply lowers price and raises quantity.",
+      "When demand and supply both change, the effect on quantity is clear but the effect on price depends on which shift is larger.",
+      "The module works through numerical equilibrium examples."
+    ],
+    "related_concepts": [
+      "5.2.1",
+      "5.2.2",
+      "1.1.15",
+      "4.1.8",
+      "4.2.9",
+      "3.1.2",
+      "1.1.42"
+    ],
+    "widget": "supply_demand",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-20-consumer-preferences-and-utility",
+    "title": "1.1.20 Consumer preferences and utility",
+    "source_id": "1.1.20",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Utility is the satisfaction a good provides, or its power to satisfy wants, and consumer preferences describe how a consumer ranks bundles of goods.",
+    "overview": "Consumer theory needs a way to describe choice, so it assumes consumers compare bundles and judge one strictly better, weakly better or equally good (indifferent). Utility is subjective, consumercentred and differs from person to person. Two ways of comparing it are developed in the next concepts: cardinal (measure it in units) and ordinal (only rank it).",
+    "highlights": [
+      "Preference relations: strict preference, weak preference, indifference.",
+      "Utility differs from person to person.",
+      "Two ways to compare utility: cardinal and ordinal."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-21-cardinal-utility-theory-and-diminishing-marginal-utility",
+    "title": "1.1.21 Cardinal utility theory and diminishing marginal utility",
+    "source_id": "1.1.21",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Cardinal utility theory holds that satisfaction can be measured in units, and the law of diminishing marginal utility says that each additional unit adds less satisfaction than the one before.",
+    "overview": "Total utility is overall satisfaction and marginal utility is the extra satisfaction from one more unit. The theory exists to explain why people buy less of a good as its price rises: each extra unit is worth less to them. A consumer with one good is in equilibrium where marginal utility equals price, and with several goods where marginal utility per unit of price is equal across goods. It assumes constant marginal utility of money and additive utility, and its limitations are that utility is hard to quantify and the marginal utility of money is not really constant.",
+    "highlights": [
+      "A consumer with one good is in equilibrium where marginal utility equals price; with several goods, where MU/price is equal across goods.",
+      "Assumes constant marginal utility of money and additive utility.",
+      "Limitations: utility is hard to quantify, and the marginal utility of money is not really constant."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-22-ordinal-utility-and-indifference-curves",
+    "title": "1.1.22 Ordinal utility and indifference curves",
+    "source_id": "1.1.22",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Ordinal utility theory holds that satisfaction cannot be measured but can be ranked, and an indifference curve shows all combinations of two goods that give the same satisfaction.",
+    "overview": "It was developed to avoid the measurement problem of the cardinal approach. A set of indifference curves forms an indifference map, with higher curves preferred. The curves slope downward, are convex to the origin because of a diminishing marginal rate of substitution, and do not intersect, assuming consistent (transitive) preferences.",
+    "highlights": [
+      "Properties: downwardsloping, convex to the origin, higher curves preferred, curves do not intersect.",
+      "Convexity reflects a diminishing marginal rate of substitution.",
+      "Assumes consistent (transitive) preferences."
+    ],
+    "related_concepts": [],
+    "widget": "indifference_curve",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-23-budget-line-and-consumer-equilibrium",
+    "title": "1.1.23 Budget line and consumer equilibrium",
+    "source_id": "1.1.23",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "The budget line shows every combination of two goods a consumer can afford given prices and income, and consumer equilibrium is the affordable bundle that gives the most satisfaction.",
+    "overview": "It combines what the consumer wants (indifference curves) with what the consumer can afford (the budget line). The consumer maximizes utility where the budget line is tangent to the highest attainable indifference curve. A change in income shifts the line, and a change in a price changes its slope. The ordinal approach avoids the measurement problem of the cardinal approach.",
+    "highlights": [
+      "Combines what the consumer wants (indifference curves) with what they can afford (budget line).",
+      "The ordinal approach avoids the measurement problem of the cardinal approach."
+    ],
+    "related_concepts": [],
+    "widget": "indifference_curve",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-24-production-and-the-production-function",
+    "title": "1.1.24 Production and the production function",
+    "source_id": "1.1.24",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Production is the transformation of inputs into outputs that have exchange value, and the production function is the technical relationship between inputs and the maximum output possible with existing technology.",
+    "overview": "It exists to describe what a firm can make from what it uses. The inputs are land, labour, capital and entrepreneurial ability. Fixed inputs cannot be changed quickly while variable inputs can, and the short run is the period in which at least one input is fixed, so it is defined by the fixed input and not by a set number of months. A typical shortrun setup holds capital fixed and varies labour.",
+    "highlights": [
+      "Inputs: land, labour, capital, entrepreneurial ability.",
+      "Typical shortrun setup: capital fixed, labour variable.",
+      "\"Short run\" is defined by the fixed input, not by a set number of months."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-25-total--average--and-marginal-product--the-law-of-variable-proportions",
+    "title": "1.1.25 Total, average, and marginal product; the law of variable proportions",
+    "source_id": "1.1.25",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Total product is overall output, average product is output per unit of the variable input and marginal product is the extra output from one more unit; the law of variable proportions (diminishing returns) says that beyond some point each added unit of the variable input adds less output.",
+    "overview": "These measures show how output responds as a firm adds a variable input to a fixed one. Marginal product first rises, peaks and then falls, and it measures the slope of total product. The law assumes technology is fixed, and it explains the shape of the cost curves that follow.",
+    "highlights": [
+      "Marginal product first rises, peaks, then falls; it measures the slope of total product.",
+      "The law assumes technology is fixed."
+    ],
+    "related_concepts": [],
+    "widget": "production_stages",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-26-stages-of-short-run-production",
+    "title": "1.1.26 Stages of short-run production",
+    "source_id": "1.1.26",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "The stages of shortrun production are three regions of the production process, defined by how total, average and marginal product behave as more of the variable input is added.",
+    "overview": "They exist to show where a firm should operate. In Stage I average product is rising and the fixed input is underused, so it is not efficient. In Stage II marginal product is positive but declining, and this is the efficient region. In Stage III further input additions reduce total output.",
+    "highlights": [
+      "Stage I: average product rising, fixed input underused, not efficient.",
+      "Stage II: diminishing marginal returns, the efficient region.",
+      "Stage III: further input additions reduce total output."
+    ],
+    "related_concepts": [],
+    "widget": "production_stages",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-27-types-of-cost--explicit--implicit--accounting--economic",
+    "title": "1.1.27 Types of cost: explicit, implicit, accounting, economic",
+    "source_id": "1.1.27",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Explicit costs are outofpocket payments for purchased inputs, implicit costs are the estimated value of selfowned inputs, accounting cost counts only explicit costs and economic cost counts both.",
+    "overview": "The distinction exists because a firm's true cost includes what its owner's own resources could have earned elsewhere, not just what is paid out. So accounting profit equals revenue minus explicit cost, while economic profit equals revenue minus explicit and implicit cost. Whenever implicit costs are present, accounting profit exceeds economic profit by that amount.",
+    "highlights": [
+      "Accounting profit = revenue − explicit cost; economic profit = revenue − (explicit + implicit cost).",
+      "With implicit costs present, accounting profit exceeds economic profit by that amount."
+    ],
+    "related_concepts": [
+      "6.1.2",
+      "6.1.3",
+      "6.1.9",
+      "1.1.28"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-28-short-run-cost-curves",
+    "title": "1.1.28 Short-run cost curves",
+    "source_id": "1.1.28",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Shortrun cost curves show how a firm's costs change with output, splitting total cost into fixed cost (unavoidable at any output) and variable cost (which rises with output).",
+    "overview": "From these come the perunit curves: average fixed, average variable, average total and marginal cost. Average variable and average total cost are Ushaped because of the law of variable proportions, marginal cost mirrors marginal product, and average variable cost mirrors average product. A firm can avoid fixed costs only by shutting down.",
+    "highlights": [
+      "Average variable and average total cost are Ushaped because of the law of variable proportions.",
+      "Marginal cost mirrors marginal product, and average variable cost mirrors average product.",
+      "A firm can avoid fixed costs only by shutting down."
+    ],
+    "related_concepts": [
+      "6.1.2",
+      "6.1.3",
+      "6.1.9",
+      "1.1.27"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-29-markets-in-physical-and-digital-space",
+    "title": "1.1.29 Markets in physical and digital space",
+    "source_id": "1.1.29",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "A market is any place or digital space where goods, services and ideas are exchanged.",
+    "overview": "Markets exist to bring buyers and sellers together. The module contrasts physical markets, where buyers and sellers meet in person, with digital channels that carry product value from producer to consumer over networks. Digital marketing uses the internet, mobile phones, display advertising and other digital media.",
+    "highlights": [
+      "Digital marketing uses the internet, mobile phones, display advertising, and other digital media.",
+      "Useful bridge to the digital and gig economy concepts in Sources 1.2 and 3.1."
+    ],
+    "related_concepts": [
+      "1.2.7",
+      "3.1.5"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-30-perfectly-competitive-market",
+    "title": "1.1.30 Perfectly competitive market",
+    "source_id": "1.1.30",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Perfect competition is a market with so many buyers and sellers that none can influence price, so every firm is a price taker.",
+    "overview": "It serves as the benchmark against which other market structures are compared. It rests on five assumptions: many buyers and sellers, a homogeneous product, perfect factor mobility, free entry and exit, and perfect market knowledge. The firm maximizes profit where marginal revenue equals marginal cost, and in this market price equals marginal revenue. In the short run a firm can earn economic profit, normal (zero) profit or a loss; the shutdown point is where price equals minimum average variable cost.",
+    "highlights": [
+      "Five assumptions: many buyers and sellers, homogeneous product, perfect factor mobility, free entry and exit, perfect market knowledge.",
+      "In the short run a firm can earn economic profit, normal (zero) profit, or a loss.",
+      "Shutdown point: price equals minimum average variable cost; the industry is in equilibrium when the market clears."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-31-monopoly",
+    "title": "1.1.31 Monopoly",
+    "source_id": "1.1.31",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "A monopoly is a market with a single seller, no close substitutes and blocked entry.",
+    "overview": "Because the monopolist faces the whole downwardsloping market demand, it is a price maker rather than a price taker. Its power comes from barriers to entry, which the module groups into four sources: legal restriction (for example public utilities), control of key raw materials, efficiency and economies of scale (a natural monopoly), and patent rights.",
+    "highlights": [
+      "Barriers to entry are the source of monopoly power.",
+      "Four sources: legal restriction (e.g., public utilities), control of key raw materials, efficiency and economies of scale (natural monopoly), and patent rights."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-32-monopolistic-competition",
+    "title": "1.1.32 Monopolistic competition",
+    "source_id": "1.1.32",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Monopolistic competition is a market structure in which many firms sell differentiated products and entry is easy.",
+    "overview": "It blends competition and monopoly. The competitive elements are the many firms and the absence of entry barriers; the monopoly element is differentiation (style, brand, quality), which gives each seller limited power over its loyal customers and some control over price within narrow limits. The module separates real from fancied (perceived) differentiation.",
+    "highlights": [
+      "Competitive elements: many firms, no entry barriers.",
+      "Monopoly element: differentiated products, so some control over price within narrow limits.",
+      "The module separates real from fancied (perceived) differentiation."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-33-oligopoly-and-comparing-market-structures",
+    "title": "1.1.33 Oligopoly and comparing market structures",
+    "source_id": "1.1.33",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "An oligopoly is a market dominated by a few large firms, each affected by its rivals' price and output decisions.",
+    "overview": "Interdependence is the defining feature, and entry barriers are considerable. Because firms fear price wars, they lean on nonprice competition such as advertising, warranties and aftersales service. Products may be homogeneous or differentiated, and a twofirm market is a duopoly. The table below compares all four market structures.",
+    "highlights": [
+      "Defining feature is interdependence; entry barriers are considerable; products may be homogeneous or differentiated; a twofirm market is a duopoly.",
+      "Comparison from the module:"
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-34-goals-of-macroeconomics",
+    "title": "1.1.34 Goals of macroeconomics",
+    "source_id": "1.1.34",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "The goals of macroeconomics are the wholeeconomy outcomes policy tries to achieve: full employment, stable prices and sustainable growth.",
+    "overview": "Macroeconomics studies the economy's aggregate behaviour, covering growth, employment, inflation, income distribution, macro policy and international trade, so performance is judged at the level of the whole economy. Alongside the three main goals, policy also manages budget and balanceofpayments deficits. The ultimate policy objective is sustainable growth and development.",
+    "highlights": [
+      "Performance is judged at the wholeeconomy level.",
+      "The ultimate policy objective is sustainable growth and development."
+    ],
+    "related_concepts": [
+      "5.1.3",
+      "5.2.4",
+      "1.1.35",
+      "1.1.36",
+      "1.1.43"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-35-national-income-accounting--gdp-and-gnp",
+    "title": "1.1.35 National income accounting: GDP and GNP",
+    "source_id": "1.1.35",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Gross domestic product (GDP) is the value of output produced within a country, and gross national product (GNP) adds net factor income from abroad (GNP = GDP + NFI).",
+    "overview": "National income accounting exists to measure aggregate output and income, using the circular flow idea that one person's spending is another's income. GDP can be measured three ways: the product (valueadded), expenditure and income approaches. If net foreign income is positive, GNP exceeds GDP, and related accounts such as net national product (NNP) subtract depreciation.",
+    "highlights": [
+      "Three ways to measure: product (valueadded), expenditure, and income approaches.",
+      "If net foreign income is positive, GNP exceeds GDP.",
+      "Related accounts such as net national product (NNP) subtract depreciation."
+    ],
+    "related_concepts": [
+      "1.1.36",
+      "1.1.37",
+      "3.1.7",
+      "2.1.2",
+      "5.1.3",
+      "5.2.4",
+      "1.1.34",
+      "1.1.43"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-36-nominal-vs-real-gdp",
+    "title": "1.1.36 Nominal vs real GDP",
+    "source_id": "1.1.36",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Nominal GDP values a year's output at that year's prices, while real GDP values output at baseyear prices.",
+    "overview": "The two exist because nominal GDP can rise from higher prices alone, even when output has not grown. Real GDP removes the effect of inflation, so it is the better gauge of actual output growth. The module's worked example shows nominal GDP growing far faster than real GDP when prices rise.",
+    "highlights": [
+      "Real GDP is the better gauge of actual output growth.",
+      "The module's worked example shows nominal GDP growing far faster than real GDP when prices rise."
+    ],
+    "related_concepts": [
+      "1.1.35",
+      "1.1.37",
+      "3.1.7",
+      "2.1.2",
+      "5.1.3",
+      "5.2.4",
+      "1.1.34",
+      "1.1.43"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-37-gdp-deflator-and-consumer-price-index--cpi",
+    "title": "1.1.37 GDP deflator and Consumer Price Index (CPI)",
+    "source_id": "1.1.37",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "The GDP deflator is nominal GDP divided by real GDP (multiplied by 100), a price measure for all domestically produced goods, and the Consumer Price Index (CPI) tracks the cost of a fixed basket of consumer goods relative to a base year.",
+    "overview": "Both exist to measure changes in the price level and so to measure inflation. The deflator covers all domestic output, while the CPI covers what consumers buy, including imports. The CPI uses fixed weights, whereas the deflator's weights change as the pattern of output changes.",
+    "highlights": [
+      "Deflator covers all domestic output; CPI covers what consumers buy, including imports.",
+      "CPI uses fixed weights; the deflator's weights change as output changes.",
+      "Both are used to measure inflation."
+    ],
+    "related_concepts": [
+      "1.1.35",
+      "1.1.36",
+      "3.1.7",
+      "2.1.2"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-38-the-business-cycle",
+    "title": "1.1.38 The business cycle",
+    "source_id": "1.1.38",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "The business cycle is the recurring pattern of ups and downs in economic activity around a longterm trend.",
+    "overview": "It runs through four phases: peak (boom), recession, trough and recovery, and a full cycle runs from one peak to the next or one trough to the next. Cycles vary in duration and intensity. In a boom output grows faster than potential, recessions bring falling output and rising unemployment, and a severe one reaches depression.",
+    "highlights": [
+      "Cycles vary in duration and intensity.",
+      "Booms see output growing faster than potential; recessions bring falling output and rising unemployment; a severe one reaches depression.",
+      "Fluctuate around a longterm trend path of GDP."
+    ],
+    "related_concepts": [
+      "3.1.3",
+      "3.1.9",
+      "3.1.10"
+    ],
+    "widget": "business_cycle",
+    "has_interactive": true
+  },
+  {
+    "id": "1-1-39-unemployment",
+    "title": "1.1.39 Unemployment",
+    "source_id": "1.1.39",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "The unemployed are people in the labour force who have no job but are actively searching, and the unemployment rate is the number of unemployed divided by the labour force.",
+    "overview": "It is tracked because joblessness wastes resources and cuts incomes. The module sorts it into frictional (short transitions between jobs), structural (a mismatch of skills or location) and cyclical (too few vacancies in a downturn) unemployment. The natural rate equals frictional plus structural unemployment, and cyclical unemployment is the part above it. At the natural rate the economy is at full employment.",
+    "highlights": [
+      "Types: frictional (short transitions), structural (skills or location mismatch), cyclical (too few vacancies in a downturn).",
+      "Natural rate = frictional + structural; cyclical is the part above it.",
+      "At the natural rate the economy is at full employment."
+    ],
+    "related_concepts": [
+      "1.2.7",
+      "3.1.6",
+      "2.1.4",
+      "2.1.5",
+      "5.1.4"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-40-inflation",
+    "title": "1.1.40 Inflation",
+    "source_id": "1.1.40",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Inflation is a sustained rise in the general price level, measured as the percentage change in a price index such as the CPI.",
+    "overview": "It matters because it erodes purchasing power. The module sorts causes into demandpull (total demand outpaces supply) and costpush (aggregate supply falls because costs rise). The nominal interest rate equals the real rate plus the inflation rate, so inflation pushes nominal rates up, and its other effects include reduced investment, uncertainty and redistribution of income.",
+    "highlights": [
+      "Demandpull: total demand outpaces supply. Costpush: falling aggregate supply from higher costs.",
+      "Nominal interest rate = real rate + inflation rate.",
+      "Effects: higher nominal rates, reduced investment, uncertainty, and redistribution of income."
+    ],
+    "related_concepts": [
+      "3.1.2",
+      "1.1.42",
+      "4.1.2",
+      "4.1.5",
+      "5.1.2",
+      "5.2.3"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-41-trade-deficit-and-budget-deficit",
+    "title": "1.1.41 Trade deficit and budget deficit",
+    "source_id": "1.1.41",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "A budget deficit occurs when government spending exceeds tax revenue, and a trade deficit occurs when imports exceed exports.",
+    "overview": "A budget deficit is financed by borrowing, and accumulated borrowing is government debt. Through the identity that saving minus investment equals net exports (S  I = NX), a trade deficit means the country is a net borrower in world financial markets. The module's Ethiopian case describes deficits financed mainly by concessional external loans, with nonconcessional loans reserved for stateenterprise projects. For current sourced context on public debt in Jordan and Ethiopia, see Category 5.",
+    "highlights": [
+      "Saving minus investment equals net exports (the trade balance).",
+      "The module's Ethiopian case: deficits financed mainly by concessional external loans, with nonconcessional loans reserved for stateenterprise projects.",
+      "Useful link to sovereign default (Source 3.1)."
+    ],
+    "related_concepts": [
+      "3.1.8",
+      "3.1.4",
+      "5.1.5",
+      "5.2.4"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-42-monetary-policy",
+    "title": "1.1.42 Monetary policy",
+    "source_id": "1.1.42",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Monetary policy is the control of the money supply, credit and interest rates to steer aggregate demand, usually run by the central bank.",
+    "overview": "It is a flexible stabilization tool. In a recession it aims to raise demand, and in a boom it offsets inflation pressure. Lower interest rates push firms to borrow and invest more, and higher rates do the reverse, because investment and saving decisions respond to the real interest rate.",
+    "highlights": [
+      "In a recession, it aims to raise demand; in a boom, it offsets inflation pressure.",
+      "Lower interest rates push firms to borrow and invest more; higher rates do the reverse.",
+      "Investment and saving decisions respond to the real interest rate."
+    ],
+    "related_concepts": [
+      "1.1.40",
+      "3.1.2",
+      "4.1.2",
+      "4.1.5",
+      "5.1.1",
+      "5.1.6",
+      "3.1.4",
+      "5.2.1",
+      "5.2.2",
+      "5.3.1",
+      "5.1.2",
+      "5.2.3",
+      "4.2.9",
+      "1.1.19"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-1-43-fiscal-policy",
+    "title": "1.1.43 Fiscal policy",
+    "source_id": "1.1.43",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "Basics of Economics",
+    "definition": "Fiscal policy is the use of government spending, taxation and borrowing to influence activity, aggregate demand, output and employment.",
+    "overview": "It affects both aggregate demand and aggregate supply, with effects in the short and long term. Most governments use it to promote stable growth while also reducing poverty through redistribution. It pairs with monetary policy as the two main macro policy instruments.",
+    "highlights": [
+      "Most governments use it to promote stable growth while also reducing poverty through redistribution.",
+      "Effects can be shortterm and longterm.",
+      "Pairs with monetary policy as the two main macro policy instruments.",
+      "An economy is a web of production and consumption that allocates resources and capital.",
+      "Economies nest at three scales (local, national, global) and are increasingly linked by globalisation.",
+      "Systems differ by who owns production and how prices are set, and real economies are rarely pure.",
+      "Performance depends on growth, unemployment, inflation, interest and exchange rates, and commodity prices; GDP is the headline measure.",
+      "The economy shapes living costs, jobs, government spending, and quality of life."
+    ],
+    "related_concepts": [
+      "5.1.3",
+      "5.2.4",
+      "1.1.34",
+      "1.1.35",
+      "1.1.36"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-2-1-core-vocabulary",
+    "title": "1.2.1 Core vocabulary",
+    "source_id": "1.2.1",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "",
+    "definition": "The core vocabulary is a fifteenterm glossary of basic economic words that the FutureLearn article builds on.",
+    "overview": "The terms are boom and bust, budget, capital, debt, economy, economics, financial system, GDP, globalisation, growth, inflation, macroeconomics, microeconomics, recession and stock market. The glossary exists to give beginners a shared language before the article explains how economies work. It notes that debt lets governments, companies and individuals invest beyond what they could afford otherwise, and it defines the stock market as an interconnected system of businesses, investors and securities where shares are traded.",
+    "highlights": [
+      "Good seed for the site's glossary page.",
+      "Notes that debt lets governments, companies, and individuals invest beyond what they could afford otherwise.",
+      "Defines the stock market as an interconnected system of businesses, investors, and securities where shares are traded."
+    ],
+    "related_concepts": [
+      "1.1.13",
+      "1.2.8",
+      "4.1.1",
+      "4.1.6",
+      "4.2.1",
+      "4.2.5",
+      "4.2.6",
+      "3.1.10",
+      "4.2.12",
+      "3.1.9"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-2-2-local-economies",
+    "title": "1.2.2 Local economies",
+    "source_id": "1.2.2",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "",
+    "definition": "A local economy is the set of interconnected markets and networks within a community, where local businesses, government and residents trade, pay taxes and work.",
+    "overview": "Historically, production and consumption happened in the same place until around the 19th century. Local economies still exist but are now part of larger networks, linked to national and global ones.",
+    "highlights": [
+      "Local economies still exist but are now part of larger networks."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-2-3-national-economies",
+    "title": "1.2.3 National economies",
+    "source_id": "1.2.3",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "",
+    "definition": "A national economy is a countrywide system for distributing scarce resources among competing uses.",
+    "overview": "Citing the Bank of England, the article describes workers, land and materials as limited while demand is effectively unlimited, which is why such a system is needed. Governments shape their economies very differently (the US versus China is the example given), and each national economy is itself part of a wider network of nations.",
+    "highlights": [
+      "Governments shape their economies very differently (the US vs China is the example).",
+      "National economies are themselves parts of a wider network of nations."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-2-4-the-global-economy",
+    "title": "1.2.4 The global economy",
+    "source_id": "1.2.4",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "",
+    "definition": "The global economy is the economy of all humans, covering activity within and between nations.",
+    "overview": "It includes the exchange of capital and the production and consumption of goods across borders. It is powered by globalisation, international trade, finance and investment, which link national and local economies into one network.",
+    "highlights": [
+      "Globalisation, international trade, finance, and investment power it."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-2-5-economic-systems--feudalism--capitalism--socialism--communism",
+    "title": "1.2.5 Economic systems: feudalism, capitalism, socialism, communism",
+    "source_id": "1.2.5",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "",
+    "definition": "Economic systems are the ways societies organize ownership and production; the article describes feudalism, capitalism, socialism and communism.",
+    "overview": "Feudalism was medieval, with land held by a ruler and allocated to nobles. Capitalism rests on private ownership and the profit motive, with supply and demand setting prices, and describes most economies today (the article's examples are the US, UK and Australia). Socialism means state or public ownership with production by social need (examples given: North Korea and Sri Lanka), and communism means community ownership aiming at a classless society (China, Cuba, Vietnam). The article itself notes countries can be both capitalist and communist, so these labels are simplified and should be verified before publishing.",
+    "highlights": [
+      "Capitalism: supply and demand set prices; the article's examples are the US, UK, and Australia.",
+      "Socialism examples given: North Korea and Sri Lanka; communism: China, Cuba, Vietnam.",
+      "The article itself notes countries can be both capitalist and communist; these labels are simplified, so verify before publishing."
+    ],
+    "related_concepts": [
+      "1.1.10",
+      "1.1.11",
+      "1.1.12",
+      "1.2.6",
+      "2.1.3"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-2-6-market-types--command--free--and-mixed",
+    "title": "1.2.6 Market types: command, free, and mixed",
+    "source_id": "1.2.6",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "",
+    "definition": "Command, free and mixed markets are three ways of classifying an economy by how much the government controls the factors of production.",
+    "overview": "For each, the article answers what, how and for whom to produce. In a command market, government preferences decide all three. In a free market, consumers decide what, profitseeking producers decide how, and purchasing power decides for whom. A mixed market is a blend, with government setting boundaries for the market.",
+    "highlights": [
+      "Command: government preferences decide all three.",
+      "Free: consumers decide what, profitseeking producers decide how, purchasing power decides for whom.",
+      "Mixed: a blend, with government setting boundaries for the market."
+    ],
+    "related_concepts": [
+      "1.1.10",
+      "1.1.11",
+      "1.1.12",
+      "1.2.5",
+      "2.1.3"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-2-7-other-types-of-economy--green--digital--gig",
+    "title": "1.2.7 Other types of economy: green, digital, gig",
+    "source_id": "1.2.7",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "",
+    "definition": "The green, digital and gig economies are newer types of economy named for what drives them: sustainability, digital technology and shortterm freelance work.",
+    "overview": "The green economy aims at sustainable development without environmental damage (lowcarbon, resourceefficient, inclusive). The digital economy is based on computers and the internet. The gig economy relies on freelancers and shortterm contracts, which offers flexibility but can make career progression harder. The green economy links to Source 2.1 and the gig economy to Source 3.1.",
+    "highlights": [
+      "The gig economy offers flexibility but can make career progression harder.",
+      "Green economy links to Source 2.1; gig economy links to Source 3.1."
+    ],
+    "related_concepts": [
+      "3.1.6",
+      "1.1.39",
+      "2.1.4",
+      "2.1.5",
+      "1.1.29",
+      "3.1.5"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-2-8-how-an-economy-forms",
+    "title": "1.2.8 How an economy forms",
+    "source_id": "1.2.8",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "",
+    "definition": "An economy forms when people combine their skills and interests and trade because they expect to be better off.",
+    "overview": "Citing Investopedia, the article says households, businesses, government, the product market and the resource market form the basic structure, which is the circular flow idea. Trade is the starting point, because each party exchanges only when it expects a gain. This echoes the circular flow model in Source 1.1 (concept 1.1.13).",
+    "highlights": [
+      "Echoes the circular flow model in Source 1.1 (concept 1.1.13)."
+    ],
+    "related_concepts": [
+      "1.1.13",
+      "1.2.1"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-2-9-macroeconomics-and-microeconomics",
+    "title": "1.2.9 Macroeconomics and microeconomics",
+    "source_id": "1.2.9",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "",
+    "definition": "Macroeconomics looks at the big picture of employment, GDP and inflation, while microeconomics looks at how households and businesses make decisions.",
+    "overview": "Governments set fiscal policy around the macro picture, whereas micro covers individual choices, including the effect of supply and demand. The article stresses that both levels influence how an economy works.",
+    "highlights": [
+      "Both levels influence how an economy works."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-2-10-forces-and-indicators-that-shape-economic-performance",
+    "title": "1.2.10 Forces and indicators that shape economic performance",
+    "source_id": "1.2.10",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "",
+    "definition": "The forces and indicators of economic performance are the factors and measures used to judge how well an economy is working.",
+    "overview": "The article describes an economy as a network of markets of buyers and sellers allocating scarce resources. How it performs depends on growth, unemployment, inflation, interest and exchange rates, and commodity prices, and success is usually measured by GDP. These factors affect income and purchasing power for households and organizations.",
+    "highlights": [
+      "These factors affect income and purchasing power for households and organizations."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "1-2-11-how-the-economy-affects-everyday-life",
+    "title": "1.2.11 How the economy affects everyday life",
+    "source_id": "1.2.11",
+    "category": "1",
+    "category_name": "Economic Foundations & Core Theory",
+    "chapter": "",
+    "definition": "The economy affects everyday life through four channels: living costs, employment, government spending and quality of life.",
+    "overview": "Living costs are tied to inflation, booms create jobs, and more tax revenue funds infrastructure and services. Quality of life improves when more resources go to education and healthcare, at least in theory. The article calls its own treatment simplified, so real mechanisms are more complex. A fintech executive quoted in it says tech firms can transform local and global economies through education access and innovative banking.",
+    "highlights": [
+      "A fintech executive quoted in the article says tech firms can transform both local and global economies through education access and innovative banking.",
+      "The article calls its treatment simplified; real mechanisms are more complex.",
+      "New economic subdisciplines emerge from specialization and the need to adapt to change; advances in physics, biology, mathematics, and technology gave the impetus.",
+      "The green economy rests on the idea that nature is neither an endless supply nor an endless dump.",
+      "The creative economy rests on creative industries and intellectual property.",
+      "The knowledge economy treats knowledge and human capital as the main growth factor and builds on, rather than replaces, economies of scale.",
+      "The modern era is defined by rapid change, uncertainty, and sustainability requirements."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "2-1-1-why-new-economic-disciplines-emerge",
+    "title": "2.1.1 Why new economic disciplines emerge",
+    "source_id": "2.1.1",
+    "category": "2",
+    "category_name": "Modern & Emerging Economic Models",
+    "chapter": "",
+    "definition": "New economic disciplines are hybrid fields, such as environmental economics and green economics, that grow in the gaps between classical specialisms.",
+    "overview": "The paper argues that sciences have split into narrow specialisms, and the unused noman'sland between classical disciplines became the breeding ground for hybrids like biochemistry. The deeper cause it gives is society's need to keep adapting to change. The drivers it names are modern physics (probability, entropy, information), biology and genetics, mathematics (probability, game theory) and technological development. It cites Drucker on dropping yesterday's problems to free resources for new ones.",
+    "highlights": [
+      "Drivers named: modern physics (probability, entropy, information), biology and genetics, mathematics (probability, game theory), and technological development.",
+      "Drucker is cited: organizations must drop yesterday's problems to free resources for new ones, and economics must do the same.",
+      "Cybernetics founder Norbert Wiener is cited on fertile research lying between disciplines."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "2-1-2-green--ecological--economy",
+    "title": "2.1.2 Green (ecological) economy",
+    "source_id": "2.1.2",
+    "category": "2",
+    "category_name": "Modern & Emerging Economic Models",
+    "chapter": "",
+    "definition": "A green (ecological) economy is, in the UNEP definition the paper cites, an economy that aims at human wellbeing and social justice while reducing environmental impact.",
+    "overview": "The paper places its rise in the late 20th century, when degradation of the environment became a visible threat to health, safety and jobs. Its core rule is to operate within the carrying capacity of natural resources, because profit pursued at nature's expense eventually backfires. The paper sees the crisis as three interacting problems (resource depletion, climate change and breakdown of the prevailing socioeconomic system) and notes the paradox that the richest regions harm the environment most but hold the fewest people. It describes green economy as still a framework rather than a finished set of answers.",
+    "highlights": [
+      "Core rule: operate within the carrying capacity of natural resources; profit pursued at nature's expense eventually backfires.",
+      "Overlapping labels in use: organic economy, green economy, economics of sustainable development.",
+      "Crisis seen as three interacting problems: resource depletion, climate change, and breakdown of the prevailing socioeconomic system.",
+      "Paradox noted: the richest regions harm the environment most but hold the fewest people; the problem is global.",
+      "Green economy is described as still a framework rather than a finished set of answers."
+    ],
+    "related_concepts": [
+      "1.1.35",
+      "1.1.36",
+      "1.1.37",
+      "3.1.7",
+      "1.1.10"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "2-1-3-ordoliberalism-and-the-eco-social-market-economy",
+    "title": "2.1.3 Ordoliberalism and the eco-social market economy",
+    "source_id": "2.1.3",
+    "category": "2",
+    "category_name": "Modern & Emerging Economic Models",
+    "chapter": "",
+    "definition": "Ordoliberalism, described in the paper as a variant of German social liberalism, favours an optimal mix of market, government and social control over production, distribution and consumption.",
+    "overview": "The paper holds up Germany's ecosocial market economy as the bestperforming European example of this mix. That claim of best results is the authors' own judgment and is not tested in the paper. The idea connects to the mixedeconomy concept (1.1.12) and to the wider debate over the roles of state and market.",
+    "highlights": [
+      "Links to the mixedeconomy concept (1.1.12) and to the statevsmarket debate.",
+      "Claim of \"best results\" is the authors' judgment, not tested in the paper."
+    ],
+    "related_concepts": [
+      "1.1.10",
+      "1.1.11",
+      "1.1.12",
+      "1.2.5",
+      "1.2.6"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "2-1-4-creative-economy",
+    "title": "2.1.4 Creative economy",
+    "source_id": "2.1.4",
+    "category": "2",
+    "category_name": "Modern & Emerging Economic Models",
+    "chapter": "",
+    "definition": "The creative economy is an economy built on creative industries, which produce goods with cultural and symbolic value from imagination, talent and skill.",
+    "overview": "The concept is old, and what is new is the scale of the link between creativity and economic value. Its scope has widened from music and film to applied arts, software, video games and marketing. It has three elements: the creative person, the economic value created, and legal protection of intellectual property. It creates new, often wellpaid jobs based on skill and talent, and definitions range from creative clusters, to professional occupations and industries, to a holistic view of culture, economy and technology (UNDP 2008).",
+    "highlights": [
+      "Its proponents are often from applied arts and technical fields rather than economics.",
+      "Scope has widened from music and film to applied arts, software, video games, and marketing.",
+      "Three elements: the creative person, the economic value created, and legal protection of intellectual property.",
+      "Creates new, often wellpaid jobs based on skill and talent.",
+      "Definitions range from creative clusters, to professional occupations and industries, to a holistic view of culture, economy, and technology (UNDP 2008)."
+    ],
+    "related_concepts": [
+      "1.2.7",
+      "3.1.6",
+      "1.1.39",
+      "2.1.5"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "2-1-5-knowledge-economy-vs-knowledge-based-economy",
+    "title": "2.1.5 Knowledge economy vs knowledge-based economy",
+    "source_id": "2.1.5",
+    "category": "2",
+    "category_name": "Modern & Emerging Economic Models",
+    "chapter": "",
+    "definition": "The knowledge economy is an economy in which the management and production of knowledge drive growth, while the knowledgebased economy applies knowledge through technology in products.",
+    "overview": "The paper presents knowledge as the most important growth potential, driven by information and communication technology, and notes it is often equated with an economy based on human or intellectual capital. It draws on Drucker's distinction between manual workers and knowledge workers. The main difficulty it names is formalizing knowledge and the process of acquiring it, and it says the knowledge economy will not replace economies of scale but will be folded into their development.",
+    "highlights": [
+      "Often equated with an economy based on human or intellectual capital.",
+      "Draws on Drucker's distinction between manual workers and knowledge workers.",
+      "Multidisciplinary: economists, technologists, computer scientists, and others.",
+      "Main difficulty: formalizing knowledge and the process of acquiring it.",
+      "Will not replace economies of scale; it is folded into their development."
+    ],
+    "related_concepts": [
+      "1.2.7",
+      "3.1.6",
+      "1.1.39",
+      "2.1.4"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "2-1-6-the-entrepreneurial-economy-and-modern-era-uncertainty",
+    "title": "2.1.6 The entrepreneurial economy and modern-era uncertainty",
+    "source_id": "2.1.6",
+    "category": "2",
+    "category_name": "Modern & Emerging Economic Models",
+    "chapter": "",
+    "definition": "The entrepreneurial economy is a form of modern economy built around innovation, which the paper says the knowledgebased economy is often identified with.",
+    "overview": "The paper's conclusion ties its strands together: today's environment changes fast and is highly uncertain, new products reach markets at shorter intervals, and sustainability demands are tightening. The traits it lists for the entrepreneurial economy are innovation, improvement consistent with ecology, factor mobility and sustainabledevelopment requirements, with human capital and management skills playing the key role. It frames the whole modern economy as turning toward nature, creativity and knowledge.",
+    "highlights": [
+      "Entrepreneurial economy traits: innovation, improvement consistent with ecology, factor mobility, sustainabledevelopment requirements.",
+      "Human capital and management skills play the key role.",
+      "Frames the whole modern economy as turning toward nature, creativity, and knowledge.",
+      "Context is the 2022 inflation wave and fear of a global recession.",
+      "Central banks raise interest rates to slow price rises, at a cost to borrowers.",
+      "Three \"warning signal\" concepts: recession, the yield curve, bear markets.",
+      "Three structural shifts: central bank digital currencies, the gig economy, and moving beyond GDP.",
+      "Relies on authoritative definitions (NBER, UK government, ECB, Bank of England data)."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "3-1-1-preparing-for-a-new-economic-reality",
+    "title": "3.1.1 Preparing for a new economic reality",
+    "source_id": "3.1.1",
+    "category": "3",
+    "category_name": "Global Economy, Money & Markets Today",
+    "chapter": "",
+    "definition": "The new economic reality is the 2022 setting of high inflation, rising recession risk and widening inequality that the Forum's articles address.",
+    "overview": "The Forum's September 2022 Chief Economists Outlook rated a global recession as somewhat likely, and the OECD warned that its indicators had worsened. The cost of living was hitting lowincome economies hardest. Forum leadership pointed to growing inequality within and between countries as a legacy of COVID19, war and uncoordinated policy, and the underlying article asks four chief economists how to protect the most vulnerable.",
+    "highlights": [
+      "Forum leadership pointed to growing inequality within and between countries as a legacy of COVID19, war, and uncoordinated policy.",
+      "Underlying article asks four chief economists how to protect the most vulnerable."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "3-1-2-rising-global-interest-rates",
+    "title": "3.1.2 Rising global interest rates",
+    "source_id": "3.1.2",
+    "category": "3",
+    "category_name": "Global Economy, Money & Markets Today",
+    "chapter": "",
+    "definition": "An interest rate is the price of borrowing money, and rising global interest rates are the response of central banks to fastrising prices.",
+    "overview": "Central banks raise rates to slow inflation: borrowing becomes more expensive, so households and firms spend and invest less, which cools demand. The cost falls on borrowers, because higher rates push up mortgage and credit card repayments. The topic links directly to inflation (1.1.40) and monetary policy (1.1.42), and it shows the householdlevel impact of macro policy.",
+    "highlights": [
+      "Direct link to inflation (1.1.40) and monetary policy (1.1.42).",
+      "Shows the householdlevel impact of macro policy."
+    ],
+    "related_concepts": [
+      "1.1.40",
+      "1.1.42",
+      "4.1.2",
+      "4.1.5",
+      "5.1.2",
+      "5.2.3",
+      "4.2.9",
+      "1.1.19"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "3-1-3-what-is-a-recession",
+    "title": "3.1.3 What is a recession?",
+    "source_id": "3.1.3",
+    "category": "3",
+    "category_name": "Global Economy, Money & Markets Today",
+    "chapter": "",
+    "definition": "A recession, as the US National Bureau of Economic Research defines it, is a significant decline in economic activity spread across the economy and lasting more than a few months.",
+    "overview": "The decline is visible in production, employment and real income, and the recession starts at a peak and ends at a trough. Because the definition looks at several indicators over time rather than a single number, it can be compared with the looser businesscycle treatment in the module (1.1.38) and with FutureLearn's negativegrowth glossary entry (1.2.1).",
+    "highlights": [
+      "Compare with the module's looser businesscycle treatment (1.1.38) and FutureLearn's \"negative growth\" glossary entry (1.2.1)."
+    ],
+    "related_concepts": [
+      "1.1.38",
+      "3.1.9",
+      "3.1.10"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "3-1-4-foreign-currency--forex--reserves",
+    "title": "3.1.4 Foreign currency (forex) reserves",
+    "source_id": "3.1.4",
+    "category": "3",
+    "category_name": "Global Economy, Money & Markets Today",
+    "chapter": "",
+    "definition": "Foreign currency (forex) reserves are cash and other assets, such as gold, held by central banks or institutions like the IMF.",
+    "overview": "They exist as a buffer. Their roles, per the page, are maintaining liquidity in crises and diversifying a country's financial portfolio. A central bank can also use reserves to support its currency, by selling foreign currency when the home currency is under pressure.",
+    "highlights": [
+      "Roles: maintaining liquidity in crises and diversifying a country's financial portfolio."
+    ],
+    "related_concepts": [
+      "1.1.41",
+      "3.1.8",
+      "5.1.1",
+      "5.1.6",
+      "1.1.42",
+      "5.2.1",
+      "5.2.2",
+      "5.3.1"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "3-1-5-central-bank-digital-currencies--cbdcs",
+    "title": "3.1.5 Central bank digital currencies (CBDCs)",
+    "source_id": "3.1.5",
+    "category": "3",
+    "category_name": "Global Economy, Money & Markets Today",
+    "chapter": "",
+    "definition": "A central bank digital currency (CBDC) is electronic money issued by a central bank.",
+    "overview": "The European Central Bank describes it as a riskfree form of money guaranteed by the state, which distinguishes it from private cryptoassets. The page notes that more than 100 countries were exploring CBDCs in 2022, a count that is likely out of date. The topic sits alongside digital markets (1.1.29) and the digital economy (1.2.7).",
+    "highlights": [
+      "Distinct from private cryptoassets because the state backs it.",
+      "The 2022 country count is likely out of date."
+    ],
+    "related_concepts": [
+      "1.1.29",
+      "1.2.7"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "3-1-6-the-gig-economy",
+    "title": "3.1.6 The gig economy",
+    "source_id": "3.1.6",
+    "category": "3",
+    "category_name": "Global Economy, Money & Markets Today",
+    "chapter": "",
+    "definition": "The gig economy, in the UK government's description, is a labour market in which work is exchanged for money through digital platforms that match providers and customers on shortterm, paypertask terms.",
+    "overview": "It offers workers freedom and flexibility and gives customers ondemand services. It also raises policy questions about benefits, income security and training. It overlaps with FutureLearn's gigeconomy entry (1.2.7) and connects to unemployment (1.1.39).",
+    "highlights": [
+      "Overlaps with FutureLearn's gigeconomy entry (1.2.7).",
+      "Strong candidate for a labourmarkets page on the site."
+    ],
+    "related_concepts": [
+      "1.2.7",
+      "1.1.39",
+      "2.1.4",
+      "2.1.5"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "3-1-7-beyond-gdp",
+    "title": "3.1.7 Beyond GDP",
+    "source_id": "3.1.7",
+    "category": "3",
+    "category_name": "Global Economy, Money & Markets Today",
+    "chapter": "",
+    "definition": "Beyond GDP refers to measures of wellbeing that go beyond gross domestic product, which many economists consider an outdated yardstick.",
+    "overview": "The page notes that even GDP's inventor, Simon Kuznets, argued for a new measure. The Forum's 2021 postCOVID proposal is a scorecard balancing four dimensions: prosperity, the planet, people and the role of institutions. It is a counterpoint to the module's GDPcentred treatment (1.1.35), since GDP counts output rather than wellbeing.",
+    "highlights": [
+      "Counterpoint to the module's GDPcentred treatment (1.1.35)."
+    ],
+    "related_concepts": [
+      "1.1.35",
+      "1.1.36",
+      "1.1.37",
+      "2.1.2"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "3-1-8-sovereign-default",
+    "title": "3.1.8 Sovereign default",
+    "source_id": "3.1.8",
+    "category": "3",
+    "category_name": "Global Economy, Money & Markets Today",
+    "chapter": "",
+    "definition": "A sovereign default occurs when a government cannot or will not meet some or all of its debt payments.",
+    "overview": "The page cites 147 governments defaulting since 1960 (Bank of England data). A poor credit rating makes it hard to raise new debt, and credit rating agencies assess a debtor's ability to repay. The topic connects to budget deficits and government debt (1.1.41): borrowing to fund deficits is sustainable only while lenders believe they will be repaid.",
+    "highlights": [
+      "Credit rating agencies assess a debtor's ability to repay.",
+      "Connects to budget deficits and government debt (1.1.41)."
+    ],
+    "related_concepts": [
+      "1.1.41",
+      "3.1.4",
+      "5.1.5",
+      "5.2.4"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "3-1-9-the-yield-curve",
+    "title": "3.1.9 The yield curve",
+    "source_id": "3.1.9",
+    "category": "3",
+    "category_name": "Global Economy, Money & Markets Today",
+    "chapter": "",
+    "definition": "A yield curve is a graph of the returns investors can expect on bonds that mature at different times.",
+    "overview": "The page cites Fidelity as saying it can help gauge the economy's direction, and it is read as a picture of bond investors' feelings about risk. It is a financialmarket indicator often discussed alongside recession risk, so it connects to the business cycle (1.1.38).",
+    "highlights": [
+      "A financialmarket indicator often discussed alongside recession risk."
+    ],
+    "related_concepts": [
+      "1.1.38",
+      "3.1.3",
+      "3.1.10",
+      "4.2.1",
+      "4.2.5",
+      "4.2.6",
+      "1.2.1",
+      "4.2.12"
+    ],
+    "widget": "yield_curve",
+    "has_interactive": true
+  },
+  {
+    "id": "3-1-10-bear-market",
+    "title": "3.1.10 Bear market",
+    "source_id": "3.1.10",
+    "category": "3",
+    "category_name": "Global Economy, Money & Markets Today",
+    "chapter": "",
+    "definition": "A bear market is a market with prolonged price declines, often measured on an index such as the S&P 500.",
+    "overview": "Bear markets can accompany recessions, and the causes the page mentions range from pandemics to wars. The topic pairs with the stock market definition in 1.2.1 and the stock market concepts in Source 4.2 (4.2.1 and 4.2.12).",
+    "highlights": [
+      "Pair with the stock market definition in 1.2.1 and the stock market concepts in 4.2 (4.2.1, 4.2.12).",
+      "Tax practice generally treats as banking whatever the central bank or regulator does, and follows best accounting practice.",
+      "Interest payable and bad debts are the special deduction issues.",
+      "Baddebt relief follows one of three approaches: commercial accounts, regulatory, or chargeoff.",
+      "Trading assets and financial instruments are usually marked to market, with accrual treatment for documented hedges.",
+      "International issues dominate for multinational banks: double tax relief, branches vs subsidiaries, transfer pricing.",
+      "Turnover taxes on gross income are not seen as best practice.",
+      "Data reflects roughly 2002–2004 practice, so it is dated."
+    ],
+    "related_concepts": [
+      "1.1.38",
+      "3.1.3",
+      "3.1.9",
+      "4.2.1",
+      "4.2.5",
+      "4.2.6",
+      "1.2.1",
+      "4.2.12"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-1-1-what-counts-as--banking",
+    "title": "4.1.1 What counts as \"banking\"",
+    "source_id": "4.1.1",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "Banking, for tax purposes, is whatever the central bank or regulator treats as banking.",
+    "overview": "Traditional core functions were accepting deposits, honouring cheques, keeping current accounts and lending, with income from the interest margin. Modern banks earn much from fees and trade instruments on their own account, and insurers and others now do banklike business, so tax law rarely defines banking in statute. Retail banks serve many small customers, while wholesale banks (investment and merchant) serve few large ones.",
+    "highlights": [
+      "Retail banks serve many small customers; wholesale banks (investment and merchant) serve few large ones.",
+      "Tax treats as banking whatever regulators treat as banking."
+    ],
+    "related_concepts": [
+      "4.1.6",
+      "1.2.1"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-1-2-income-from-assets--interest--discounts--dividends",
+    "title": "4.1.2 Income from assets: interest, discounts, dividends",
+    "source_id": "4.1.2",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "Income from assets is the interest, discounts, premiums and dividends a bank earns on what it holds.",
+    "overview": "Interest, discounts and premiums are normally taxed on an accrual basis (when earned, not when received), with marktomarket treatment in some trading cases. Dividends between resident companies are normally not taxed again, except when the shares are held as trading stock, in which case they are taxed as income.",
+    "highlights": [
+      "Accrual: income recognized in the period earned.",
+      "Dividends on tradingstock shares are taxed as income."
+    ],
+    "related_concepts": [
+      "1.1.40",
+      "3.1.2",
+      "1.1.42",
+      "4.1.5"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-1-3-gains-and-losses-on-realizing-assets",
+    "title": "4.1.3 Gains and losses on realizing assets",
+    "source_id": "4.1.3",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "Gains and losses on realizing assets arise when a bank sells or otherwise disposes of an asset.",
+    "overview": "Gains and losses on fixed assets are recognized on realization. Assets held to meet payment demands or for trading are increasingly marked to market, meaning valued by what the asset could be exchanged for between informed, willing parties. Loan novations, assignments, swaps and securitizations can create losses, which are recognized currently if done at arm's length, and stock lending and repurchase agreements (REPOs) are taxed by their substance, not their legal form.",
+    "highlights": [
+      "Mark to market: value by what the asset could be exchanged for between informed, willing parties.",
+      "Stock lending and repurchase agreements (REPOs) are taxed by their substance, not their legal form."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-1-4-fees-and-other-income",
+    "title": "4.1.4 Fees and other income",
+    "source_id": "4.1.4",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "Fee income is what a bank earns for services rather than from lending, such as retail services, custody and advice, capitalmarket work, guarantees and debt factoring.",
+    "overview": "Fees are recognized when earned and receivable, and fees for multiyear facilities may be spread over time. The rule is the same for commercial accounting and for tax.",
+    "highlights": [
+      "Same rule for commercial accounting and tax."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-1-5-interest-payable",
+    "title": "4.1.5 Interest payable",
+    "source_id": "4.1.5",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "Interest payable is the interest a bank pays on its deposits and borrowings.",
+    "overview": "It is normally deductible on an accrual basis. Exceptions apply when the interest looks like a dividend: abovemarket rates, payments tied to profits or limitedrecourse loans. Interest on core regulatory capital (Tier 1, 2, 3) is not deductible in principle, and banks have used offshore vehicles to create capital that is deductible, which links to thin capitalization. Disallowed interest may be taxed like a dividend.",
+    "highlights": [
+      "Interest on core regulatory capital (Tier 1, 2, 3) is not deductible in principle.",
+      "Banks have used offshore vehicles to create capital that is deductible; this links to thin capitalization.",
+      "Disallowed interest may be taxed like a dividend."
+    ],
+    "related_concepts": [
+      "1.1.40",
+      "3.1.2",
+      "1.1.42",
+      "4.1.2",
+      "6.2.8",
+      "6.1.7",
+      "6.3.4"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-1-6-bad-debts-and-loan-loss-provisions",
+    "title": "4.1.6 Bad debts and loan-loss provisions",
+    "source_id": "4.1.6",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "Bad debts and loanloss provisions are amounts set aside, or written off, for loans that are unlikely to be repaid.",
+    "overview": "Relief for impaired debts is especially important for banks because lending is their core business. Specific provisions (for identified problem loans) are usually relieved, with clawback if the debt is repaid or the provision proves excessive, while general provisions (against possible future problems) get less relief. Three approaches are described: commercial accounts (follow accounting rules, often specific provisions only), regulatory (tie relief to the minimum provisions the regulator requires) and chargeoff (relief only after writeoff, considered too restrictive). Unpaid interest on impaired loans goes to a suspense account and is taxed if later received.",
+    "highlights": [
+      "Commercial accounts approach: follows accounting rules, often specific provisions only.",
+      "Regulatory approach: ties relief to the minimum provisions the regulator requires, often disallowing general provisions.",
+      "Chargeoff approach: relief only after debts are written off as irrecoverable; considered too restrictive.",
+      "Unpaid interest on impaired loans goes to a suspense account and is taxed if later received.",
+      "Recapitalization: if public funds cover a bank's losses, the matching tax losses are written off too (no \"double dipping\").",
+      "Table 1.1 examples (c. 2002): general provisions deductible in China (1% domestic, 3% foreigninvested enterprises), Singapore, Japan, Germany, and Italy with limits; not deductible in the UK, Netherlands, Hong Kong, Australia, Korea, New Zealand, or the US."
+    ],
+    "related_concepts": [
+      "4.1.1",
+      "1.2.1"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-1-7-derivatives-and-other-financial-instruments",
+    "title": "4.1.7 Derivatives and other financial instruments",
+    "source_id": "4.1.7",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "Derivatives and other financial instruments are contracts and securities that banks hold for client service, trading, hedging, speculation and as intermediaries.",
+    "overview": "The usual practice is to mark them to market. The main exception is instruments held to hedge the bank's own risks, which may use accrual treatment if the hedge is documented and the other side is not marked to market. The consistency principle requires both sides of a hedge to be valued the same way, and detailed treatment is left to another chapter of the volume.",
+    "highlights": [
+      "Consistency principle: both sides of a hedge valued the same way.",
+      "Detailed treatment is left to another chapter of the volume."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-1-8-foreign-exchange-gains-and-losses",
+    "title": "4.1.8 Foreign exchange gains and losses",
+    "source_id": "4.1.8",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "Foreign exchange gains and losses are the changes in the domesticcurrency value of a bank's foreigncurrency assets and liabilities.",
+    "overview": "Companies generally keep accounts in domestic currency. Gains and losses on monetary items, which are most of a bank's assets and liabilities, are recognized at the balancesheet date, while fixed and intangible assets are converted at purchase and recognized on disposal. Hedged fixed assets may offset gains and losses so that only the net is taxed, and, rarely, banks working mainly in US dollars may keep tax accounts in foreign currency.",
+    "highlights": [
+      "Hedged fixed assets may offset gains and losses so only the net is taxed.",
+      "Rarely, banks working mainly in US dollars may keep tax accounts in foreign currency."
+    ],
+    "related_concepts": [
+      "5.2.1",
+      "5.2.2",
+      "1.1.19",
+      "1.1.15",
+      "6.2.1",
+      "6.2.9",
+      "6.2.10"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-1-9-double-tax-relief",
+    "title": "4.1.9 Double tax relief",
+    "source_id": "4.1.9",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "Double tax relief is a credit or deduction that stops the same income being taxed in two countries.",
+    "overview": "Banks generally get the same foreign tax credit as other businesses, limited to the tax that would apply domestically, with any excess deductible as a cost. Lending abroad creates a special problem because foreign withholding tax hits gross interest while the bank's profit is only the margin. Some countries cap credit relief on interest (for example at 15%), antiavoidance rules target routing through connected businesses, and tax sparing recognizes foreign tax that the foreign country's incentives spared.",
+    "highlights": [
+      "Some countries cap credit relief on interest (e.g., 15%).",
+      "Antiavoidance rules target routing through connected businesses.",
+      "\"Tax sparing\" recognizes foreign tax that was spared by the foreign country's incentives."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-1-10-foreign-banks--branches--and-transfer-pricing",
+    "title": "4.1.10 Foreign banks, branches, and transfer pricing",
+    "source_id": "4.1.10",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "Transfer pricing is the setting of prices for transactions between connected parties so that they reflect arm'slength prices, and this section also covers how foreign banks' branches and subsidiaries are taxed.",
+    "overview": "Double tax agreements and OECD guidelines govern branches and subsidiaries. Interest a branch pays its foreign head office is not normally deductible, except on loans made in ordinary banking business. The OECD splits lending into six components, of which the first four (sourcing, assessing, negotiating, deciding) matter most in assigning profit, while investment banking profits are hard to locate, so a profitsplitting formula may be used. Modern finance moves information and assets across borders at the click of a button, which makes enforcement harder.",
+    "highlights": [
+      "OECD splits lending into six components; the first four (sourcing, assessing, negotiating, deciding) matter most in assigning profit.",
+      "Investment banking profits are hard to locate, so a profitsplitting formula may be used.",
+      "Modern finance moves information and assets across borders at the click of a button, which makes enforcement harder."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-1-11-turnover-taxes-on-financial-institutions",
+    "title": "4.1.11 Turnover taxes on financial institutions",
+    "source_id": "4.1.11",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "A turnover tax on financial institutions is a tax on a bank's gross interest and other income rather than on its net profit.",
+    "overview": "Some countries use them because they raise revenue without needing to compute net profit. But they ignore ability to pay and hit thinmargin businesses hard, so they are not seen as best practice and are absent from most modern tax systems.",
+    "highlights": [
+      "Not seen as best practice and absent from most modern tax systems.",
+      "The stock market includes both primary markets, where companies first issue shares, and secondary markets, where investors trade existing shares.",
+      "Public companies in the United States must register with the SEC and make disclosures, including financial statements.",
+      "Shares represent fractional ownership; common shares often carry voting rights and may receive dividends.",
+      "Exchanges provide organized, regulated trading venues and liquidity; OTC markets involve direct brokerdealer negotiation and generally have less public scrutiny.",
+      "Stock prices emerge from buyers' demand meeting sellers' supply, influenced by earnings, profitability, sentiment, interest rates and geopolitical events.",
+      "Indexes such as the S&P 500 summarize the performance of groups of companies and serve as benchmarks.",
+      "The article's regulatory discussion is U.S.specific: it names the SEC and FINRA.",
+      "Investopedia, Stock Markets (published 6 June 2019), seen only as a search snippet: https://www.investopedia.com/stockmarkets4689749",
+      "U.S. SEC, What We Do (the threepart mission: protect investors, maintain fair, orderly and efficient markets, facilitate capital formation): https://www.sec.gov/about/whatwedo",
+      "Investor.gov, The Role of the SEC: https://www.investor.gov/introductioninvesting/basics/rolesec",
+      "S&P Global (index methodology, not opened): https://www.spglobal.com"
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-1-stock-market",
+    "title": "4.2.1 Stock market",
+    "source_id": "4.2.1",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "The stock market is the network of exchanges and overthecounter venues where investors buy and sell shares in publicly traded companies.",
+    "overview": "It is broader than any single exchange: the NYSE and Nasdaq are components of a global system that also includes brokerages and OTC markets. Companies use it to raise capital by issuing shares, while investors use it to buy ownership stakes, receive possible dividends, vote on corporate matters, or sell shares later. The article notes that stock market is often used loosely to mean a particular exchange, but the term covers the whole trading system.",
+    "highlights": [
+      "It connects companies seeking capital with investors seeking ownership opportunities.",
+      "It includes exchanges, brokers and overthecounter trading venues.",
+      "It supports capital formation, liquidity, price discovery and corporate transparency."
+    ],
+    "related_concepts": [
+      "4.2.5",
+      "4.2.6",
+      "1.2.1",
+      "3.1.10",
+      "4.2.12",
+      "3.1.9"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-2-public-company",
+    "title": "4.2.2 Public company",
+    "source_id": "4.2.2",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "A public company is a company whose shares can be offered to the general public and traded through public markets.",
+    "overview": "In the U.S. context described by the source, a company must register with the SEC before selling shares publicly and must comply with disclosure and financialreporting rules. Public status gives a company access to a broad pool of investors, but it also brings reporting and regulatory obligations. The article identifies the IPO (initial public offering, a company's first public sale of shares) as the traditional route to going public and notes SPACs as an alternative route that emerged in the 2020s.",
+    "highlights": [
+      "Public companies must meet listing, disclosure and reporting requirements.",
+      "An IPO is a common route through which a private company first offers shares publicly, and it is a primarymarket event.",
+      "Public reporting makes company information, including financial statements (see Category 6), more visible to investors."
+    ],
+    "related_concepts": [
+      "6.1.1",
+      "6.2.1",
+      "6.3.1",
+      "6.5.1"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-3-share",
+    "title": "4.2.3 Share",
+    "source_id": "4.2.3",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "A share, or stock, is a unit of ownership in a company.",
+    "overview": "The proportion of a company owned by a shareholder depends on the number of shares issued and the number of shares that person holds. Large public companies may have millions or billions of shares, so one share can represent a very small ownership fraction. Owners may receive part of company profits as dividends and may have voting rights, depending on the share class.",
+    "highlights": [
+      "A share represents an ownership claim, not a loan to the company.",
+      "Ownership percentage depends on shares held relative to total shares issued.",
+      "Common shares commonly provide voting rights; dividend rights depend on the company and share type."
+    ],
+    "related_concepts": [
+      "6.1.10",
+      "4.2.9"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-4-primary-market",
+    "title": "4.2.4 Primary market",
+    "source_id": "4.2.4",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "The primary market is where a company first sells newly issued shares to investors.",
+    "overview": "Buyers in this market purchase shares directly from the issuing company or through intermediaries involved in the offering. The source includes early investors, company insiders and financial underwriters among primarymarket participants. It also includes private placements, in which a company sells shares directly to investors without a public registration process.",
+    "highlights": [
+      "The company receives the proceeds from newly issued shares.",
+      "IPOs occur in the primary market.",
+      "Private placements are also part of the primary market."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-5-secondary-market",
+    "title": "4.2.5 Secondary market",
+    "source_id": "4.2.5",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "The secondary market is where investors trade existing shares with one another.",
+    "overview": "After shares have been issued, subsequent purchases and sales generally occur in the secondary market. The issuing company does not receive the money from these later trades; the seller receives payment from the buyer. Exchanges and OTC venues can both host secondarymarket trading.",
+    "highlights": [
+      "Secondarymarket trading transfers ownership between investors.",
+      "The company does not receive proceeds from ordinary secondarymarket share sales.",
+      "Liquidity depends on the availability of willing buyers and sellers."
+    ],
+    "related_concepts": [
+      "4.2.1",
+      "4.2.6",
+      "1.2.1",
+      "3.1.10",
+      "4.2.12",
+      "3.1.9"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-6-stock-exchange",
+    "title": "4.2.6 Stock exchange",
+    "source_id": "4.2.6",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "A stock exchange is an organized, regulated venue where securities are bought and sold.",
+    "overview": "Exchanges are mostly electronic rather than physical places, but they provide a central system for trading and price information. They set listing and trading rules, publish realtime price information and help create liquidity by bringing together many buyers and sellers. Examples named in the article include the NYSE, Nasdaq, London Stock Exchange, Tokyo Stock Exchange and Shanghai Stock Exchange.",
+    "highlights": [
+      "Exchanges provide transparency through price and trading information.",
+      "Liquidity is easier when many participants trade the same security.",
+      "Exchanges may crosslist shares from other markets."
+    ],
+    "related_concepts": [
+      "4.2.1",
+      "4.2.5",
+      "1.2.1",
+      "3.1.10",
+      "4.2.12",
+      "3.1.9"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-7-over-the-counter-market",
+    "title": "4.2.7 Over-the-counter market",
+    "source_id": "4.2.7",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "An overthecounter (OTC) market is a decentralized venue where securities are traded directly through brokers and dealers rather than on a formal exchange.",
+    "overview": "OTC trading commonly involves smaller or less liquid companies that may not meet exchangelisting requirements. Because public information and trading scrutiny can be lower, investors may find it harder to obtain reliable information. The article describes OTC trading as occurring through broker and dealer networks using computer systems and telephone communication.",
+    "highlights": [
+      "OTC trading is negotiated through brokers and dealers.",
+      "It may involve less liquid securities than exchangelisted shares.",
+      "Information availability can be more limited than on a major exchange."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-8-broker",
+    "title": "4.2.8 Broker",
+    "source_id": "4.2.8",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "A broker is a licensed intermediary that buys and sells securities for clients.",
+    "overview": "Brokers connect investors to securities markets and execute trades. Fullservice brokers may provide advice, portfolio management and personalized services, while discount brokers generally offer a lowercost, more selfdirected service. Online platforms have made electronic trading more accessible and often provide research tools and market data.",
+    "highlights": [
+      "Brokers execute buy and sell orders for clients.",
+      "Service level and cost differ between fullservice and discount brokers.",
+      "In the U.S., brokers are overseen by the SEC and FINRA."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-9-stock-price-determination",
+    "title": "4.2.9 Stock price determination",
+    "source_id": "4.2.9",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "A stock price is the amount agreed between a buyer and seller for one share.",
+    "overview": "Prices shown on trading screens arise from the interaction of demand from prospective buyers and supply from existing holders willing to sell, the same supplyanddemand logic as in Source 1.1 (1.1.19). The source identifies fundamental factors, such as earnings and profitability, and technical factors, such as market sentiment and historical price trends. News about profits, interestrate changes and geopolitical events can alter investor confidence and therefore prices.",
+    "highlights": [
+      "A trade requires a buyer and seller to agree on a price.",
+      "Higherthanexpected profits may increase demand for shares.",
+      "Interest rates and geopolitical events can affect investor confidence."
+    ],
+    "related_concepts": [
+      "1.1.19",
+      "3.1.2",
+      "1.1.42",
+      "6.1.10",
+      "4.2.3"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-10-market-index",
+    "title": "4.2.10 Market index",
+    "source_id": "4.2.10",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "A market index is a measure that tracks the performance of a selected group of securities.",
+    "overview": "Indexes give investors a snapshot of a broad market or a particular sector. The article names the Dow Jones Industrial Average, which includes 30 large public companies, and the S&P 500, which represents the 500 largest U.S. public companies. Indexes are used as benchmarks against which individual stocks or portfolios can be compared.",
+    "highlights": [
+      "An index summarizes the performance of a defined group of securities.",
+      "The S&P 500 is a broad U.S. market benchmark; it is U.S.focused and does not represent all global stocks.",
+      "Indexes can focus on the whole market or a sector. Detailed index methodology was not verified from S&P Global."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-11-dividend",
+    "title": "4.2.11 Dividend",
+    "source_id": "4.2.11",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "A dividend is a distribution of part of a company's profits to shareholders.",
+    "overview": "Investors may buy shares partly to receive dividend income. The article says ownership can give shareholders a right to part of company profits, often paid as dividends, although payments depend on company decisions and financial capacity. Preferred shares generally provide a set dividend and have priority over common shares in profit distributions or bankruptcy recoveries.",
+    "highlights": [
+      "Dividends are one possible return from owning shares.",
+      "Companies decide whether and how much to pay.",
+      "Preferred shares commonly have stated dividends and priority over common shares.",
+      "Dividends paid reduce retained earnings and appear in the financing section of the cash flow statement (see 6.2.10 and 6.3.4)."
+    ],
+    "related_concepts": [
+      "6.2.10",
+      "6.3.4"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-12-bull-and-bear-markets",
+    "title": "4.2.12 Bull and bear markets",
+    "source_id": "4.2.12",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "A bull market is a period of generally rising prices, and a bear market is a period of generally falling prices.",
+    "overview": "In the article, rising prices are associated with corporate profitability and economic growth, while declining prices can signal problems ahead. The article does not give a precise percentage threshold for either term. Source 3.1 also defines a bear market (3.1.10) as prolonged price declines, often measured on an index such as the S&P 500.",
+    "highlights": [
+      "Bull markets involve broadly rising prices.",
+      "Bear markets involve broadly falling prices.",
+      "This source does not give a precise threshold for either term; use a dedicated authoritative source before quoting one."
+    ],
+    "related_concepts": [
+      "4.2.1",
+      "4.2.5",
+      "4.2.6",
+      "1.2.1",
+      "3.1.10",
+      "3.1.9"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "4-2-13-investor-protection",
+    "title": "4.2.13 Investor protection",
+    "source_id": "4.2.13",
+    "category": "4",
+    "category_name": "Financial Sector & Financing",
+    "chapter": "",
+    "definition": "Investor protection refers to rules and oversight intended to reduce fraud, manipulation and unfair trading practices.",
+    "overview": "The U.S. Securities and Exchange Commission describes a threepart mission: to protect investors, to maintain fair, orderly and efficient markets, and to facilitate capital formation. Investopedia's article describes the SEC as enforcing laws against market manipulation, insider trading and other fraud. These functions explain why public markets rely on disclosure and regulation, including the financial statements covered in Category 6.",
+    "highlights": [
+      "Regulation aims to support fair and orderly markets.",
+      "Disclosure helps investors make informed decisions.",
+      "The SEC is a U.S. regulator, not a global regulator; Jordan's regulators have not been researched yet.",
+      "The Central Bank of Jordan (CBJ) has kept the dinar fixed against the US dollar at about 709 fils per dollar since 1995.",
+      "The CBJ's key rate was left at 5.75% at its 2026 meetings, and inflation stayed below about 2.5%.",
+      "The IMF reports growth of 2.5% in 2024 and 2.8% in 2025, and projects 2.7% for 2026.",
+      "Unemployment in Q2 2026 was 16.1% overall, 21.0% for Jordanians and 8.2% for nonJordanians.",
+      "Official public debt (excluding Social Security Corporation holdings) was about 84% of GDP in mid2026, against a target of about 80% by 2028.",
+      "Foreign aid and the banking sector's balance sheets are not covered by the sources used here.",
+      "IMF Press Release 26/211, 17 June 2026 (fifth review): https://www.imf.org/en/news/articles/2026/06/17/pr26211jordanimfcompletes5threviewundereffand2ndreviewunderrsfarrangements",
+      "IMF Press Release 26/119, April 2026 (stafflevel agreement, fifth review): https://www.imf.org/en/news/articles/2026/04/15/pr26119jordanimfreachesagreementon5threvundereffand2ndrevrsfarrang",
+      "IMF Press Release 26/347, 3 November 2026 (sixth review): https://www.imf.org/en/news/articles/2026/11/03/pr26347jordanimfreachesslaon6threvundereffand3rdrevofrsfarrangement",
+      "IMF Press Release 25/221, 25 June 2025 (third review, 2024 growth): https://www.imf.org/en/news/articles/2025/06/25/pr25221jordanimfcompletes3rdreveffarrangementapprovesus700millarrangementunderrsf",
+      "IMF, 2024 Article IV and second review, 13 December 2024 (programme size): https://imf.org/en/News/Articles/2024/12/13/pr24473jordanimfconcludes2024aivconsultationandsecondreviewundertheeff",
+      "Arab News on the sixthreview agreement: https://www.arabnews.com/business/jordanimfreachstafflevelagreementonreviewspavingwayfor294m3009744",
+      "Petra on the IMF fifth review (reserves): https://petra.gov.jo/en/news/imfapprovesfifthreviewofjordansextendedfundfacilityprogramme",
+      "Jordan Times on the CBJ rate decision and indicators, June 2026: https://jordantimes.com/news/local/cbjkeepskeyinterestrateunchangedat575amidstableeconomicindicators",
+      "Petra, CBJ rate decision, 30 July 2026: https://www.petra.gov.jo/en/news/cbjkeepskeyinterestrateunchangedat575",
+      "Jordan News, CBJ rate decision and inflation, 2026: https://www.jordannews.jo/Section112/Economy/CentralBankofJordanKeepsMainInterestRateUnchangedat57553662",
+      "Jordan News, CBJ governor on the dinar peg and rate rises: https://www.jordannews.jo/Section113/All/CBJgovernorsaysdinartodollarpegbestpolicyfornatleconomy26893",
+      "Jordan News on the CBJ 2022 annual report (peg since 1995): https://www.jordannews.jo/Section109/News/Jordaniandinarexchangeraterisesagainstsomecurrenciesin202230479",
+      "UPI, 23 November 1995, on the dinardollar peg: https://www.upi.com/Archives/1995/11/23/JordanpegsdinartoUSdollar/7677817102800/",
+      "Jordan Times opinion, Jordan's dollar peg: https://jordantimes.com/opinion/farisalhadidi/jordansdollarpeganchororobstacle",
+      "Jordan Times on Department of Statistics Q1 2026 unemployment: https://jordantimes.com/news/local/unemploymentratedeclinesto161inq12026dos",
+      "Jordan News on Q2 2026 unemployment: https://www.jordannews.jo/Section109/News/JordanianUnemploymentRateFallsto21inQ2202654976",
+      "Jordan News on 2025 job creation: https://www.jordannews.jo/Section113/All/JordanSeesRecordJobCreationforJordaniansin2025UnemploymentRateFalls55120",
+      "Petra on public debt management, July 2026: https://www.petra.gov.jo/en/news/internationalagenciespraisejordanspublicdebtmanagement",
+      "Jordan News on public debt at 84% of GDP: https://www.jordannews.jo/Section112/Economy/GovernmentCommittedtoReducingPublicDebtBelow80ofGDP52775",
+      "Ministry of Finance, Jordan Debt Quarterly Report, Q1 2026: https://www.mof.gov.jo/ebv4.0/rootstorage/ar/eblistpage/publicdebtquarterlyreportq12026.pdf",
+      "World Bank Macro Poverty Outlook, Jordan (2026): https://thedocs.worldbank.org/en/doc/65cf93926fdb3ea23b72f277fc249a720500042021/related/mpojor.pdf",
+      "Official sites to verify against before publishing: cbj.gov.jo (Central Bank of Jordan), dos.gov.jo (Department of Statistics), mof.gov.jo (Ministry of Finance)."
+    ],
+    "related_concepts": [],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "5-1-1-jordan-s-exchange-rate-regime--the-dinar-peg",
+    "title": "5.1.1 Jordan's exchange-rate regime: the dinar peg",
+    "source_id": "5.1.1",
+    "category": "5",
+    "category_name": "Country Context: Jordan & Ethiopia",
+    "chapter": "",
+    "definition": "A fixed (pegged) exchange rate is a regime in which the central bank keeps its currency at a set value against another currency; Jordan holds the dinar at about 0.709 dinars per US dollar.",
+    "overview": "The CBJ has kept this fixed dollar rate since 1995, and news reports at the time said it ended speculation about devaluation after the late1980s debt crisis. It works because the central bank stands ready to buy and sell dollars at the fixed rate (a band of 708 to 710 fils per dollar was announced in 1995) and holds large foreigncurrency reserves to back that promise. The CBJ governor has called the peg the best and most appropriate policy for the economy. The tradeoff, raised by commentators, is that Jordan must keep its monetary policy aligned with US conditions even when local conditions differ.",
+    "highlights": [
+      "Fixed rate in place since 1995; a report on the CBJ's 2022 annual report describes an average of 709 fils per dollar (Jordan News).",
+      "In November 1995 the CBJ told banks and moneychangers that all dinardollar transactions should stay within 708 to 710 fils; the same package made the dinar convertible for current spending (UPI, 1995).",
+      "Reserves were $27.2 billion at the end of May 2026, enough for 9.5 months of imports of goods and services (CBJ statement, Jordan Times); the IMF cites about $27 billion at the end of Q1 2026.",
+      "Dollarisation of deposits fell to 18.1% by February 2026 from 18.8% a year earlier, which the CBJ reads as rising confidence in the dinar (Jordan Times).",
+      "Commentators note that monetary policy must follow US policy, and that research suggests some autonomy remains because Jordanian rates have not closely followed US rates in the long run (Jordan Times opinion).",
+      "Compare with Ethiopia's marketbased birr (5.2.1) and the sidebyside in 5.3.1."
+    ],
+    "related_concepts": [
+      "5.1.6",
+      "3.1.4",
+      "1.1.42",
+      "5.2.1",
+      "5.2.2",
+      "5.3.1"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "5-1-2-monetary-policy-in-jordan--the-policy-rate-and-inflation",
+    "title": "5.1.2 Monetary policy in Jordan: the policy rate and inflation",
+    "source_id": "5.1.2",
+    "category": "5",
+    "category_name": "Country Context: Jordan & Ethiopia",
+    "chapter": "",
+    "definition": "The policy rate is the main interest rate a central bank sets to steer borrowing costs, and inflation is the sustained rise in the general price level.",
+    "overview": "The CBJ's Open Market Operations Committee sets the key rate, and it kept it at 5.75% at its 2026 meetings, including the decision reported on 30 July 2026 (check cbj.gov.jo for later decisions). Under a dollar peg, the aim is to keep dinar assets attractive and domestic rates in line with regional and international markets, which supports the peg. Inflation has stayed low: the IMF reports 1.8% for 2025 and projects 2.5% for 2026, and the CBJ cited about 1.9% for January to May 2026.",
+    "highlights": [
+      "The committee's stated aims for holding rates are monetary stability, alignment with regional and international rates, and the attractiveness of dinardenominated assets (Jordan Times, Petra, 2026).",
+      "Inflation: 1.88% in the first five months of 2026 against 1.97% a year earlier (Jordan Times); 2.03% for the first half of 2026 (Jordan News). The two reports cover different periods.",
+      "IMF projections (June 2026): inflation of 1.8% in 2025, 2.5% in 2026, 2.3% in 2027 and 2.2% in 2028.",
+      "The World Bank reports that the CBJ cut policy rates by 75 basis points in 2025.",
+      "An earlier statement by the governor said the benchmark rate had been raised by 450 basis points since March 2022 while bank lending rates rose by no more than 119 basis points (Jordan News).",
+      "Links: inflation (1.1.40), monetary policy (1.1.42), rising interest rates (3.1.2)."
+    ],
+    "related_concepts": [
+      "5.2.3",
+      "1.1.40",
+      "1.1.42",
+      "3.1.2"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "5-1-3-jordan-s-growth-and-its-imf-supported-programme",
+    "title": "5.1.3 Jordan's growth and its IMF-supported programme",
+    "source_id": "5.1.3",
+    "category": "5",
+    "category_name": "Country Context: Jordan & Ethiopia",
+    "chapter": "",
+    "definition": "Real GDP growth is the percentage change in an economy's output after removing price changes, and an IMFsupported programme is a loan arrangement that ties financing to agreed reforms.",
+    "overview": "Jordan's programme under the IMF's Extended Fund Facility was approved on 10 January 2024 (about US$1.2 billion), and a Resilience and Sustainability Facility arrangement of about US$700 million followed in June 2025. IMF reports show growth of 2.5% in 2024, 2.8% in 2025 and 3% year on year in the first half of 2026, with 2.7% projected for 2026 and 3.1% for 2027. The authorities commit to gradual fiscal consolidation, meaning deficits are cut step by step, while protecting priority social and development spending. The IMF notes that the regional war weighs on the outlook, including through energy and tourism.",
+    "highlights": [
+      "IMF staff reached a stafflevel agreement on the sixth review after a mission on 21 October to 3 November 2026; Arab News reports it would open the way for about $294 million. Stafflevel agreements still need IMF Board approval.",
+      "In June 2026 the Board completed the fifth review, making about US$134 million (EFF) and US$54 million (RSF) available.",
+      "IMF June 2026 table: real GDP growth 2.8% (2025), 2.7% (2026), 3.1% (2027), 3.0% (2028); combined public sector balance 2.8%, 3.0%, 1.6% and 0.5% of GDP.",
+      "The IMF links gradual consolidation to the MediumTerm Revenue Strategy and spending efficiency.",
+      "Links: GDP (1.1.35), fiscal policy (1.1.43), goals of macroeconomics (1.1.34)."
+    ],
+    "related_concepts": [
+      "5.2.4",
+      "1.1.34",
+      "1.1.35",
+      "1.1.36",
+      "1.1.43"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "5-1-4-unemployment-in-jordan",
+    "title": "5.1.4 Unemployment in Jordan",
+    "source_id": "5.1.4",
+    "category": "5",
+    "category_name": "Country Context: Jordan & Ethiopia",
+    "chapter": "",
+    "definition": "The unemployment rate is the number of unemployed people (those without a job who are actively searching) divided by the labour force.",
+    "overview": "Jordan's Department of Statistics (DoS) reports it quarterly and separately for Jordanians and nonJordanians, because the overall rate mixes two very different groups. In the second quarter of 2026 the overall rate for all residents was 16.1%, the rate for Jordanians was 21.0% and the rate for nonJordanians was 8.2%. Rates are much higher for women than for men, so the textbook types of unemployment (frictional, structural, cyclical, see 1.1.39) are a useful way to think about the pattern, although the releases cited here report rates and not causes.",
+    "highlights": [
+      "Q2 2026: overall 16.1%, down 0.4 points from 16.5% a year earlier; Jordanians 21.0% (21.3% a year earlier); all women 19.9% (DoS, via Jordan News, Arab News and Jordan Times).",
+      "Q1 2026: overall 16.1%; Jordanians aged 15 and over 21.1%; Jordanian women 32.7% and Jordanian men 17.9%; nonJordanians 8.7% (DoS, via Petra and Jordan Times).",
+      "Net job creation for Jordanians was 87,617 in 2025, the highest figure on record, according to a DoS semiannual report cited by Jordan News.",
+      "One economist quoted by Jordan News says further decline depends on the private sector because the public sector can absorb few new workers (an opinion, not a DoS finding).",
+      "Check the table before comparing: the DoS reports rates for different groups and age bands (15 and over, 24 and over).",
+      "Link: unemployment (1.1.39)."
+    ],
+    "related_concepts": [
+      "1.1.39"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "5-1-5-jordan-s-public-debt-and-fiscal-deficit",
+    "title": "5.1.5 Jordan's public debt and fiscal deficit",
+    "source_id": "5.1.5",
+    "category": "5",
+    "category_name": "Country Context: Jordan & Ethiopia",
+    "chapter": "",
+    "definition": "Public debt is the total a government owes from past borrowing, and a fiscal (budget) deficit is the gap that opens when spending exceeds revenue in a year.",
+    "overview": "Jordan's Ministry of Finance reported public debt, excluding holdings by the Social Security Corporation (SSC), of JD 37.38 billion, or 84% of GDP (Government Finance Bulletin, reported July 2026). The government and the IMF aim to bring the ratio to around 80% of GDP by the end of 2028 through gradual consolidation and by reducing the losses of public utilities. The IMF projects the combined public sector deficit at 3.0% of GDP in 2026, narrowing to 0.5% by 2028. Different measures give different ratios, so always check which measure a figure uses.",
+    "highlights": [
+      "The Ministry's methodology excludes SSCheld debt from the official ratio, in line with practice agreed with international agencies (Petra, July 2026).",
+      "The IMF's debt measure is the government's direct and guaranteed debt, including the debts of the electricity company NEPCO and the water authority WAJ (footnote to the IMF table).",
+      "A news report on November 2025 data put total debt at 108.8% of GDP including SSC holdings of about 25.6% of GDP (Jordan News), and the Ministry's Q1 2026 report presents several measures, including a net figure of 78.4% of GDP. These figures describe the same debt on different bases.",
+      "The annual increase in interest payments fell from about 0.95% of GDP in 2024 to about 0.21% in 2025 (public finance bulletin, via Jordan News).",
+      "Banks held 51.4% of gross domestic debt (Ministry of Finance, Q1 2026).",
+      "Links: budget and trade deficits (1.1.41), sovereign default (3.1.8)."
+    ],
+    "related_concepts": [
+      "5.2.4",
+      "1.1.41",
+      "3.1.8"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "5-1-6-jordan-s-external-buffers--reserves--remittances-and-tourism",
+    "title": "5.1.6 Jordan's external buffers: reserves, remittances and tourism",
+    "source_id": "5.1.6",
+    "category": "5",
+    "category_name": "Country Context: Jordan & Ethiopia",
+    "chapter": "",
+    "definition": "Foreigncurrency reserves are a central bank's holdings of foreign assets, remittances are money sent home by citizens working abroad, and tourism income is spending by foreign visitors.",
+    "overview": "These flows bring in the foreign currency Jordan needs to pay for imports and to defend the peg described in 5.1.1. Reserves were $27.2 billion at the end of May 2026, remittances rose 13.3% to $1.6 billion in the first four months of 2026, and tourism income rose 7.6% in 2025 to $7.8 billion. The CBJ and the IMF both describe the external position as strong.",
+    "highlights": [
+      "Reserves cover 9.5 months of imports of goods and services, which the CBJ says is a robust buffer (Jordan Times, 2026).",
+      "Remittances from Jordanians working abroad: up 13.3% to $1.6 billion in the first four months of 2026 (CBJ, via Jordan Times).",
+      "Tourism income: up 7.6% in 2025 to $7.8 billion (CBJ statement, via Jordan News).",
+      "Foreign aid is not covered by the sources used here and remains a gap.",
+      "Links: forex reserves (3.1.4), trade deficit (1.1.41).",
+      "On 29 July 2024 the National Bank of Ethiopia (NBE) replaced a managed exchange rate with a marketbased one.",
+      "The official rate moved from about 57 birr per dollar at endJune 2024 to 136 at endJune 2025 (IMF), and to nearly 162 by midAugust 2026 (Bloomberg, via Addis Standard).",
+      "The NBE's reported foreignexchange losses were about US$2.6 billion equivalent after the reform.",
+      "Headline inflation was 13.9% in 2024/25 and 11.7% year on year in October 2025 (IMF).",
+      "A fouryear US$3.4 billion IMF Extended Credit Facility, approved in July 2024, is on its fifth review.",
+      "EY tax alert on NBE Directive FXD/01/2024: https://www.ey.com/engl/technical/taxalerts/ethiopiamakesmajorchangestoforeignexchangeregime",
+      "Frontier View on the July 2024 reform and the firstweek rate: https://frontierview.com/insights/ethiopiascurrencyreformwillboostforexavailability/",
+      "East African Review on the directive's components and the prereform rate gap: https://www.eastafricanreview.com/?p=1093",
+      "Addis Standard oped on the reform and the parallel market: https://addisstandard.com/?p=45413",
+      "Addis Insight, one year of the reforms: https://addisinsight.net/2025/07/31/ethiopiascentralbankcelebratesoneyearofsweepingreformsaseconomyentersnewera",
+      "Addis Standard via AllAfrica, 19 August 2026 (Bloomberg report on the birr record low): https://allafrica.com/stories/202608200133.html",
+      "AllAfrica, NBE losses after the reform, January 2026: https://allafrica.com/stories/202601230393.html",
+      "IMF Country Report 2026/020, fourth ECF review: https://www.elibrary.imf.org/view/journals/002/2026/020/articleA002en.xml",
+      "IMF Country Report 2026/174, fifth ECF review: https://www.imf.org/en/publications/cr/issues/2026/07/13/thefederaldemocraticrepublicofethiopiafifthreviewundertheextendedcredit577662",
+      "Ministry of Finance of Ethiopia, IMF stafflevel agreement on the fifth review, 3 June 2026: https://www.mofed.gov.et/blog/imfreachesstafflevelagreementonthefifthreviewoftheextendedcreditfacilityforethiopia/",
+      "Addis Insight on the completed fifth review: https://addisinsight.net/2026/07/02/imfcompletesfifthethiopiareviewunlocks464millioninimmediatefunding/",
+      "Birr Metrics on the IMF October 2026 outlook for Ethiopia: https://birrmetrics.com/imfseesethiopiasgrowthslowingto78percent/",
+      "AllAfrica on the IMF third review, July 2025: https://allafrica.com/stories/202507040519.html",
+      "Official sites to verify against before publishing: nbe.gov.et (National Bank of Ethiopia) and imf.org."
+    ],
+    "related_concepts": [
+      "5.1.1",
+      "3.1.4",
+      "1.1.42",
+      "5.2.1",
+      "5.2.2",
+      "5.3.1"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "5-2-1-the-birr-and-ethiopia-s-2024-move-to-a-market-based-exchange-rate",
+    "title": "5.2.1 The birr and Ethiopia's 2024 move to a market-based exchange rate",
+    "source_id": "5.2.1",
+    "category": "5",
+    "category_name": "Country Context: Jordan & Ethiopia",
+    "chapter": "",
+    "definition": "A marketbased (floating) exchange rate is one set by the supply and demand for foreign currency in the market, rather than fixed or managed by the central bank; the birr (ETB) is Ethiopia's currency.",
+    "overview": "On 29 July 2024 the NBE issued Directive FXD/01/2024, ending a longmanaged regime (a crawling peg, in the NBE's description) and allowing banks to buy and sell foreign currency at freely negotiated rates. The reform was backed by the IMF and came with a US$3.4 billion Extended Credit Facility. The stated reason was to remove a longstanding distortion: a parallelmarket rate far above the official one had diverted foreign currency away from banks. The effect was immediate, as the official rate moved from about 57.5 birr per dollar on 26 July to 79.4 on 31 July 2024.",
+    "highlights": [
+      "Before the reform the official rate was about 58.6 birr per dollar while the parallelmarket rate was above 115 (East African Review).",
+      "Reports describe the firstweek fall as roughly 30%; the rate rose about 38% in birr per dollar, so the size depends on whether you measure the birr's value or the dollar's price in birr.",
+      "Other changes in the directive included letting residents open foreigncurrency accounts and removing interestrate ceilings (East African Review).",
+      "Commentators at the time warned that a float could bring volatility and inflation, while supporters expected it to restore stability and private activity (Addis Standard oped; AllAfrica).",
+      "Source 1.1's birr examples predate this reform, so its birr figures describe the earlier regime.",
+      "Links: market equilibrium (1.1.19), forex reserves (3.1.4), the sidebyside in 5.3.1."
+    ],
+    "related_concepts": [
+      "5.1.1",
+      "5.1.6",
+      "3.1.4",
+      "1.1.42",
+      "5.2.2",
+      "5.3.1",
+      "1.1.19",
+      "1.1.15",
+      "4.1.8"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "5-2-2-the-birr-since-the-float--depreciation--intervention-and-the-parallel-market",
+    "title": "5.2.2 The birr since the float: depreciation, intervention and the parallel market",
+    "source_id": "5.2.2",
+    "category": "5",
+    "category_name": "Country Context: Jordan & Ethiopia",
+    "chapter": "",
+    "definition": "Currency depreciation is a fall in a currency's value against other currencies, central bank intervention is selling foreign currency to ease a shortage, and a parallel market is an informal market that trades at a different rate.",
+    "overview": "Since the float the birr has kept weakening, reaching a record low of nearly 162 per dollar in midAugust 2026, about 3.2% weaker for the year, while the dollar traded near 180 birr on the streets of Addis Ababa, roughly 15% above the official rate (Bloomberg, via Addis Standard). Demand for dollars outruns supply mainly because of a structural currentaccount deficit and oil imports, so higher global oil prices add pressure. The NBE has sold large amounts of foreign currency to support the birr, about US$2.2 billion this year according to Bloomberg, and at one auction banks asked for four times the amount offered.",
+    "highlights": [
+      "The IMF reports the official rate at 136 birr per dollar at the end of June 2025.",
+      "Other reporting cited by Addis Standard puts the NBE's injections since January 2026 at roughly US$3 billion, so figures differ by source and period.",
+      "The NBE's reported losses after the reform: about US$2.6 billion equivalent, an operating loss of 428.56 billion birr for the year to 30 June 2025 and negative equity of about 380 billion birr, mostly from revaluing foreigncurrency assets and liabilities (audited statements, as reported by Addis Standard). The same report gives two slightly different foreignexchange loss figures, so check the NBE's statements.",
+      "An IMF report in July put reserves at about US$5.9 billion (as cited by Addis Standard).",
+      "Forecasts differ: Standard Chartered expected about 163 per dollar by yearend and Citigroup 185 to 195. These are forecasts, not data.",
+      "A shortage of dollars at a given price is the same excessdemand picture as in market equilibrium (1.1.19).",
+      "Links: determinants of demand (1.1.15), forex reserves (3.1.4), foreign exchange gains and losses (4.1.8)."
+    ],
+    "related_concepts": [
+      "5.1.1",
+      "5.1.6",
+      "3.1.4",
+      "1.1.42",
+      "5.2.1",
+      "5.3.1",
+      "1.1.19",
+      "1.1.15",
+      "4.1.8",
+      "6.2.1",
+      "6.2.9",
+      "6.2.10"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "5-2-3-inflation-and-monetary-policy-in-ethiopia",
+    "title": "5.2.3 Inflation and monetary policy in Ethiopia",
+    "source_id": "5.2.3",
+    "category": "5",
+    "category_name": "Country Context: Jordan & Ethiopia",
+    "chapter": "",
+    "definition": "Headline inflation is the yearonyear rise in the consumer price index, and a monetary policy framework is the set of rules a central bank follows to keep inflation low.",
+    "overview": "IMF documents report headline inflation of 13.9% year on year in 2024/25, easing to 11.7% in October 2025 as staple food prices fell. The authorities are adopting an interestratebased monetary policy framework with low and stable inflation as its objective, and the IMF has stressed keeping monetary and financial conditions tight. Reports of the IMF's July 2026 review project average inflation of 11.7% in 2025/26 and 12.3% in 2026/27, so the fall in inflation is slowing.",
+    "highlights": [
+      "The IMF's fourth review says inflation continues to decline although the downward momentum is slowing.",
+      "The IMF's June 2026 statement says the Middle East war has raised import prices sharply but with only modest effects on output growth and inflation so far.",
+      "Addis Insight reports a projected 55.9% rise in credit to the private sector and stateowned enterprises in 2025/26, which the IMF said needs close monitoring (secondary report).",
+      "Links: inflation (1.1.40), monetary policy (1.1.42), rising interest rates (3.1.2)."
+    ],
+    "related_concepts": [
+      "5.1.2",
+      "1.1.40",
+      "1.1.42",
+      "3.1.2"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "5-2-4-ethiopia-s-imf-programme--growth-and-debt-restructuring",
+    "title": "5.2.4 Ethiopia's IMF programme, growth and debt restructuring",
+    "source_id": "5.2.4",
+    "category": "5",
+    "category_name": "Country Context: Jordan & Ethiopia",
+    "chapter": "",
+    "definition": "Debt restructuring is an agreement with creditors to change the terms of existing loans, for example by extending maturities or lowering payments, so that a borrower can keep servicing them.",
+    "overview": "Ethiopia's fouryear US$3.4 billion Extended Credit Facility was approved in July 2024 alongside the exchangerate reform. By the fifth review, completed around July 2026 with about US$464 million released, total drawings were about US$2.65 billion (Addis Insight). IMF documents describe strong growth and reserves accumulation but also a Middle East conflict that creates financing pressure. Growth is projected at 9.2% in 2025/26, slowing to 7.8% in 2026/27 (reports of the IMF's July 2026 review and October 2026 outlook). Ethiopia has been restructuring external debt under the G20 Common Framework and reached an agreement with its Official Creditor Committee on about US$3.5 billion in loans (Bloomberg, via Addis Standard).",
+    "highlights": [
+      "Source 1.1 (1.1.41) describes deficits financed mainly by concessional external loans; this concept gives the current debt picture.",
+      "The fifth review's stafflevel agreement was announced on 3 June 2026 for about US$468 million; Addis Insight reports a completed review with about US$464 million, so amounts differ by report.",
+      "Ethiopia's figures are for fiscal years, so growth of 9.2% for 2026 refers to the year ending mid2026.",
+      "Bloomberg, as reported by Addis Standard, links the birr's outlook to progress on the debt restructuring.",
+      "Links: budget and trade deficits (1.1.41), sovereign default (3.1.8), GDP (1.1.35).",
+      "A peg buys predictability at the price of independent monetary policy.",
+      "A float lets the currency absorb shocks but exposes it to market pressure."
+    ],
+    "related_concepts": [
+      "5.1.3",
+      "1.1.34",
+      "1.1.35",
+      "1.1.36",
+      "1.1.43",
+      "5.1.5",
+      "1.1.41",
+      "3.1.8"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "5-3-1-fixed-vs-market-based-exchange-rates--jordan-and-ethiopia-side-by-side",
+    "title": "5.3.1 Fixed vs market-based exchange rates: Jordan and Ethiopia side by side",
+    "source_id": "5.3.1",
+    "category": "5",
+    "category_name": "Country Context: Jordan & Ethiopia",
+    "chapter": "",
+    "definition": "A fixed exchange rate holds a currency at a set value against an anchor currency, while a marketbased (floating) rate lets supply and demand decide its value.",
+    "overview": "Jordan has held the dinar at about 0.709 per US dollar since 1995, defending it with reserves and interest rates aligned to the dollar, and gains stable prices and predictable trade costs at the cost of independent monetary policy. Ethiopia moved the other way in July 2024: the birr is now set by banks' negotiated rates, which narrowed the gap with the parallel market but let the currency fall from about 57 to over 160 per dollar and exposed the central bank to large revaluation losses. The comparison shows the core tradeoff between stability under a peg and flexibility, with exposure to market pressure, under a float.",
+    "highlights": [
+      "Rate: dinar fixed near 0.709 per dollar (CBJ); birr marketbased, from about 57 per dollar in June 2024 to about 136 in June 2025 and nearly 162 in August 2026.",
+      "Inflation: Jordan about 1.8% to 2.5% (IMF, CBJ); Ethiopia 11.7% to 13.9% in the periods quoted (IMF).",
+      "Reserves: Jordan about $27 billion (about 9.5 months of imports, CBJ); Ethiopia about $5.9 billion (an IMF estimate cited by Addis Standard). The measures differ, so compare with care.",
+      "Parallel market: the sources used here report none for Jordan; Ethiopia's was about 15% above the official rate in August 2026.",
+      "Teaching link (editorial): a fixed rate behaves like a price set by the central bank, which must buy or sell foreign currency to make it hold. A shortage of dollars at a fixed price is the excessdemand picture from market equilibrium (1.1.19), and the supply and demand widget on that page can be used to illustrate it.",
+      "Links: monetary policy (1.1.42), forex reserves (3.1.4), the dinar peg (5.1.1), the birr float (5.2.1, 5.2.2).",
+      "The income statement measures profitability over a period, such as a month, quarter or year.",
+      "Revenue minus cost of goods sold equals gross profit.",
+      "Operating expenses are deducted from gross profit to obtain operating income.",
+      "Interest, other items and income taxes are then considered before net income.",
+      "Net income divided by weighted average shares outstanding gives earnings per share.",
+      "Depreciation and amortization are noncash expenses that spread the cost of longlived assets over time."
+    ],
+    "related_concepts": [
+      "5.1.1",
+      "5.1.6",
+      "3.1.4",
+      "1.1.42",
+      "5.2.1",
+      "5.2.2"
+    ],
+    "widget": null,
+    "has_interactive": false
+  },
+  {
+    "id": "6-1-1-income-statement",
+    "title": "6.1.1 Income statement",
+    "source_id": "6.1.1",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "The income statement reports a company's revenues, expenses and resulting profit or loss for a period.",
+    "overview": "It is also called a profit and loss statement, or P&L, although CFI notes that the terms are often used interchangeably. It covers a time period rather than a single date and helps users assess whether operations generated a profit. It is one of the three core financial statements and is commonly the starting point for financial models.",
+    "highlights": [
+      "It covers a period, not a point in time.",
+      "It shows profitability from operating and nonoperating activities.",
+      "It is also called a P&L."
+    ],
+    "related_concepts": [
+      "4.2.2",
+      "6.2.1",
+      "6.3.1",
+      "6.5.1"
+    ],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-1-2-revenue",
+    "title": "6.1.2 Revenue",
+    "source_id": "6.1.2",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Revenue is the income a company earns from selling goods or providing services.",
+    "overview": "Revenue appears at the top of the income statement and is sometimes called sales or the top line. A company may have several revenue streams, such as product sales and service fees, which combine into total revenue. Revenue is recorded before deducting the costs of producing or delivering the related goods and services.",
+    "highlights": [
+      "Revenue is the starting point of the income statement.",
+      "It may come from multiple products or services.",
+      "It is measured before direct costs are deducted."
+    ],
+    "related_concepts": [
+      "6.1.3",
+      "6.1.9",
+      "1.1.27",
+      "1.1.28"
+    ],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-1-3-cost-of-goods-sold",
+    "title": "6.1.3 Cost of goods sold",
+    "source_id": "6.1.3",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Cost of goods sold, or COGS, includes the direct costs of producing goods sold or delivering services.",
+    "overview": "CFI says the line may also be called cost of sales, especially for service businesses. Direct costs can include labor, parts, materials and an allocated share of expenses such as depreciation. COGS is subtracted from revenue to calculate gross profit.",
+    "highlights": [
+      "COGS includes direct production or servicedelivery costs.",
+      "It may be labelled cost of sales.",
+      "It is deducted from revenue to obtain gross profit."
+    ],
+    "related_concepts": [
+      "6.1.2",
+      "6.1.9",
+      "1.1.27",
+      "1.1.28"
+    ],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-1-4-gross-profit",
+    "title": "6.1.4 Gross profit",
+    "source_id": "6.1.4",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Gross profit is revenue minus cost of goods sold.",
+    "overview": "It shows the profit remaining after direct costs but before operating expenses, interest and taxes. CFI identifies gross profit as a key subtotal and notes that analysts often compare it with total sales to calculate gross profit margin. A higher gross profit does not by itself mean high overall profitability, because operating and financing costs still need to be paid.",
+    "highlights": [
+      "Gross profit = Revenue  COGS.",
+      "It excludes operating expenses, interest and taxes.",
+      "Gross margin compares gross profit with revenue."
+    ],
+    "related_concepts": [
+      "6.1.5",
+      "6.1.6",
+      "6.1.9",
+      "6.1.8"
+    ],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-1-5-operating-expenses",
+    "title": "6.1.5 Operating expenses",
+    "source_id": "6.1.5",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Operating expenses are the indirect costs of running the business.",
+    "overview": "CFI groups selling, general and administrative expenses under this broad category. Examples include salaries and wages, rent, office expenses, insurance, travel, and sometimes depreciation and amortization (noncash charges that spread the cost of longlived assets over time). These expenses are deducted from gross profit to arrive at operating income.",
+    "highlights": [
+      "Operating expenses support the business but are not direct production costs.",
+      "SG&A is a common label for selling, general and administrative expenses.",
+      "They are deducted before operating income is calculated."
+    ],
+    "related_concepts": [
+      "6.1.6",
+      "6.1.9",
+      "6.1.4",
+      "6.1.8",
+      "6.3.7",
+      "6.2.5",
+      "6.3.6"
+    ],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-1-6-operating-income",
+    "title": "6.1.6 Operating income",
+    "source_id": "6.1.6",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Operating income is profit from regular business operations before interest and taxes.",
+    "overview": "CFI also calls it EBIT, meaning earnings before interest and taxes. It is calculated after revenue, COGS and operating expenses, but before nonoperating income or expense, interest and taxes. It helps users see whether the core business is profitable independently of financing costs and tax effects.",
+    "highlights": [
+      "Operating income = Gross profit  Operating expenses.",
+      "It is also called EBIT.",
+      "It excludes interest and income taxes."
+    ],
+    "related_concepts": [
+      "6.1.5",
+      "6.1.9",
+      "6.1.4",
+      "6.1.8"
+    ],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-1-7-interest-expense",
+    "title": "6.1.7 Interest expense",
+    "source_id": "6.1.7",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Interest expense is the cost a company pays for borrowed money.",
+    "overview": "CFI says companies commonly show interest expense and interest income separately to reconcile the difference between EBIT and earnings before tax. Interest expense is linked to a company's debt schedule. It is deducted after operating income in the income statement.",
+    "highlights": [
+      "Interest expense reflects the cost of debt.",
+      "It is separate from operating income.",
+      "It reduces pretax income."
+    ],
+    "related_concepts": [
+      "6.2.8",
+      "6.3.4",
+      "4.1.5"
+    ],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-1-8-income-taxes",
+    "title": "6.1.8 Income taxes",
+    "source_id": "6.1.8",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Income taxes are taxes charged on a company's pretax income.",
+    "overview": "CFI states that income taxes are deducted from pretax income to arrive at net income. The tax expense can include both current taxes and future taxes. Tax rules and rates differ by jurisdiction, so the same pretax profit can produce different tax expenses in different countries.",
+    "highlights": [
+      "Income taxes are deducted after pretax income.",
+      "Tax expense may include current and deferred components.",
+      "Tax treatment varies by jurisdiction."
+    ],
+    "related_concepts": [
+      "6.1.5",
+      "6.1.6",
+      "6.1.9",
+      "6.1.4"
+    ],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-1-9-net-income",
+    "title": "6.1.9 Net income",
+    "source_id": "6.1.9",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Net income is a company's profit after all expenses, interest and taxes.",
+    "overview": "It is the bottom line of the income statement and can be a net profit or net loss. CFI explains that net income flows into retained earnings on the balance sheet, after any dividends are considered. It is also the usual starting point for the indirect method of preparing operating cash flow.",
+    "highlights": [
+      "Net income = Pretax income  Income taxes.",
+      "It is the income statement's bottom line.",
+      "It links to retained earnings and operating cash flow."
+    ],
+    "related_concepts": [
+      "6.1.2",
+      "6.1.3",
+      "1.1.27",
+      "1.1.28",
+      "6.1.5",
+      "6.1.6",
+      "6.1.4",
+      "6.1.8",
+      "6.5.2",
+      "6.5.3",
+      "6.2.10",
+      "6.3.2"
+    ],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-1-10-earnings-per-share",
+    "title": "6.1.10 Earnings per share",
+    "source_id": "6.1.10",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Earnings per share, or EPS, is net income divided by weighted average shares outstanding.",
+    "overview": "EPS expresses profit on a pershare basis, making it easier to compare results across periods or companies with different numbers of shares. It is a reported measure, not a measure of cash available to the company. It connects the income statement to the stock market concepts in Source 4.2.",
+    "highlights": [
+      "EPS = Net income / Weighted average shares outstanding.",
+      "It standardizes profit per share.",
+      "It does not itself show cash flow."
+    ],
+    "related_concepts": [
+      "4.2.3",
+      "4.2.9"
+    ],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-1-11-single-step-and-multi-step-formats",
+    "title": "6.1.11 Single-step and multi-step formats",
+    "source_id": "6.1.11",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "A singlestep income statement subtracts total expenses from total revenues in one calculation, while a multistep format presents subtotals such as gross profit and operating income.",
+    "overview": "CFI's explanation follows a multistep structure, separating COGS, gross profit, operating expenses, operating income, interest, taxes and net income. A singlestep format is simpler because it groups revenues and expenses before calculating net income. The choice of format affects presentation, not the underlying economic events.",
+    "highlights": [
+      "Multistep statements show intermediate profit subtotals.",
+      "Singlestep statements use a simpler revenueminusexpense structure.",
+      "Both formats aim to arrive at net income."
+    ],
+    "related_concepts": [],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-1-12-accrual-accounting",
+    "title": "6.1.12 Accrual accounting",
+    "source_id": "6.1.12",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Accrual accounting records revenues and expenses when they are earned or incurred, rather than only when cash moves.",
+    "overview": "CFI says the income statement uses accounting principles including matching and accruals, rather than presenting figures on a cash basis. This means a sale made on credit can increase revenue and accounts receivable before cash is received. It also means expenses can be recognized before the related cash is paid.",
+    "highlights": [
+      "Revenue may be recognized before cash is received.",
+      "Expenses may be recognized before cash is paid.",
+      "This is why net income can differ from operating cash flow.",
+      "The balance sheet is a snapshot at a particular date.",
+      "Assets equal liabilities plus shareholders' equity.",
+      "Current items are expected to convert to cash or become due within one year; noncurrent items extend beyond one year.",
+      "Assets are commonly ordered from most liquid to least liquid.",
+      "Retained earnings accumulate net income kept in the business after dividends.",
+      "The balance sheet supports liquidity, leverage, efficiency and return ratios."
+    ],
+    "related_concepts": [
+      "6.3.9",
+      "6.3.8",
+      "6.5.4",
+      "6.2.4"
+    ],
+    "widget": "income_statement",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-1-balance-sheet",
+    "title": "6.2.1 Balance sheet",
+    "source_id": "6.2.1",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "The balance sheet reports a company's assets, liabilities and equity at a specific point in time.",
+    "overview": "It is also called the statement of financial position. It provides a snapshot rather than a period measure, showing the resources a company controls, the claims of creditors and the residual interest of owners. It is used to assess financial strength, liquidity and capital structure.",
+    "highlights": [
+      "It is a pointintime statement.",
+      "It has three main sections: assets, liabilities and equity.",
+      "It is also called the statement of financial position."
+    ],
+    "related_concepts": [
+      "4.2.2",
+      "6.1.1",
+      "6.3.1",
+      "6.5.1",
+      "5.2.2",
+      "4.1.8",
+      "6.2.9",
+      "6.2.10"
+    ],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-2-accounting-equation",
+    "title": "6.2.2 Accounting equation",
+    "source_id": "6.2.2",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "The accounting equation states that assets equal liabilities plus equity.",
+    "overview": "CFI presents this as the structure underlying the balance sheet. Assets are resources the business owns or controls; liabilities are obligations owed to others; equity is the residual interest remaining for owners after liabilities are deducted. The equation must hold for the balance sheet to balance.",
+    "highlights": [
+      "Assets = Liabilities + Equity.",
+      "Equity can also be viewed as assets minus liabilities.",
+      "A change on one side must be matched elsewhere for the equation to hold."
+    ],
+    "related_concepts": [],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-3-assets",
+    "title": "6.2.3 Assets",
+    "source_id": "6.2.3",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Assets are resources a company owns or controls that are expected to provide future economic benefit.",
+    "overview": "CFI lists cash, inventory, property and equipment as examples. Assets are divided into current and noncurrent categories. Their balancesheet value may differ from their current market value, particularly for longlived assets recorded net of accumulated depreciation.",
+    "highlights": [
+      "Assets represent resources controlled by the company.",
+      "They include cash, receivables, inventory and fixed assets.",
+      "They are classified by expected conversion or use period."
+    ],
+    "related_concepts": [],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-4-current-assets",
+    "title": "6.2.4 Current assets",
+    "source_id": "6.2.4",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Current assets are assets expected to be converted into cash, sold or used within one year.",
+    "overview": "CFI places cash and equivalents first, followed by accounts receivable and inventory. These assets support shortterm operations and are relevant to liquidity analysis. The classification can depend on the company's operating cycle where that cycle is longer than one year.",
+    "highlights": [
+      "Cash and equivalents are the most liquid current assets.",
+      "Accounts receivable represents credit sales not yet collected.",
+      "Inventory includes raw materials, work in progress and finished goods."
+    ],
+    "related_concepts": [
+      "6.1.12",
+      "6.3.9",
+      "6.3.8",
+      "6.5.4",
+      "6.2.7",
+      "6.2.8",
+      "6.2.12",
+      "6.3.11",
+      "6.4.1",
+      "6.4.5"
+    ],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-5-non-current-assets",
+    "title": "6.2.5 Non-current assets",
+    "source_id": "6.2.5",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Noncurrent assets are assets held for more than one year.",
+    "overview": "CFI includes property, plant and equipment (PP&E) and intangible assets in this category. PP&E is reported net of accumulated depreciation, while land is not depreciated. Intangible assets can include identifiable items such as patents and licences, as well as unidentifiable items such as goodwill.",
+    "highlights": [
+      "PP&E is tangible, longlived operating property.",
+      "Depreciation reduces the reported carrying amount of depreciable PP&E.",
+      "Intangible assets include items such as patents, licences and goodwill."
+    ],
+    "related_concepts": [
+      "6.1.5",
+      "6.3.7",
+      "6.3.6",
+      "6.3.3",
+      "6.3.10"
+    ],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-6-liabilities",
+    "title": "6.2.6 Liabilities",
+    "source_id": "6.2.6",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Liabilities are obligations a company owes to other parties.",
+    "overview": "CFI gives loans and accounts payable as examples. Liabilities are divided into current liabilities, due within one year, and noncurrent liabilities, due later. They represent claims on the company's assets before shareholders' residual claim.",
+    "highlights": [
+      "Liabilities are obligations to external parties.",
+      "They include trade payables and borrowings.",
+      "They are classified by expected payment timing."
+    ],
+    "related_concepts": [],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-7-current-liabilities",
+    "title": "6.2.7 Current liabilities",
+    "source_id": "6.2.7",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Current liabilities are obligations due within one year or within the company's operating cycle, if longer.",
+    "overview": "CFI includes accounts payable, current debt or notes payable, and the current portion of longterm debt. Accounts payable represents amounts owed to suppliers for credit purchases. The current portion of longterm debt is the part of a longer loan that must be repaid in the coming year.",
+    "highlights": [
+      "Accounts payable arises from purchases on credit.",
+      "Current debt must be repaid within the short term.",
+      "Part of longterm debt can become a current liability as repayment approaches."
+    ],
+    "related_concepts": [
+      "6.2.4",
+      "6.2.8",
+      "6.2.12"
+    ],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-8-non-current-liabilities",
+    "title": "6.2.8 Non-current liabilities",
+    "source_id": "6.2.8",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Noncurrent liabilities are obligations due after more than one year.",
+    "overview": "CFI includes bonds payable and longterm debt in this group. Longterm debt excludes the portion classified as current. These obligations affect a company's leverage and future cash commitments.",
+    "highlights": [
+      "Longterm debt matures beyond one year.",
+      "Bonds payable are a form of longterm borrowing.",
+      "They affect leverage and future financing needs."
+    ],
+    "related_concepts": [
+      "6.2.4",
+      "6.2.7",
+      "6.2.12",
+      "6.1.7",
+      "6.3.4",
+      "4.1.5"
+    ],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-9-equity",
+    "title": "6.2.9 Equity",
+    "source_id": "6.2.9",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Equity is the owners' residual interest in the company after liabilities are deducted from assets.",
+    "overview": "CFI identifies share capital and retained earnings as major equity components. Share capital represents funds invested by shareholders, while retained earnings represent accumulated net income kept in the company. Dividends reduce retained earnings when paid.",
+    "highlights": [
+      "Equity = Assets  Liabilities.",
+      "Share capital reflects owner investment.",
+      "Retained earnings reflect accumulated profit kept in the business."
+    ],
+    "related_concepts": [
+      "5.2.2",
+      "4.1.8",
+      "6.2.1",
+      "6.2.10"
+    ],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-10-retained-earnings",
+    "title": "6.2.10 Retained earnings",
+    "source_id": "6.2.10",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Retained earnings are cumulative net income kept by the company rather than distributed as dividends.",
+    "overview": "CFI explains that each period's net income may increase retained earnings, while dividends reduce them. Retained earnings can therefore become negative if accumulated losses or distributions exceed prior retained profits. The account links the income statement to the balance sheet.",
+    "highlights": [
+      "Retained earnings increase with net income kept in the business.",
+      "Dividends reduce retained earnings.",
+      "They connect current and priorperiod income statements to equity."
+    ],
+    "related_concepts": [
+      "6.1.9",
+      "6.5.2",
+      "6.5.3",
+      "6.3.2",
+      "4.2.11",
+      "6.3.4",
+      "5.2.2",
+      "4.1.8",
+      "6.2.1",
+      "6.2.9"
+    ],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-11-liquidity-ordering",
+    "title": "6.2.11 Liquidity ordering",
+    "source_id": "6.2.11",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Liquidity ordering places more easily convertible assets first on the balance sheet.",
+    "overview": "CFI says cash, inventory and trade payables are placed in the current section before less liquid items such as PP&E and longterm debt. This presentation helps readers quickly see resources available in the short term and obligations due soon. The exact ordering can vary by company and reporting framework.",
+    "highlights": [
+      "Cash is usually shown first among assets.",
+      "Current items precede noncurrent items.",
+      "Ordering highlights shortterm resources and obligations."
+    ],
+    "related_concepts": [],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-2-12-current-ratio-and-debt-to-equity-ratio",
+    "title": "6.2.12 Current ratio and debt-to-equity ratio",
+    "source_id": "6.2.12",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "The current ratio compares current assets with current liabilities, and debttoequity compares debt with shareholders' equity.",
+    "overview": "CFI classifies the current ratio as a liquidity ratio and debttoequity as a leverage ratio. The current ratio indicates whether shortterm assets appear sufficient to cover shortterm obligations. Debttoequity indicates the extent to which the company relies on borrowing relative to owners' equity.",
+    "highlights": [
+      "Current ratio = Current assets / Current liabilities.",
+      "Debttoequity compares debt with equity.",
+      "Ratios support comparison, but must be interpreted in context.",
+      "The statement covers a period and shows cash inflows and outflows.",
+      "Operating activities relate to the principal revenueproducing activities of the business.",
+      "Investing activities include buying and selling longterm assets and investments.",
+      "Financing activities include borrowing, repaying debt, issuing or repurchasing shares and paying dividends.",
+      "The indirect method begins with profit and adjusts for noncash items and workingcapital changes.",
+      "The ending cash balance must equal the cash balance reported on the balance sheet."
+    ],
+    "related_concepts": [
+      "6.2.4",
+      "6.2.7",
+      "6.2.8"
+    ],
+    "widget": "balance_sheet",
+    "has_interactive": true
+  },
+  {
+    "id": "6-3-1-cash-flow-statement",
+    "title": "6.3.1 Cash flow statement",
+    "source_id": "6.3.1",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "The cash flow statement reports cash received and cash paid during a period.",
+    "overview": "It shows how a company generated and used cash across operating, investing and financing activities. It bridges the income statement and balance sheet by explaining why the cash balance changed. It is particularly useful for assessing liquidity and whether reported earnings are supported by cash generation.",
+    "highlights": [
+      "It covers a period, not a single date.",
+      "It tracks cash and cash equivalents.",
+      "It explains the change in the cash balance."
+    ],
+    "related_concepts": [
+      "4.2.2",
+      "6.1.1",
+      "6.2.1",
+      "6.5.1"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-3-2-operating-activities",
+    "title": "6.3.2 Operating activities",
+    "source_id": "6.3.2",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Operating activities are the principal revenueproducing activities of a business, plus other activities that are neither investing nor financing activities.",
+    "overview": "This section includes cash from sales and cash paid for operating costs such as rent, salaries and administration. Under the indirect method, it begins with net income and adjusts for noncash expenses and workingcapital movements. It is the section most directly connected with daytoday business operations.",
+    "highlights": [
+      "It includes cash from sales and operating payments.",
+      "It is adjusted for noncash items under the indirect method.",
+      "It can be compared with net income to assess earnings quality."
+    ],
+    "related_concepts": [
+      "6.1.9",
+      "6.5.2",
+      "6.5.3",
+      "6.2.10",
+      "6.3.5",
+      "6.3.6",
+      "6.4.3",
+      "6.4.4"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-3-3-investing-activities",
+    "title": "6.3.3 Investing activities",
+    "source_id": "6.3.3",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Investing activities are cash flows from acquiring or disposing of longterm assets and other investments not classified as cash equivalents.",
+    "overview": "CFI includes purchases and sales of property, plant and equipment, other noncurrent assets and financial assets. Cash spent on PP&E is called capital expenditure, or CapEx, and is a cash outflow. Selling such assets generates a cash inflow.",
+    "highlights": [
+      "CapEx is cash spent on longlived operating assets.",
+      "Asset sales produce investing cash inflows.",
+      "This section concerns longterm resources, not daily operating payments."
+    ],
+    "related_concepts": [
+      "6.3.10",
+      "6.2.5"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-3-4-financing-activities",
+    "title": "6.3.4 Financing activities",
+    "source_id": "6.3.4",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Financing activities are cash flows arising from changes in a company's capital structure.",
+    "overview": "CFI includes borrowing and repaying loans or bonds, issuing or buying back shares, and paying dividends. Debt issuance and equity issuance bring cash into the company, while repayments, buybacks and dividends use cash. This section shows how the company funds itself and returns capital to providers of finance.",
+    "highlights": [
+      "Debt issuance is a cash inflow; repayment is an outflow.",
+      "Share issuance is a cash inflow; buybacks are an outflow.",
+      "Dividends paid are financing outflows in the usual presentation (IFRS allows a choice, see 6.4)."
+    ],
+    "related_concepts": [
+      "6.2.8",
+      "6.1.7",
+      "4.1.5",
+      "4.2.11",
+      "6.2.10"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-3-5-direct-method",
+    "title": "6.3.5 Direct method",
+    "source_id": "6.3.5",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "The direct method presents major classes of gross cash receipts and gross cash payments from operating activities.",
+    "overview": "CFI describes it as a straightforward presentation of cash received from customers and cash paid for operating expenses. It is less commonly used than the indirect method. It gives a more immediate view of operating cash receipts and payments, but it requires more detailed cashtransaction information.",
+    "highlights": [
+      "It lists major operating cash receipts and payments.",
+      "It shows cash flows directly rather than reconciling from profit.",
+      "It is less commonly used than the indirect method."
+    ],
+    "related_concepts": [
+      "6.3.6",
+      "6.4.3",
+      "6.4.4",
+      "6.3.2"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-3-6-indirect-method",
+    "title": "6.3.6 Indirect method",
+    "source_id": "6.3.6",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "The indirect method starts with profit and adjusts it for noncash items, accruals, deferrals, and investing or financingrelated income and expenses.",
+    "overview": "CFI says most companies use this method. Depreciation and amortization are added back because they reduced profit without requiring cash payment. Changes in receivables, inventory and payables are then adjusted to reflect the timing difference between accounting recognition and cash movement.",
+    "highlights": [
+      "It reconciles profit to operating cash flow.",
+      "Depreciation and amortization are added back.",
+      "Workingcapital changes adjust for cashtiming differences."
+    ],
+    "related_concepts": [
+      "6.1.5",
+      "6.3.7",
+      "6.2.5",
+      "6.3.5",
+      "6.4.3",
+      "6.4.4",
+      "6.3.2"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-3-7-depreciation-add-back",
+    "title": "6.3.7 Depreciation add-back",
+    "source_id": "6.3.7",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "A depreciation addback reverses the effect of depreciation expense when calculating operating cash flow under the indirect method.",
+    "overview": "Depreciation spreads the cost of a tangible longlived asset over its useful life and reduces net income, but it does not itself require a cash payment. Amortization does the same for certain intangible assets. Adding these expenses back prevents them from being treated as cash outflows in the operating section.",
+    "highlights": [
+      "Depreciation reduces accounting profit but not cash directly.",
+      "It is added back in the indirect operating section.",
+      "The related cash outflow occurs when the asset is purchased, usually in investing activities."
+    ],
+    "related_concepts": [
+      "6.1.5",
+      "6.2.5",
+      "6.3.6"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-3-8-working-capital-changes",
+    "title": "6.3.8 Working-capital changes",
+    "source_id": "6.3.8",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Workingcapital changes are movements in current assets other than cash and current liabilities other than debt that affect operating cash flow.",
+    "overview": "CFI explains that an increase in inventory or accounts receivable reduces operating cash flow because cash is tied up or not yet collected. An increase in accounts payable increases operating cash flow because the company has not yet paid suppliers. These adjustments convert accrualbased profit into cashbased operating performance.",
+    "highlights": [
+      "Higher receivables or inventory generally reduce operating cash flow.",
+      "Higher payables generally increase operating cash flow.",
+      "Working capital links the balance sheet to operating cash flow."
+    ],
+    "related_concepts": [
+      "6.1.12",
+      "6.3.9",
+      "6.5.4",
+      "6.2.4"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-3-9-net-income-is-not-cash",
+    "title": "6.3.9 Net income is not cash",
+    "source_id": "6.3.9",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Net income is accounting profit under accrual rules, while cash flow is the actual movement of cash and cash equivalents.",
+    "overview": "CFI emphasizes that incomestatement and balancesheet figures are accrualbased, so they do not directly measure cash movement. A company can report positive net income while cash flow is lower because sales were made on credit, inventory increased or expenses were accrued. The cash flow statement adjusts for these timing and noncash differences.",
+    "highlights": [
+      "Net income can include noncash revenue or expenses.",
+      "Credit sales increase revenue before cash is received.",
+      "The cash flow statement reconciles profit with actual cash movement."
+    ],
+    "related_concepts": [
+      "6.1.12",
+      "6.3.8",
+      "6.5.4",
+      "6.2.4"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-3-10-free-cash-flow",
+    "title": "6.3.10 Free cash flow",
+    "source_id": "6.3.10",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Free cash flow is cash generated by operations after investment in longlived operating assets.",
+    "overview": "CFI identifies capital expenditure as the main investing outflow for many companies. A common practical calculation is operating cash flow minus capital expenditure. It indicates cash available after maintaining or expanding the asset base, before considering financing decisions.",
+    "highlights": [
+      "Free cash flow = Operating cash flow  Capital expenditure.",
+      "It focuses on cash after investment in productive assets.",
+      "It is not a line item required on the face of the cash flow statement, and definitions vary in practice."
+    ],
+    "related_concepts": [
+      "6.3.3",
+      "6.2.5"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-3-11-ending-cash-balance",
+    "title": "6.3.11 Ending cash balance",
+    "source_id": "6.3.11",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "The ending cash balance is the cash and cashequivalent balance at the end of the reporting period.",
+    "overview": "CFI explains that the net change in cash from operating, investing and financing activities is added to the opening cash balance to derive the closing balance. That closing balance is reported in current assets on the balance sheet. This is a central check when linking the three statements.",
+    "highlights": [
+      "Ending cash = Beginning cash + Net change in cash.",
+      "Net change in cash = CFO + CFI + CFF.",
+      "Ending cash must match balancesheet cash.",
+      "IAS 7 requires a statement of cash flows for each period for which financial statements are presented.",
+      "Cash flows must be classified into operating, investing and financing activities.",
+      "Either the direct or indirect method may be used for operating cash flows.",
+      "Cash includes cash on hand and demand deposits; cash equivalents are shortterm, highly liquid investments with insignificant valuechange risk.",
+      "Noncash investing and financing transactions are excluded from the statement but separately disclosed.",
+      "The standard requires reconciliation between cash and cash equivalents in the cash flow statement and the equivalent balancesheet items."
+    ],
+    "related_concepts": [
+      "6.4.1",
+      "6.4.5",
+      "6.2.4"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-4-1-cash-and-cash-equivalents",
+    "title": "6.4.1 Cash and cash equivalents",
+    "source_id": "6.4.1",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Cash includes cash on hand and demand deposits, and cash equivalents are shortterm, highly liquid investments readily convertible to known cash amounts with insignificant valuechange risk.",
+    "overview": "IAS 7 uses this definition to determine what belongs in the cash flow statement. The distinction matters because not every liquid asset qualifies as a cash equivalent. The standard requires disclosure of the components of cash and cash equivalents.",
+    "highlights": [
+      "Cash includes physical cash and demand deposits.",
+      "Cash equivalents must be shortterm, liquid and lowrisk.",
+      "Components must be disclosed."
+    ],
+    "related_concepts": [
+      "6.3.11",
+      "6.4.5",
+      "6.2.4"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-4-2-classification-requirement",
+    "title": "6.4.2 Classification requirement",
+    "source_id": "6.4.2",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "IAS 7 requires cash flows to be classified as operating, investing or financing.",
+    "overview": "This classification helps users understand whether cash came from core operations, longterm asset decisions or capitalstructure changes. It applies to every cash flow reported in the statement. The classification supports comparability across companies using IFRS.",
+    "highlights": [
+      "Every cash flow must be classified.",
+      "The three categories are operating, investing and financing.",
+      "Classification supports analysis of cash generation and use.",
+      "IFRS gives companies policy choices for interest and dividends: interest and dividends received are classified as operating or investing, and interest and dividends paid as operating or financing, applied consistently (as listed in an eCampusOntario IFRS text; confirm against the current standard)."
+    ],
+    "related_concepts": [],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-4-3-direct-method-under-ias-7",
+    "title": "6.4.3 Direct method under IAS 7",
+    "source_id": "6.4.3",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Under IAS 7, the direct method discloses major classes of gross cash receipts and gross cash payments.",
+    "overview": "This approach presents operating cash flows directly, such as cash received from customers and cash paid to suppliers or employees. It provides a clear view of the sources and uses of operating cash. IAS 7 permits this method alongside the indirect method.",
+    "highlights": [
+      "It shows gross operating cash receipts and payments.",
+      "It presents operating cash flows directly.",
+      "IAS 7 permits its use."
+    ],
+    "related_concepts": [
+      "6.3.5",
+      "6.3.6",
+      "6.4.4",
+      "6.3.2"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-4-4-indirect-method-under-ias-7",
+    "title": "6.4.4 Indirect method under IAS 7",
+    "source_id": "6.4.4",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Under IAS 7, the indirect method adjusts profit or loss for noncash transactions, deferrals, accruals, and investing or financing income and expenses.",
+    "overview": "This method begins with an accrualbased profit measure and reconciles it to operating cash flow. It is widely used because companies already maintain accrualbased income and balancesheet data. The adjustments make visible the difference between reported profit and cash generated by operations.",
+    "highlights": [
+      "It starts from profit or loss.",
+      "It adjusts for noncash and timing differences.",
+      "It reconciles accrual profit to operating cash flow."
+    ],
+    "related_concepts": [
+      "6.3.5",
+      "6.3.6",
+      "6.4.3",
+      "6.3.2"
+    ],
+    "widget": "cash_flow",
+    "has_interactive": true
+  },
+  {
+    "id": "6-4-5-reconciliation-to-the-balance-sheet",
+    "title": "6.4.5 Reconciliation to the balance sheet",
+    "source_id": "6.4.5",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "IAS 7 requires companies to reconcile the cash and cash equivalents in the cash flow statement with the equivalent items in the statement of financial position.",
+    "overview": "This requirement creates a direct link between the closing cash balance in the cash flow statement and the balance sheet. It helps ensure that the statement explains the change in reported cash. It is a practical control for threestatement models.",
+    "highlights": [
+      "Cash flow statement cash must reconcile to balancesheet cash.",
+      "The reconciliation covers cash and cash equivalents.",
+      "It supports the threestatement linkage.",
+      "The three statements together provide a fuller view of financial health than any one statement alone.",
+      "Net income becomes retained earnings on the balance sheet, adjusted for dividends.",
+      "Net income is the starting point for indirect operating cash flow.",
+      "Sales recognized on credit create accounts receivable on the balance sheet.",
+      "Operating cash flow includes cash from sales and payments for operating costs.",
+      "Investing and financing cash flows relate to assets and capital structure."
+    ],
+    "related_concepts": [
+      "6.3.11",
+      "6.4.1",
+      "6.2.4"
+    ],
+    "widget": "three_statements",
+    "has_interactive": true
+  },
+  {
+    "id": "6-5-1-three-statement-linkage",
+    "title": "6.5.1 Three-statement linkage",
+    "source_id": "6.5.1",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Threestatement linkage is the set of connections through which income, balancesheet and cashflow figures affect one another.",
+    "overview": "Net income from the income statement increases retained earnings, subject to dividends. It also starts the indirect operating cash flow calculation. Changes in balancesheet accounts, such as receivables, inventory, payables, PP&E, debt and equity, drive cashflow adjustments.",
+    "highlights": [
+      "Net income links the income statement to equity and cash flow.",
+      "Balancesheet changes drive cashflow adjustments.",
+      "The statements must reconcile for a model to be internally consistent."
+    ],
+    "related_concepts": [
+      "4.2.2",
+      "6.1.1",
+      "6.2.1",
+      "6.3.1"
+    ],
+    "widget": "three_statements",
+    "has_interactive": true
+  },
+  {
+    "id": "6-5-2-net-income-to-retained-earnings",
+    "title": "6.5.2 Net income to retained earnings",
+    "source_id": "6.5.2",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Net income increases retained earnings, while dividends reduce retained earnings.",
+    "overview": "Investopedia states that net income at the end of a period becomes part of shareholders' equity as retained earnings. If the company pays dividends, the retainedearnings increase is smaller than net income. This link explains why a profitable company may still have limited retained earnings if it distributes much of its profit.",
+    "highlights": [
+      "Retained earnings rise with profit kept in the business.",
+      "Dividends reduce retained earnings.",
+      "The link runs from the income statement to equity."
+    ],
+    "related_concepts": [
+      "6.1.9",
+      "6.5.3",
+      "6.2.10",
+      "6.3.2"
+    ],
+    "widget": "three_statements",
+    "has_interactive": true
+  },
+  {
+    "id": "6-5-3-net-income-to-operating-cash-flow",
+    "title": "6.5.3 Net income to operating cash flow",
+    "source_id": "6.5.3",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Under the indirect method, net income is the starting point for calculating cash flow from operations.",
+    "overview": "Investopedia explains that net income is carried to the cash flow statement as the top line for operating activities. Adjustments are then made for noncash expenses and workingcapital changes. This produces cash generated by operations rather than accounting profit alone.",
+    "highlights": [
+      "Net income begins the indirect operating section.",
+      "Noncash expenses are added back.",
+      "Workingcapital changes are adjusted."
+    ],
+    "related_concepts": [
+      "6.1.9",
+      "6.5.2",
+      "6.2.10",
+      "6.3.2"
+    ],
+    "widget": "three_statements",
+    "has_interactive": true
+  },
+  {
+    "id": "6-5-4-accounts-receivable-link",
+    "title": "6.5.4 Accounts receivable link",
+    "source_id": "6.5.4",
+    "category": "6",
+    "category_name": "Accounting & Financial Statements",
+    "chapter": "",
+    "definition": "Accounts receivable records sales made on credit that have not yet been collected in cash.",
+    "overview": "Investopedia notes that sales booked during a period are added to shortterm assets as accounts receivable. Revenue can therefore rise before cash is received. When the customer later pays, accounts receivable falls and cash rises.",
+    "highlights": [
+      "Credit sales create receivables.",
+      "Receivables represent cash not yet collected.",
+      "Collection converts receivables into cash."
+    ],
+    "related_concepts": [
+      "6.1.12",
+      "6.3.9",
+      "6.3.8",
+      "6.2.4"
+    ],
+    "widget": "three_statements",
+    "has_interactive": true
+  }
+]

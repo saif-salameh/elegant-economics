@@ -2,6 +2,7 @@
 <html lang="en" data-theme="theme-1">
 <head>
   <meta charset="utf-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Explore an economics concept, its related ideas, and its source">
   <title>Concept Detail – Economics Research</title>
@@ -12,21 +13,21 @@
 </head>
 <body>
   <header>
-    <p class="site-label"><a href="/">Economics Research</a></p>
+    <p class="site-label"><a href="index.html">Economics Research</a></p>
     <nav id="main-nav">
-      <a href="/">Home</a>
-      <a href="/a_z_index.html">A–Z Index</a>
-      <a href="/track_economics.html">Economics</a>
-      <a href="/track_financing.html">Financing</a>
-      <a href="/track_global.html">Global Economy</a>
-      <a href="/track_country_context.html">Country Context</a>
-      <a href="/track_financial_statements.html">Financial Statements</a>
-      <a href="/sources.html">Sources</a>
+      <a href="index.html">Home</a>
+      <a href="a_z_index.html">A–Z Index</a>
+      <a href="track_economics.html">Economics</a>
+      <a href="track_financing.html">Financing</a>
+      <a href="track_global.html">Global Economy</a>
+      <a href="track_country_context.html">Country Context</a>
+      <a href="track_financial_statements.html">Financial Statements</a>
+      <a href="sources.html">Sources</a>
     </nav>
   </header>
   <main>
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/a_z_index.html">A–Z Index</a>
+      <a href="a_z_index.html">A–Z Index</a>
       <span aria-hidden="true">›</span>
       <span id="breadcrumb-title">Concept</span>
     </nav>
@@ -45,7 +46,7 @@
             <p class="detail-summary" id="concept-overview"></p>
           </section>
         </div>
-        <a class="source-link" id="source-link" href="/sources.html">View source details</a>
+        <a class="source-link" id="source-link" href="sources.html">View source details</a>
       </header>
 
       <div id="detail-error" aria-live="polite"></div>
@@ -104,7 +105,7 @@
       const sourceId = concept.source_id.split('.').slice(0, 2).join('.');
       const sourceAnchor = `source-${sourceId.replaceAll('.', '-')}`;
       const sourceLink = document.getElementById('source-link');
-      sourceLink.href = `/sources.html#${sourceAnchor}`;
+      sourceLink.href = `sources.html#${sourceAnchor}`;
       sourceLink.textContent = `Source ${sourceId}: ${concept.source_title}`;
 
       const highlights = document.getElementById('concept-highlights');

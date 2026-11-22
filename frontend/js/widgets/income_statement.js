@@ -1,5 +1,6 @@
 import { computeIncomeStatement } from "./fin_model.js";
 import { renderFinTable } from "./fin_table.js";
+import { fetchConcepts, fetchFinancialExample } from "../api.js";
 
 const SVG_NS = "http://www.w3.org/2000/svg";
 const FORMAT_DEFINITION_IDS = ["6.1.3", "6.1.5", "6.1.7", "6.1.8"];
@@ -321,11 +322,8 @@ export async function init(widgetContainer) {
   };
   const conceptId = String(widgetContainer.dataset.conceptId || "");
 
-  let exampleResponse;
   try {
-    exampleResponse = await fetch("/api/financial-example", { headers: { Accept: "application/json" } });
-    if (!exampleResponse.ok) throw new Error(`HTTP ${exampleResponse.status}`);
-    state.example = await exampleResponse.json();
+    state.example = await fetchFinancialExample();
   } catch (loadError) {
     error.hidden = false;
     error.textContent = `Could not load the financial example. ${loadError.message}`;
@@ -335,11 +333,7 @@ export async function init(widgetContainer) {
 
   const definitionView = createBarDefinitionHandler(state.definitions, definitionContent, definitionTitle);
   try {
-    const conceptsResponse = await fetch("/api/concepts", { headers: { Accept: "application/json" } });
-    if (!conceptsResponse.ok) throw new Error(`HTTP ${conceptsResponse.status}`);
-    const payload = await conceptsResponse.json();
-    const concepts = Array.isArray(payload) ? payload : payload?.concepts;
-    if (!Array.isArray(concepts)) throw new Error("Unexpected concepts API response.");
+    const concepts = await fetchConcepts();
     for (const concept of concepts) {
       if (/^6\.1\.(?:[2-9]|10)$/.test(concept.source_id || "")) {
         state.definitions.set(concept.source_id, concept);
@@ -347,7 +341,7 @@ export async function init(widgetContainer) {
     }
   } catch (loadError) {
     error.hidden = false;
-    error.textContent = `Definitions could not be loaded from /api/concepts. ${loadError.message}`;
+    error.textContent = `Definitions could not be loaded from data/concepts.json. ${loadError.message}`;
   }
 
   function exampleInputs(year) {

@@ -2,7 +2,9 @@
 <html lang="en" data-theme="theme-1">
 <head>
   <meta charset="utf-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <title>Sources – Economics Research</title>
+  <meta name="description" content="View the sources, citations, source notes, and further-reading lists used by this economics research site.">
   <script src="js/theme.js"></script>
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -31,14 +33,14 @@
   <header>
     <h1>Sources</h1>
     <nav id="main-nav">
-      <a href="/">Home</a>
-      <a href="/a_z_index.html">A‑Z Index</a>
-      <a href="/track_economics.html">Economics</a>
-      <a href="/track_financing.html">Financing</a>
-      <a href="/track_global.html">Global Economy</a>
-      <a href="/track_country_context.html">Country Context</a>
-      <a href="/track_financial_statements.html">Financial Statements</a>
-      <a href="/sources.html">Sources</a>
+      <a href="index.html">Home</a>
+      <a href="a_z_index.html">A‑Z Index</a>
+      <a href="track_economics.html">Economics</a>
+      <a href="track_financing.html">Financing</a>
+      <a href="track_global.html">Global Economy</a>
+      <a href="track_country_context.html">Country Context</a>
+      <a href="track_financial_statements.html">Financial Statements</a>
+      <a href="sources.html">Sources</a>
       <button id="theme-switcher" aria-label="Switch Theme">Switch Theme</button>
     </nav>
   </header>
@@ -207,7 +209,7 @@
     .catch(() => renderCitations(data, []))).catch(error => {
     const message = document.createElement('p');
     message.setAttribute('role', 'alert');
-    message.textContent = `Could not load citations. Expected file: content/sources-page-data.json. HTTP status: ${error.message.match(/HTTP (\d+)/)?.[1] || 'unavailable'}. ${error.message}`;
+    message.textContent = `Could not load citations. Expected file: data/sources-page-data.json. HTTP status: ${error.message.match(/HTTP (\d+)/)?.[1] || 'unavailable'}. ${error.message}`;
     citationHost.replaceChildren(message);
   });
 

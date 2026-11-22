@@ -1,5 +1,6 @@
 import { buildStatementSeries } from "./fin_model.js";
 import { renderFinTable } from "./fin_table.js";
+import { fetchConcepts, fetchFinancialExample } from "../api.js";
 
 const SOURCE_IDS = ["6.4.5", "6.5.1", "6.5.2", "6.5.3", "6.5.4"];
 const COLUMNS = [{ key: "year_1", label: "Year 1" }, { key: "year_2", label: "Year 2" }];
@@ -166,21 +167,13 @@ export async function init(widgetContainer) {
   const error = $(`[data-error]`);
   const definitions = new Map();
   let example;
+  let sourceConcepts;
   let state;
   let lastEdited = "";
   let whatIf = false;
   try {
-    const [exampleResponse, conceptsResponse] = await Promise.all([
-      fetch("/api/financial-example", { headers: { Accept: "application/json" } }),
-      fetch("/api/concepts", { headers: { Accept: "application/json" } }),
-    ]);
-    if (!exampleResponse.ok) throw new Error(`/api/financial-example returned HTTP ${exampleResponse.status}`);
-    if (!conceptsResponse.ok) throw new Error(`/api/concepts returned HTTP ${conceptsResponse.status}`);
-    example = await exampleResponse.json();
-    const payload = await conceptsResponse.json();
-    const concepts = Array.isArray(payload) ? payload : payload?.concepts;
-    if (!Array.isArray(concepts)) throw new Error("The concepts API returned an unexpected data shape.");
-    concepts.filter(concept => SOURCE_IDS.includes(concept.source_id)).forEach(concept => definitions.set(concept.source_id, concept));
+    [example, sourceConcepts] = await Promise.all([fetchFinancialExample(), fetchConcepts()]);
+    sourceConcepts.filter(concept => SOURCE_IDS.includes(concept.source_id)).forEach(concept => definitions.set(concept.source_id, concept));
     const missing = SOURCE_IDS.filter(id => !definitions.has(id));
     if (missing.length) throw new Error(`Missing source concepts: ${missing.join(", ")}`);
     state = calculateThreeStatementModel(example).state;

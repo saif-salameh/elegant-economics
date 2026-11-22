@@ -1,0 +1,141 @@
+{
+  "citation_style": "MLA 8",
+  "format_note": "Text between asterisks is italic. Render each citation with a hanging indent. The editor_todo fields are for the site owner and must not be shown to readers.",
+  "citations": [
+    {
+      "id": "1.1",
+      "group": "library",
+      "mla": "*Introduction to Economics*. 2019.",
+      "url": null,
+      "editor_todo": "Incomplete: add the module author or institution and publisher, plus a URL if the module is online."
+    },
+    {
+      "id": "1.2",
+      "group": "library",
+      "mla": "Fran. “How Does the Economy Work? The Basics of Economics.” *FutureLearn*, 10 June 2021, www.futurelearn.com/info/blog/how-does-the-economy-work. Accessed 19 Sept. 2026.",
+      "url": "https://www.futurelearn.com/info/blog/how-does-the-economy-work"
+    },
+    {
+      "id": "2.1",
+      "group": "library",
+      "mla": "Stosic-Mihajlovic, Ljiljana, and Svetlana Trajkovic. “Modern Economy: Features and Developments.” *Journal of Process Management. New Technologies*, vol. 4, no. 2, 2016, pp. 17–25, www.researchgate.net/publication/302058121_Modern_economy_Features_and_developments/link/695ec2c17e61d05b531810d9/download, 10.5937/jpmnt1602017s. Accessed 19 Sept. 2026.",
+      "url": "https://www.researchgate.net/publication/302058121_Modern_economy_Features_and_developments/link/695ec2c17e61d05b531810d9/download"
+    },
+    {
+      "id": "3.1",
+      "group": "library",
+      "mla": "Crowfoot, Tom. “What You Need to Know about the Global Economy.” *World Economic Forum*, 13 Oct. 2022, www.weforum.org/stories/2022/10/economics-explained-in-ten-articles-from-forum/.",
+      "url": "https://www.weforum.org/stories/2022/10/economics-explained-in-ten-articles-from-forum/",
+      "editor_todo": "No access date given; add one if you want it consistent with the others (optional in MLA 8)."
+    },
+    {
+      "id": "4.1",
+      "group": "library",
+      "mla": "Zee, Howell H., editor. *Taxing the Financial Sector*. International Monetary Fund, 16 Apr. 2004.",
+      "url": null,
+      "editor_todo": "The library source is Chapter 1, Banks (John Isaac). If you cite only the chapter, use the chapter-in-an-edited-book form. No URL or access date given."
+    },
+    {
+      "id": "4.2",
+      "group": "library",
+      "mla": "Gratton, Peter. “What Is the Stock Market and How Does It Work?” *Investopedia*, 12 Apr. 2024, www.investopedia.com/terms/s/stockmarket.asp. Accessed 19 Sept. 2026.",
+      "url": "https://www.investopedia.com/terms/s/stockmarket.asp"
+    },
+    {
+      "id": "6.1",
+      "group": "library",
+      "mla": "CFI. “Income Statement.” *Corporate Finance Institute*, 24 Nov. 2022, corporatefinanceinstitute.com/resources/accounting/income-statement/. Accessed 22 Nov. 2026.",
+      "url": "https://corporatefinanceinstitute.com/resources/accounting/income-statement/",
+      "editor_todo": "MLA 8 normally omits an author that is the same as the publisher: “Income Statement.” Corporate Finance Institute, ... Optional change."
+    },
+    {
+      "id": "6.2",
+      "group": "library",
+      "mla": "CFI. “Balance Sheet.” *Corporate Finance Institute*, 24 Nov. 2022, corporatefinanceinstitute.com/resources/accounting/balance-sheet/. Accessed 22 Nov. 2026.",
+      "url": "https://corporatefinanceinstitute.com/resources/accounting/balance-sheet/",
+      "editor_todo": "Same optional author note as 6.1."
+    },
+    {
+      "id": "6.3",
+      "group": "library",
+      "mla": "Schmidt, Jeff. “Statement of Cash Flows.” *Corporate Finance Institute*, 2023, corporatefinanceinstitute.com/resources/accounting/statement-of-cash-flows/. Accessed 22 Nov. 2026.",
+      "url": "https://corporatefinanceinstitute.com/resources/accounting/statement-of-cash-flows/"
+    },
+    {
+      "id": "6.4",
+      "group": "library",
+      "mla": null,
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-7-statement-of-cash-flows/",
+      "editor_todo": "No citation supplied yet for IAS 7 (IFRS Foundation)."
+    },
+    {
+      "id": "6.5",
+      "group": "library",
+      "mla": "Drury, Amy. “The Three Major Financial Statements: How They’re Interconnected.” *Investopedia*, 28 Apr. 2022, www.investopedia.com/ask/answers/031815/how-are-three-major-financial-statements-related-each-other.asp. Accessed 22 Nov. 2026.",
+      "url": "https://www.investopedia.com/ask/answers/031815/how-are-three-major-financial-statements-related-each-other.asp"
+    }
+  ],
+  "other_references": [
+    {
+      "id": null,
+      "group": "other",
+      "label": "Khan Academy: Economics and finance",
+      "mla": "“Economics and Finance | Khan Academy.” *Khan Academy*, 2019, www.khanacademy.org/economics-finance-domain. Accessed 19 Sept. 2026.",
+      "url": "https://www.khanacademy.org/economics-finance-domain"
+    },
+    {
+      "id": null,
+      "group": "other",
+      "label": "CFI: Three financial statements",
+      "mla": "Schmidt, Jeff. “Three Financial Statements.” *Corporate Finance Institute*, 2025, corporatefinanceinstitute.com/resources/accounting/three-financial-statements/. Accessed 22 Nov. 2026.",
+      "url": "https://corporatefinanceinstitute.com/resources/accounting/three-financial-statements/"
+    },
+    {
+      "id": null,
+      "group": "other",
+      "label": "Economic Futures: What is economics?",
+      "mla": "“What Is Economics?” *Economic Futures*, 2020, www.economicfutures.ac.uk/What-is-Economics/What-is-Economics. Accessed 19 Sept. 2026.",
+      "url": "https://www.economicfutures.ac.uk/What-is-Economics/What-is-Economics"
+    },
+    {
+      "id": null,
+      "group": "site-building",
+      "label": "W3Schools: CSS tutorial",
+      "mla": "W3Schools. “CSS Tutorial.” *W3Schools*, 2022, www.w3schools.com/css/default.asp. Accessed 19 Sept. 2026.",
+      "url": "https://www.w3schools.com/css/default.asp"
+    },
+    {
+      "id": null,
+      "group": "site-building",
+      "label": "W3Schools: HTML tutorial",
+      "mla": "W3Schools. “HTML Tutorial.” *W3Schools*, Refsnes Data, 2022, www.w3schools.com/html/default.asp. Accessed 19 Sept. 2026.",
+      "url": "https://www.w3schools.com/html/default.asp"
+    },
+    {
+      "id": null,
+      "group": "site-building",
+      "label": "W3Schools: JavaScript tutorial",
+      "mla": "W3Schools. “JavaScript Tutorial.” *W3Schools*, 2019, www.w3schools.com/js/default.asp. Accessed 19 Sept. 2026.",
+      "url": "https://www.w3schools.com/js/default.asp"
+    }
+  ],
+  "source_notes": {
+    "1.1": "A university teaching module from September 2019. Its worked examples use Ethiopia and the Ethiopian birr, and they predate Ethiopia's July 2024 move to a market-based exchange rate. See the Country context track for current Jordan and Ethiopia figures.",
+    "1.2": "An introductory guide for beginners, written in simplified terms. Its examples of which countries follow which economic system are illustrations, not precise classifications.",
+    "2.1": "An academic paper from 2016. The notes here were prepared from a rough translation, so some nuance may be lost. Claims such as Germany's eco-social market economy giving the best results are the authors' own judgment and are not tested in the paper.",
+    "3.1": "A roundup of articles from autumn 2022. The inflation, interest-rate and recession conditions it describes belong to 2022 and have since changed.",
+    "4.1": "A chapter from a 2004 IMF volume on how banks are taxed. The tax rules and country comparisons reflect practice around 2002 to 2004 and may have changed. It covers bank taxation, not banking in general.",
+    "4.2": "An explainer focused on the United States. The regulators and exchanges it names (SEC, FINRA, NYSE, Nasdaq) are U.S. institutions and do not describe Jordan's rules. It gives no numeric threshold for what counts as a bull or bear market.",
+    "5.1": "Figures were collected in November 2026 from IMF, Central Bank of Jordan, Department of Statistics and Ministry of Finance releases, and from news reports of them. They change often, and debt and unemployment figures depend on which definition is used. Check the official sites for the latest numbers.",
+    "5.2": "Figures were collected in November 2026 from the National Bank of Ethiopia's directive, IMF documents and press reports. Exchange rates move daily, and some figures come second-hand from news reports, so reports can differ. Check the National Bank of Ethiopia and the IMF for the latest.",
+    "5.3": "Written by this site's editor by comparing Sources 5.1 and 5.2. It is not an outside source, and it is not based on a real exchange-rate model.",
+    "6.1": "A publisher's explainer on the income statement, following common (often U.S.-style) conventions. Under IFRS the statement is called the statement of profit or loss.",
+    "6.2": "A publisher's explainer on the balance sheet, following common (often U.S.-style) conventions. Under IFRS the statement is called the statement of financial position.",
+    "6.3": "A publisher's explainer on the cash flow statement. IFRS and U.S. GAAP differ on where interest and dividends are shown, so check the rules that apply to a given company.",
+    "6.4": "A summary of the IFRS standard IAS 7. The full text has not been reviewed line by line, so check the current standard before relying on details such as how interest and dividends are classified.",
+    "6.5": "An explainer on how the three statements connect, following common conventions. Terminology may differ under IFRS."
+  },
+  "category_notes": {
+    "6": "The company in the examples and widgets, Zayd Trading Co., is fictional. All figures are illustrative, not real data, and nothing here is investment advice."
+  }
+}

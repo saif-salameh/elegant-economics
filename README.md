@@ -1,46 +1,56 @@
 # Economics Research Website
 
-A small research website that presents the concepts in `content/economics-library.md` for students and general readers in Jordan. The source library is the content authority; the pages and widgets are derived from it. The site uses Flask, plain HTML/CSS, and vanilla JavaScript.
+A static website presenting economics and financial-statement concepts for students and general readers in Jordan. The published site is built into `docs/` and runs without a Python backend. It uses plain HTML, CSS, and JavaScript, with concept and citation data stored as JSON.
 
 ## Project structure
 
-- `backend/` — Flask application, Markdown parser, data models, and Python dependencies.
-- `content/economics-library.md` — the source notes. Do not overwrite this file with generated content.
-- `frontend/` — HTML pages, CSS, theme controls, reusable card component, and widgets.
-- `tools/check_site.py` — code-only project checks using Flask's test client.
-- `run.bat` — Windows launcher.
+- `content/economics-library.md` — source of truth for source and concept notes. Edit this file to update the library; do not edit generated concept data by hand.
+- `content/sources-page-data.json` — citations and source notes used on the Sources page.
+- `content/zayd_trading_example.json` — fictional company data for the financial-statement widgets.
+- `backend/parser.py` — parses the Markdown and maps concept IDs to widgets.
+- `frontend/` — source HTML, CSS, JavaScript, favicon, and static-hosting files.
+- `tools/build_static.py` — builds the publishable site and JSON data into `docs/`.
+- `tools/check_site.py` — checks the source data and generated static site.
+- `docs/` — generated site to preview and deploy. It contains pages, styles, scripts, widgets, and `data/` JSON files; it does not contain `content/`, `backend/`, or `tools/`.
 
-## Run on Windows
+## Edit and build the site on Windows
 
 1. Install Python 3.10 or newer and make sure `python` works in Command Prompt or PowerShell.
-2. From the project folder, install the backend dependencies:
+2. From the project root, install the parser dependencies:
 
    ```bat
    python -m pip install -r backend\requirements.txt
    ```
 
-3. Start the development server with `run.bat`, or run this command from the project folder:
+3. Edit and save `content/economics-library.md` as UTF-8. Keep its category, source, and concept headings intact so the parser can identify the notes. Edit the source-page JSON files in `content/` when their citations, notes, or example figures need to change.
+4. Build the static site from the project root:
 
    ```bat
-   python -m flask --app backend.app run
+   python tools\build_static.py
    ```
 
-4. Open the local address printed by Flask (normally `http://127.0.0.1:5000/`).
+   The build writes `docs/data/concepts.json`, `sources.json`, `sources-page-data.json`, and `zayd_trading_example.json`, then copies the site files into `docs/`.
+5. Preview it from the project root with Python's static file server:
 
-## API
+   ```bat
+   python -m http.server 8000 --directory docs
+   ```
 
-- `GET /api/concepts` — all parsed concept records.
-- `GET /api/concepts/<concept_id>` — one concept, such as `/api/concepts/1.1.13`.
-- `GET /api/search?q=<text>` — title and summary search; an empty query returns an empty list.
-- `GET /api/sources` — source records.
+   Open `http://localhost:8000/`. Stop the preview with `Ctrl+C`.
 
-## Add a widget
+The site loads JSON through relative `data/` paths. Concept search runs in the browser over titles, definitions, overviews, and highlights, so the published site needs no API server.
 
-Create a vanilla JavaScript module under `frontend/js/widgets/`, for example `my_widget.js`. Export `init(widgetContainer)` and build the widget inside that container. Keep it self-contained, use CSS variables for colors, and avoid network requests and external libraries. Then add the concept ID and filename (without `.js`) to `WIDGET_MAP` in `backend/parser.py`; the API uses that mapping to set `has_interactive` and `widget` for concept cards and detail pages.
+## Deploy
+
+Deploy the **contents of `docs/`** to any static web host. For GitHub Pages, select the repository branch and the `/docs` folder as the publishing source. Keep the generated `data/`, `js/`, and `css/` folders alongside the HTML pages. The build includes a `404.html`, favicon, `.nojekyll`, and `robots.txt`.
+
+## Add a concept widget
+
+Create a vanilla JavaScript module in `frontend/js/widgets/`, export `init(widgetContainer)`, then map each applicable concept source ID to the filename (without `.js`) in `WIDGET_MAP` in `backend/parser.py`. Rebuild the site so the widget and updated concept mapping are copied into `docs/`. Widgets use inline SVG and CSS variables, and should not depend on external libraries or services.
 
 ## Themes
 
-`frontend/js/theme.js` applies the saved palette before page content renders and stores the selection in local storage under `economics-theme`. The palette is stored as a key such as `theme-1`; dark mode appends ` dark` to the `data-theme` attribute, producing values such as `theme-1 dark`. `frontend/css/variables.css` has matching selectors for all five palettes in light and dark mode. The legacy aliases `purple-gold` and `blue-lemon` (and their dark values) are also supported. Theme controls are added to page headers by the theme script.
+`frontend/js/theme.js` applies the saved palette before page content renders and stores the choice in local storage under `economics-theme`. The palette uses a key such as `theme-1`; dark mode appends ` dark` to `data-theme`, producing values such as `theme-1 dark`. `frontend/css/variables.css` defines five palettes in light and dark modes. Legacy aliases `purple-gold` and `blue-lemon` are also supported.
 
 ## Content cautions and limitations
 
@@ -54,8 +64,10 @@ Create a vanilla JavaScript module under `frontend/js/widgets/`, for example `my
 
 ## Checks
 
-Run the code-only checks (this does not start a web server):
+After rebuilding, run the code-only checks from the project root:
 
 ```bat
 python tools\check_site.py
 ```
+
+The checker validates the source records and generated `docs/` output; it does not start a web server.

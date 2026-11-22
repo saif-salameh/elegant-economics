@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="theme-1">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Concepts about accounting and financial statements">
+  <title>Financial Statements – Economics Research</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/glass-cards.css">
+</head>
+<body>
+  <header>
+    <h1>Accounting &amp; Financial Statements (Category 6)</h1>
+    <nav id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="a_z_index.html">A–Z Index</a>
+      <a href="track_economics.html">Economics</a>
+      <a href="track_financing.html">Financing</a>
+      <a href="track_global.html">Global Economy</a>
+      <a href="track_country_context.html">Country Context</a>
+      <a href="track_financial_statements.html">Financial Statements</a>
+      <a href="sources.html">Sources</a>
+    </nav>
+  </header>
+  <main>
+    <section class="grid glass-card-grid" id="concept-grid" aria-live="polite">
+      <p class="loading-state">Loading concepts…</p>
+    </section>
+    <script type="module">
+      import { buildConceptCard, fetchConcepts, showCardLoadError } from './js/components/card.js';
+      const grid = document.getElementById('concept-grid');
+      try {
+        const concepts = (await fetchConcepts()).filter(concept => concept.category === '6');
+        grid.replaceChildren(...concepts.map(concept => buildConceptCard(concept)));
+      } catch (error) {
+        showCardLoadError(grid, error);
+      }
+    </script>
+  </main>
+  <footer><p>&copy; 2026 Economics Research Site</p></footer>
+</body>
+</html>

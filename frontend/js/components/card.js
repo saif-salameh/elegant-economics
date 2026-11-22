@@ -1,3 +1,5 @@
+import { fetchConcepts } from "../api.js";
+
 const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
 
 function addBandPair(parent, labelText, valueText, className = "") {
@@ -54,7 +56,7 @@ export function buildConceptCard(concept, { featured = false, compact = false } 
     featured ? "featured-card-link" : "",
     compact ? "compact-card-link" : "",
   ].filter(Boolean).join(" ");
-  link.href = `/concept_detail.html?id=${encodeURIComponent(concept.id)}`;
+  link.href = `concept_detail.html?id=${encodeURIComponent(concept.id)}`;
   link.setAttribute("aria-label", `${titleText}. ${categoryName}. Concept ${conceptNumber}.`);
 
   const card = document.createElement("article");
@@ -96,57 +98,27 @@ export function buildConceptCard(concept, { featured = false, compact = false } 
   return link;
 }
 
-export async function fetchConcepts() {
-  let response;
-  try {
-    response = await fetch("/api/concepts", { headers: { Accept: "application/json" } });
-  } catch (error) {
-    throw new Error(`Could not reach /api/concepts. HTTP status unavailable. ${error.message}`);
-  }
+export { fetchConcepts };
 
-  if (!response.ok) {
-    throw new Error(`Could not load /api/concepts. HTTP ${response.status} ${response.statusText || "request failed"}.`);
-  }
+const foldForSearch = value => String(value ?? "")
+  .normalize("NFKC")
+  .toLocaleLowerCase()
+  .replaceAll("ß", "ss")
+  .replaceAll("ς", "σ");
 
-  let payload;
-  try {
-    payload = await response.json();
-  } catch {
-    throw new Error(`The concepts API returned invalid JSON. HTTP ${response.status}.`);
-  }
-
-  const concepts = Array.isArray(payload) ? payload : payload?.concepts;
-  if (!Array.isArray(concepts)) {
-    throw new Error(`Unexpected concepts API response. HTTP ${response.status}; expected an array of concepts.`);
-  }
-  return concepts;
-}
-
-export async function searchConcepts(query) {
-  const url = `/api/search?q=${encodeURIComponent(query)}`;
-  let response;
-  try {
-    response = await fetch(url, { headers: { Accept: "application/json" } });
-  } catch (error) {
-    throw new Error(`Could not reach /api/search. HTTP status unavailable. ${error.message}`);
-  }
-
-  if (!response.ok) {
-    throw new Error(`Could not search concepts. HTTP ${response.status} ${response.statusText || "request failed"}.`);
-  }
-
-  let payload;
-  try {
-    payload = await response.json();
-  } catch {
-    throw new Error(`The search API returned invalid JSON. HTTP ${response.status}.`);
-  }
-
-  const concepts = Array.isArray(payload) ? payload : payload?.concepts;
-  if (!Array.isArray(concepts)) {
-    throw new Error(`Unexpected search API response. HTTP ${response.status}; expected an array of concepts.`);
-  }
-  return concepts;
+export async function searchConcepts(query, availableConcepts) {
+  const needle = foldForSearch(query).trim();
+  if (!needle) return [];
+  const concepts = Array.isArray(availableConcepts) ? availableConcepts : await fetchConcepts();
+  return concepts.filter(concept => {
+    const searchableText = [
+      concept.title,
+      concept.definition,
+      concept.overview,
+      ...(Array.isArray(concept.highlights) ? concept.highlights : []),
+    ].map(foldForSearch).join(" ");
+    return searchableText.includes(needle);
+  });
 }
 
 export function showCardLoadError(container, error) {

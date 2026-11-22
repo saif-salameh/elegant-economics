@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="theme-1">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore an economics concept, its related ideas, and its source">
+  <title>Concept Detail – Economics Research</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/glass-cards.css">
+</head>
+<body>
+  <header>
+    <p class="site-label"><a href="index.html">Economics Research</a></p>
+    <nav id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="a_z_index.html">A–Z Index</a>
+      <a href="track_economics.html">Economics</a>
+      <a href="track_financing.html">Financing</a>
+      <a href="track_global.html">Global Economy</a>
+      <a href="track_country_context.html">Country Context</a>
+      <a href="track_financial_statements.html">Financial Statements</a>
+      <a href="sources.html">Sources</a>
+    </nav>
+  </header>
+  <main>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="a_z_index.html">A–Z Index</a>
+      <span aria-hidden="true">›</span>
+      <span id="breadcrumb-title">Concept</span>
+    </nav>
+
+    <article class="concept-detail-page" id="concept-detail">
+      <header class="detail-hero">
+        <p class="eyebrow" id="concept-source-tag">Economics concept</p>
+        <h1 id="concept-title">Loading concept…</h1>
+        <div class="detail-explanation" aria-label="Concept explanation">
+          <section class="detail-copy-block" aria-labelledby="definition-heading">
+            <h2 id="definition-heading">Definition</h2>
+            <p class="detail-summary" id="concept-definition"></p>
+          </section>
+          <section class="detail-copy-block" aria-labelledby="overview-heading">
+            <h2 id="overview-heading">Overview</h2>
+            <p class="detail-summary" id="concept-overview"></p>
+          </section>
+        </div>
+        <a class="source-link" id="source-link" href="sources.html">View source details</a>
+      </header>
+
+      <div id="detail-error" aria-live="polite"></div>
+      <section class="detail-section" id="highlights-section" aria-labelledby="highlights-title">
+        <h2 id="highlights-title">Highlights</h2>
+        <ul class="highlight-list" id="concept-highlights"></ul>
+      </section>
+
+      <section class="detail-section widget-section" id="widget-section" aria-labelledby="widget-title" hidden>
+        <p class="eyebrow">Illustrative model</p>
+        <h2 id="widget-title">Explore the model</h2>
+        <div id="widget-container" aria-live="polite"></div>
+      </section>
+
+      <section class="detail-section related-section" id="related-section" aria-labelledby="related-title" hidden>
+        <p class="eyebrow">Keep exploring</p>
+        <h2 id="related-title">Related concepts</h2>
+        <div class="glass-card-grid compact-card-grid" id="related-concepts"></div>
+      </section>
+
+      <aside class="jordan-context" id="jordan-context" aria-labelledby="jordan-context-title" hidden>
+        <h2 id="jordan-context-title">Jordan context</h2>
+        <div class="glass-card-grid compact-card-grid" id="jordan-context-concepts"></div>
+      </aside>
+    </article>
+  </main>
+  <footer>
+    <p>&copy; 2026 Economics Research Site</p>
+  </footer>
+
+  <script type="module">
+    import { buildConceptCard, fetchConcepts, showCardLoadError } from './js/components/card.js';
+
+    const errorHost = document.getElementById('detail-error');
+    const params = new URLSearchParams(window.location.search);
+    const requestedId = params.get('id');
+
+    function showError(error) {
+      showCardLoadError(errorHost, error);
+    }
+
+    async function loadConcept() {
+      if (!requestedId) throw new Error('No concept was selected. HTTP status unavailable.');
+
+      const concepts = await fetchConcepts();
+      const concept = concepts.find(item => item.id === requestedId || item.source_id === requestedId);
+      if (!concept) throw new Error(`Concept not found. HTTP 404.`);
+
+      document.title = `${concept.title} – Economics Research`;
+      document.getElementById('concept-title').textContent = concept.title;
+      document.getElementById('breadcrumb-title').textContent = concept.title;
+      document.getElementById('concept-source-tag').textContent = `Source ${concept.source_id.split('.').slice(0, 2).join('.')}`;
+      document.getElementById('concept-definition').textContent = concept.definition || concept.summary.replace(/^\s*Definition:\s*/i, '').split(/\s+Overview:\s*/i)[0];
+      document.getElementById('concept-overview').textContent = concept.overview || (concept.summary.match(/\s+Overview:\s*([\s\S]*)$/i)?.[1] || '');
+
+      const sourceId = concept.source_id.split('.').slice(0, 2).join('.');
+      const sourceAnchor = `source-${sourceId.replaceAll('.', '-')}`;
+      const sourceLink = document.getElementById('source-link');
+      sourceLink.href = `sources.html#${sourceAnchor}`;
+      sourceLink.textContent = `Source ${sourceId}: ${concept.source_title}`;
+
+      const highlights = document.getElementById('concept-highlights');
+      highlights.replaceChildren(...(concept.highlights || []).map(text => {
+        const item = document.createElement('li');
+        item.textContent = text;
+        return item;
+      }));
+
+      if (concept.widget) {
+        const widgetSection = document.getElementById('widget-section');
+        const widgetContainer = document.getElementById('widget-container');
+        widgetContainer.dataset.conceptId = concept.source_id;
+        widgetSection.hidden = false;
+        try {
+          const module = await import(`./js/widgets/${concept.widget}.js`);
+          if (typeof module.init === 'function') module.init(widgetContainer);
+          else showCardLoadError(widgetContainer, new Error('This interactive model is not available yet.'));
+        } catch (error) {
+          showCardLoadError(widgetContainer, new Error(`Could not load the interactive model. ${error.message}`));
+        }
+      }
+
+      const conceptByCode = new Map(concepts.map(item => [item.source_id, item]));
+      const related = [...new Set(concept.related_concepts || [])]
+        .map(code => conceptByCode.get(code))
+        .filter(item => item && item.id !== concept.id);
+      if (related.length) {
+        document.getElementById('related-concepts').replaceChildren(
+          ...related.map(item => buildConceptCard(item, { compact: true }))
+        );
+        document.getElementById('related-section').hidden = false;
+      }
+
+      const countryContext = related.filter(item => item.category === '5');
+      if (countryContext.length) {
+        document.getElementById('jordan-context-concepts').replaceChildren(
+          ...countryContext.map(item => buildConceptCard(item, { compact: true }))
+        );
+        document.getElementById('jordan-context').hidden = false;
+      }
+    }
+
+    loadConcept().catch(showError);
+  </script>
+</body>
+</html>
