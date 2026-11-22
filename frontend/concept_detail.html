@@ -80,7 +80,7 @@
 
   <script type="module">
     import { buildConceptCard, fetchConcepts, showCardLoadError } from './js/components/card.js';
-    import { buildSourceNote } from './js/components/source_notes.js';
+    import { buildSourceNotes } from './js/components/source_notes.js';
 
     const errorHost = document.getElementById('detail-error');
     const params = new URLSearchParams(window.location.search);
@@ -117,8 +117,8 @@
         return item;
       }));
 
-      const sourceNote = buildSourceNote(concept);
-      if (sourceNote) document.getElementById('source-note-container').replaceChildren(sourceNote);
+      const sourceNotes = await buildSourceNotes(concept);
+      document.getElementById('source-note-container').replaceChildren(...sourceNotes);
 
       if (concept.widget) {
         const widgetSection = document.getElementById('widget-section');

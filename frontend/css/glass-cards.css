@@ -947,8 +947,27 @@ body {
 }
 
 .source-note h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   margin-bottom: 6px;
   font-size: 1rem;
+}
+
+.source-note-icon {
+  display: inline-grid;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: .85rem;
+  font-weight: 800;
+  line-height: 1;
+  text-indent: 0;
 }
 
 .source-note p {

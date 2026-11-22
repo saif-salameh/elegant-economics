@@ -142,7 +142,6 @@ footer p {
   text-align: left;
   border-bottom: 1px solid var(--primary);
 }
-.source-cautions { margin-top: 2rem; }
 .source-load-error {
   color: var(--accent);
   font-weight: 600;

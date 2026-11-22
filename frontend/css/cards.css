@@ -95,18 +95,6 @@
   color: var(--text);
 }
 
-/* ---- Content cautions ---- */
-.content-caution {
-  background-color: color-mix(in srgb, var(--accent) 15%, var(--bg));
-  border-left: 3px solid var(--accent);
-  padding: 0.5rem 1rem;
-  margin: 1rem 0;
-  font-size: 0.9rem;
-}
-.content-caution strong {
-  color: var(--accent);
-}
-
 /* ---- Concept highlight ---- */
 .concept-highlight {
   background-color: color-mix(in srgb, var(--primary) 8%, var(--bg));

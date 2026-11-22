@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import ast
+import json
 import re
 import sys
 from pathlib import Path
@@ -29,13 +30,20 @@ def check_page_responses(client) -> None:
     html_files = sorted((ROOT / "frontend").rglob("*.html"))
     failures = []
     missing_track_links = []
+    editor_todo_pages = []
+    caution_links = []
     for page in html_files:
         relative = page.relative_to(ROOT / "frontend").as_posix()
         route = "/" if relative == "index.html" else f"/{relative}"
         response = client.get(route)
         if response.status_code != 200:
             failures.append(f"{route}: HTTP {response.status_code}")
+        if "editor_todo" in response.get_data(as_text=True):
+            editor_todo_pages.append(relative)
         source = page.read_text(encoding="utf-8")
+        for href in re.findall(r"\bhref\s*=\s*['\"]([^'\"]+)['\"]", source, re.I):
+            if re.search(r"(?:content[-_ ]?cautions?|reading[-_ ]notes)", href, re.I):
+                caution_links.append(f"{relative}: {href}")
         for track_href in ("/track_country_context.html", "/track_financial_statements.html"):
             if track_href not in source:
                 missing_track_links.append(f"{relative}: {track_href}")
@@ -45,9 +53,36 @@ def check_page_responses(client) -> None:
         not missing_track_links,
         "; ".join(missing_track_links) or f"both links found on {len(html_files)} pages",
     )
+    record(
+        "No editor_todo text appears in any page output",
+        not editor_todo_pages,
+        ", ".join(editor_todo_pages) if editor_todo_pages else f"checked {len(html_files)} HTML pages",
+    )
+    source_page = client.get("/sources.html").get_data(as_text=True)
+    status_header = re.search(r"<th\b[^>]*>\s*Status\s*</th>", source_page, re.I)
+    record(
+        "Sources page has no Status header",
+        status_header is None,
+        "Status column header is absent" if status_header is None else "Status header is still present",
+    )
+    caution_section = re.search(
+        r"<section\b[^>]*class=['\"][^'\"]*source-cautions[^'\"]*['\"][^>]*>.*?</section>",
+        source_page,
+        re.I | re.S,
+    ) or re.search(r"Content\s+cautions\s*:", source_page, re.I)
+    record(
+        "Sources Content cautions section is gone",
+        caution_section is None,
+        "section markup and heading are absent" if caution_section is None else "cautions section remains",
+    )
+    record(
+        "No page links to the removed cautions section",
+        not caution_links,
+        "; ".join(caution_links) if caution_links else f"checked {len(html_files)} HTML pages",
+    )
 
 
-def check_source_reading_lists(client) -> None:
+def check_source_reading_lists(client) -> list[dict]:
     response = client.get("/api/sources")
     sources = response.get_json() if response.status_code == 200 else []
     by_id = {source.get("id"): source for source in sources}
@@ -88,6 +123,48 @@ def check_source_reading_lists(client) -> None:
         "Sources page renders the reading-list section",
         'id="source-details"' in page and "further_reading_leads" in page,
         "source list container and lead field are present",
+    )
+    return sources
+
+
+def check_citations_and_source_notes(client, sources: list[dict]) -> None:
+    data_path = ROOT / "content" / "sources-page-data.json"
+    file_data = None
+    file_error = ""
+    try:
+        file_data = json.loads(data_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        file_error = str(error)
+    record(
+        "Citation data file exists and loads as UTF-8 JSON",
+        data_path.is_file() and isinstance(file_data, dict),
+        str(data_path.relative_to(ROOT)) if isinstance(file_data, dict) else file_error or "file is missing or not a JSON object",
+    )
+
+    response = client.get("/api/sources-page-data")
+    data = response.get_json() if response.status_code == 200 else {}
+    record(
+        "Citations endpoint returns HTTP 200 with UTF-8 JSON",
+        response.status_code == 200 and "application/json" in response.content_type and "utf-8" in response.content_type.lower(),
+        f"HTTP {response.status_code}; {response.content_type}",
+    )
+    citations = data.get("citations", []) if isinstance(data, dict) else []
+    extras = data.get("other_references", []) if isinstance(data, dict) else []
+    library_count = sum(item.get("group") == "library" for item in citations if isinstance(item, dict))
+    other_count = len(extras) if isinstance(extras, list) else 0
+    record(
+        "Citations data has 11 library rows and 6 other rows",
+        response.status_code == 200 and library_count == 11 and other_count == 6,
+        f"library: {library_count}; other and site-building: {other_count}; HTTP {response.status_code}",
+    )
+    notes = data.get("source_notes", {}) if isinstance(data, dict) else {}
+    json_source_ids = {str(item.get("id")) for item in citations if isinstance(item, dict) and item.get("id")}
+    api_source_ids = {str(source.get("id")) for source in sources if source.get("id")}
+    missing_notes = sorted(source_id for source_id in json_source_ids | api_source_ids if not str(notes.get(source_id, "")).strip())
+    record(
+        "Every source ID has a source note",
+        response.status_code == 200 and not missing_notes,
+        f"missing: {', '.join(missing_notes) or 'none'}; checked {len(json_source_ids | api_source_ids)} IDs",
     )
 
 
@@ -134,6 +211,26 @@ def check_concepts_and_details(client) -> list[dict]:
         if detail.status_code != 200 or (detail.get_json() or {}).get("id") != concept_id:
             failures.append(f"{concept_id}: HTTP {detail.status_code}")
     record("Every concept detail API route resolves", not failures, "; ".join(failures) or f"{len(concepts)} detail records")
+
+    editor_markdown = (ROOT / "content" / "economics-library.md").read_text(encoding="utf-8")
+    editor_section_present = re.search(r"^# Reading notes and cautions\s*$", editor_markdown, re.M) is not None
+    editor_heading_in_concepts = any(
+        "Reading notes and cautions" in " ".join([
+            str(concept.get("title", "")),
+            str(concept.get("summary", "")),
+            str(concept.get("definition", "")),
+            str(concept.get("overview", "")),
+            " ".join(str(item) for item in concept.get("highlights", [])),
+        ])
+        for concept in concepts
+    )
+    record(
+        "Reading notes and cautions remain editor-only",
+        editor_section_present and not editor_heading_in_concepts,
+        "Markdown section is present and absent from parsed concepts"
+        if editor_section_present and not editor_heading_in_concepts
+        else "editor section missing or exposed as concept content",
+    )
 
     last = concepts[-1] if concepts else {}
     last_content = " ".join([
@@ -283,7 +380,8 @@ def main() -> int:
     with app.test_client() as client:
         check_page_responses(client)
         concepts = check_concepts_and_details(client)
-        check_source_reading_lists(client)
+        sources = check_source_reading_lists(client)
+        check_citations_and_source_notes(client, sources)
     check_widget_files(concepts)
     check_hardcoded_colors()
     check_external_assets_and_chartjs()

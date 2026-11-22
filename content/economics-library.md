@@ -11,15 +11,15 @@ A reference built from the sources you supplied, to mine later for the economics
 | 2.1 | Modern & Emerging Economic Models     | Stošić Mihajlović & Trajković — *Modern Economy: Features and Developments* (2016) | Read in full                                                                  |
 | 3.1 | Global Economy, Money & Markets Today | World Economic Forum — *Economics explained in 10 articles* (Oct 2022)             | Roundup page read; the 10 linked articles not opened                          |
 | 4.1 | Financial Sector & Financing          | IMF — *Taxing the Financial Sector*, Ch. 1 "Banks" (2004)                          | Front matter and Chapter 1 read                                               |
-| 4.2 | Financial Sector & Financing          | Investopedia — *What Is the Stock Market and How Does It Work?* (updated Apr 2026) | Read via Perplexity, Nov 2026; U.S.-focused; not independently re-opened      |
+| 4.2 | Financial Sector & Financing          | Investopedia — *What Is the Stock Market and How Does It Work?* (Apr 2024)         | Read via Perplexity, Nov 2026; U.S.-focused; details follow the MLA citation  |
 | 5.1 | Country Context: Jordan & Ethiopia    | Jordan — IMF, Central Bank of Jordan, Department of Statistics, Ministry of Finance (2024–2026) | Searched Nov 2026; official releases plus news reports; figures change |
 | 5.2 | Country Context: Jordan & Ethiopia    | Ethiopia and the birr — National Bank of Ethiopia, IMF, press reports (2024–2026)  | Searched Nov 2026; several figures second-hand; exchange rates move daily     |
 | 5.3 | Country Context: Jordan & Ethiopia    | Editorial comparison of Sources 5.1 and 5.2                                        | Written by the editor, not an outside source                                  |
-| 6.1 | Accounting & Financial Statements     | Corporate Finance Institute — *Income Statement* (2019)                            | Read via Perplexity, Nov 2026; URL as supplied                                |
-| 6.2 | Accounting & Financial Statements     | Corporate Finance Institute — *Balance Sheet* (updated Dec 2025)                   | Read via Perplexity, Nov 2026; URL as supplied                                |
-| 6.3 | Accounting & Financial Statements     | Corporate Finance Institute — *Statement of Cash Flows* (2019)                     | Read via Perplexity, Nov 2026; URL corrected by the editor                    |
+| 6.1 | Accounting & Financial Statements     | Corporate Finance Institute — *Income Statement* (Nov 2022)                        | Read via Perplexity, Nov 2026; details follow the MLA citation                |
+| 6.2 | Accounting & Financial Statements     | Corporate Finance Institute — *Balance Sheet* (Nov 2022)                           | Read via Perplexity, Nov 2026; details follow the MLA citation                |
+| 6.3 | Accounting & Financial Statements     | Corporate Finance Institute — *Statement of Cash Flows* (2023)                     | Read via Perplexity, Nov 2026; details follow the MLA citation                |
 | 6.4 | Accounting & Financial Statements     | IFRS Foundation — *IAS 7 Statement of Cash Flows*                                  | Summary read; full standard not read clause by clause; page confirmed        |
-| 6.5 | Accounting & Financial Statements     | Investopedia — *How Financial Statements Connect* (updated Feb 2026)               | Read via Perplexity, Nov 2026; not independently re-opened                    |
+| 6.5 | Accounting & Financial Statements     | Investopedia — *The Three Major Financial Statements: How They're Interconnected* (Apr 2022) | Read via Perplexity, Nov 2026; details follow the MLA citation |
 
 **Suggested site tracks:** Categories 1–2 feed the Economics track, Category 4 feeds the Financing track, Category 3 sits between them (inflation, interest rates, debt, and markets belong to both), Category 5 forms a Country context track (Jordan and Ethiopia) that links back to concepts in the other categories, and Category 6 forms an Accounting and financial statements track (income statement, balance sheet, cash flow statement) intended to carry interactive widgets, with line-item data and a worked example in financial-statements-widget-data.md.
 
@@ -886,7 +886,7 @@ A reference built from the sources you supplied, to mine later for the economics
 
 ## Source 4.2 — Investopedia: *What Is the Stock Market and How Does It Work?*
 
-*Peter Gratton, updated 27 April 2026, https://www.investopedia.com/terms/s/stockmarket.asp. Research compiled with Perplexity on 20 Nov 2026 and merged here; the page itself was not independently re-opened by the editor, so check key claims against it.*
+*Peter Gratton, 12 April 2024, https://www.investopedia.com/terms/s/stockmarket.asp, accessed 19 September 2026 (citation details as supplied by the editor). Research compiled with Perplexity on 20 Nov 2026 and merged here; check key claims against the page.*
 
 **Status:** Read in full (by the research assistant).
 
@@ -1354,7 +1354,7 @@ A reference built from the sources you supplied, to mine later for the economics
 
 ## Source 6.1 — Corporate Finance Institute: *Income Statement*
 
-*Tim Vipond, published 2 September 2019, https://corporatefinanceinstitute.com/resources/accounting/income-statement/, accessed 20 Nov 2026.*
+*Corporate Finance Institute (CFI), 24 November 2022, https://corporatefinanceinstitute.com/resources/accounting/income-statement/, accessed 22 November 2026.*
 
 **Status:** Read in full (by the research assistant).
 
@@ -1496,7 +1496,7 @@ A reference built from the sources you supplied, to mine later for the economics
 
 ## Source 6.2 — Corporate Finance Institute: *Balance Sheet*
 
-*Tim Vipond, updated 25 December 2025, https://corporatefinanceinstitute.com/resources/accounting/balance-sheet/, accessed 20 Nov 2026.*
+*Corporate Finance Institute (CFI), 24 November 2022, https://corporatefinanceinstitute.com/resources/accounting/balance-sheet/, accessed 22 November 2026.*
 
 **Status:** Read in full (by the research assistant).
 
@@ -1638,7 +1638,7 @@ A reference built from the sources you supplied, to mine later for the economics
 
 ## Source 6.3 — Corporate Finance Institute: *Statement of Cash Flows*
 
-*Jeff Schmidt, published 1 September 2019, https://corporatefinanceinstitute.com/resources/accounting/cash-flow-statement/ (the research assistant supplied a slightly different path, /resources/accounting/statement-of-cash-flows/; the address given here was found by the editor in a search), accessed 20 Nov 2026.*
+*Jeff Schmidt, 2023, https://corporatefinanceinstitute.com/resources/accounting/statement-of-cash-flows/, accessed 22 November 2026.*
 
 **Status:** Read in full (by the research assistant); the editor confirmed from search results that the CFI page covers operating, investing and financing sections and the direct (rarely used) and indirect (most common) methods.
 
@@ -1772,7 +1772,7 @@ A reference built from the sources you supplied, to mine later for the economics
 
 *IFRS Foundation, International Accounting Standards Board, https://www.ifrs.org/issued-standards/list-of-standards/ias-7-statement-of-cash-flows/ (page confirmed to exist by the editor; the 2026 issued-standards edition is listed), accessed 20 Nov 2026.*
 
-**Status:** Read for the standard's summary and key requirements (by the research assistant); the full standard text was not read clause by clause. The IFRS page lists amendments touching the classification of interest and dividend cash flows, so check the current text before relying on the interest and dividend choices described in 6.4.
+**Status:** Read for the standard's summary and key requirements (by the research assistant); the full standard text was not read clause by clause. Check the current text before relying on the interest and dividend choices described in 6.4.
 
 **Whole-source summary.** IAS 7 requires an entity to prepare a statement of cash flows as an integral part of its financial statements for each period presented. It requires cash flows to be classified as operating, investing or financing activities. It permits either the direct method, showing major classes of gross cash receipts and payments, or the indirect method, adjusting profit or loss for non-cash items, accruals, deferrals, and investing or financing income and expenses. It also requires disclosure of cash and cash-equivalent components and reconciliation with the statement of financial position.
 
@@ -1842,9 +1842,9 @@ A reference built from the sources you supplied, to mine later for the economics
 
 - It supports the three-statement linkage.
 
-## Source 6.5 — Investopedia: *How Financial Statements Connect*
+## Source 6.5 — Investopedia: *The Three Major Financial Statements: How They're Interconnected*
 
-*The Investopedia Team, updated 20 February 2026, https://www.investopedia.com/ask/answers/031815/how-are-three-major-financial-statements-related-each-other.asp, accessed 20 Nov 2026.*
+*Amy Drury, 28 April 2022, https://www.investopedia.com/ask/answers/031815/how-are-three-major-financial-statements-related-each-other.asp, accessed 22 November 2026.*
 
 **Status:** Read in full (by the research assistant); the editor did not independently open this page.
 
@@ -1984,7 +1984,7 @@ A reference built from the sources you supplied, to mine later for the economics
 
 - **Investopedia (4.2)** was read by the research assistant (Perplexity) on 20 November 2026 and merged here; the editor did not independently re-open it, but the SEC mission described in 4.2.13 matches the SEC's own site. It is U.S.-focused (SEC, FINRA, NYSE, Nasdaq), so its rules do not describe Jordanian regulation. Bull and bear markets are not given a numeric threshold in this source. Three other candidates Perplexity listed (an Investopedia *Stock Markets* page, Investor.gov, S&P Global) were seen only as search snippets, so they appear as reading leads under 4.2 and no concepts were written from them.
 
-- **Category 6 (financial statements)** comes from Corporate Finance Institute (an education publisher, not a standards setter), the IFRS Foundation's IAS 7 page and Investopedia. The IAS 7 page was confirmed to exist but the full standard was not read clause by clause, and the IFRS page lists amendments touching interest and dividend classification, so check the current text. The URLs for 6.1, 6.2 and 6.5 were not independently opened; the 6.3 address was corrected. Terminology differs: IFRS says statement of financial position and statement of profit or loss. IFRS lets companies choose where to show interest and dividends in the cash flow statement, while U.S. GAAP is more restrictive.
+- **Category 6 (financial statements)** comes from Corporate Finance Institute (an education publisher, not a standards setter), the IFRS Foundation's IAS 7 page and Investopedia. The IAS 7 page was confirmed to exist but the full standard was not read clause by clause, so check the current text, especially for the classification of interest and dividends. The authors, dates and addresses for 4.2, 6.1, 6.2, 6.3 and 6.5 follow the editor's own MLA citations (pages accessed in 2026); they replace different authors and dates that Perplexity first reported. Terminology differs: IFRS says statement of financial position and statement of profit or loss. IFRS lets companies choose where to show interest and dividends in the cash flow statement, while U.S. GAAP is more restrictive.
 
 - **Worked example (Zayd Trading Co.)**: Perplexity's draft contained arithmetic errors (Year 2 operating cash flow 202 should be 212, so net change in cash is 50 and free cash flow is 132; Year 1 depreciation was inconsistent between statements; the JSON contained invalid expressions). The corrected, computer-checked version is in financial-statements-widget-data.md and zayd_trading_example.json. The company is fictional and not investment advice.
 

@@ -7,6 +7,24 @@
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
+  <style>
+    .citation-tools { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-bottom: .8rem; }
+    .citation-tools button, .citation-copy { border: 1px solid var(--primary); border-radius: 999px; background: var(--primary); color: var(--bg); cursor: pointer; padding: .45rem .8rem; }
+    .citation-confirmation { min-height: 1.4rem; color: var(--muted); }
+    .citation-table-wrap { overflow-x: auto; }
+    .citation-table { width: 100%; border-collapse: collapse; }
+    .citation-table caption { padding: .65rem 0; color: var(--primary); font-weight: 750; text-align: left; }
+    .citation-table th, .citation-table td { border: 1px solid var(--border); padding: .7rem; text-align: left; vertical-align: top; }
+    .citation-table thead th { background: color-mix(in srgb, var(--primary) 8%, var(--bg)); }
+    .citation-table .citation-group th { background: color-mix(in srgb, var(--primary) 14%, var(--bg)); color: var(--primary); }
+    .citation-text { margin: 0 0 .55rem; padding-left: 2em; text-indent: -2em; }
+    .citation-url { display: inline-block; margin: 0 .7rem .5rem 0; }
+    .citation-copy { display: block; background: var(--bg); color: var(--primary); }
+    .source-page-note { margin: .15rem 0; padding: .7rem .8rem; border: 1px solid var(--accent); border-left-width: 4px; border-radius: .65rem; background: var(--bg); }
+    .source-page-note h3 { display: flex; align-items: center; gap: .5rem; margin: 0 0 .35rem; color: var(--primary); font-size: .98rem; }
+    .source-page-note p { margin: 0; }
+    @media (max-width: 640px) { .citation-table { min-width: 620px; } }
+  </style>
 </head>
 <body>
   <header>
@@ -32,13 +50,22 @@
             <th>ID</th>
             <th>Category</th>
             <th>Title</th>
-            <th>Status</th>
           </tr>
         </thead>
         <tbody id="source-table">
-          <tr><td colspan="4">Loading sources…</td></tr>
+          <tr><td colspan="3">Loading sources…</td></tr>
         </tbody>
       </table>
+    </section>
+    <section class="card" aria-labelledby="citation-heading">
+      <h2 id="citation-heading">Citations (MLA 8)</h2>
+      <div class="citation-tools">
+        <button type="button" id="copy-all-citations">Copy all</button>
+        <span class="citation-confirmation" id="citation-confirmation" role="status" aria-live="polite"></span>
+      </div>
+      <div class="citation-table-wrap" id="citation-table-host">
+        <p>Loading citations…</p>
+      </div>
     </section>
     <section class="card source-reading-lists" aria-labelledby="source-reading-title">
       <h2 id="source-reading-title">Sources consulted and further reading</h2>
@@ -46,30 +73,166 @@
         <p>Loading source reading lists…</p>
       </div>
     </section>
-    <section class="card source-cautions">
-      <p><strong>Content cautions:</strong></p>
-      <ul>
-        <li>Investopedia (4.2) was read via Perplexity but not independently reopened; verify its URL and current market information before publishing.</li>
-        <li>IMF chapter data is from 2004</li>
-        <li>2.1 is a rough translation of an academic paper</li>
-        <li>FutureLearn country labels need verifying</li>
-        <li>Source 1.1 examples use Ethiopia/birr – replace for Jordan context</li>
-        <li>Category 5 figures may be time-sensitive or second-hand; check the figures and cited URLs against source publishers before publishing.</li>
-        <li>Category 6 URLs and any figures need checking against current source material before publishing; verify IAS 7 claims against its current text.</li>
-      </ul>
-    </section>
   </main>
   <footer>
     <p>&copy; 2026 Economics Research Site</p>
   </footer>
   <script type="module">
-  import { fetchSources } from './js/api.js';
-  fetchSources().then(sources => {
+  import { fetchSources, fetchSourcesPageData } from './js/api.js';
+
+  const sourcesPromise = fetchSources();
+  const sourcePageDataPromise = fetchSourcesPageData();
+
+  const citationPlainText = value => String(value ?? 'Citation to be added').replace(/\*([^*]+)\*/g, '$1');
+  const sourceSlug = value => String(value ?? 'reference').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'reference';
+  const citationGroups = [
+    ['library', 'Sources used in the library'],
+    ['other', 'Other references'],
+    ['site-building', 'Site-building references'],
+  ];
+  const citationConfirmation = document.getElementById('citation-confirmation');
+  const citationHost = document.getElementById('citation-table-host');
+  let citationsInDisplayOrder = [];
+
+  function appendItalicText(parent, value) {
+    const pattern = /\*([^*]+)\*/g;
+    const text = String(value ?? 'Citation to be added');
+    let cursor = 0;
+    let match;
+    while ((match = pattern.exec(text))) {
+      parent.append(document.createTextNode(text.slice(cursor, match.index)));
+      const italic = document.createElement('em');
+      italic.textContent = match[1];
+      parent.append(italic);
+      cursor = pattern.lastIndex;
+    }
+    parent.append(document.createTextNode(text.slice(cursor)));
+  }
+
+  async function copyCitation(text, message) {
+    try {
+      await navigator.clipboard.writeText(text);
+      citationConfirmation.textContent = message;
+    } catch (error) {
+      citationConfirmation.textContent = `Could not copy citation: ${error.message}`;
+    }
+  }
+
+  function renderCitations(data, sources) {
+    const table = document.createElement('table');
+    table.className = 'citation-table';
+    const caption = document.createElement('caption');
+    caption.textContent = 'Citations (MLA 8)';
+    table.append(caption);
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    for (const label of ['Source', 'Citation']) {
+      const th = document.createElement('th');
+      th.scope = 'col';
+      th.textContent = label;
+      headerRow.append(th);
+    }
+    thead.append(headerRow);
+    table.append(thead);
+    const tbody = document.createElement('tbody');
+    const sourceTitles = new Map(sources.map(source => [String(source.id), source.title]));
+    citationsInDisplayOrder = [];
+
+    for (const [groupKey, groupTitle] of citationGroups) {
+      const items = groupKey === 'library'
+        ? (Array.isArray(data.citations) ? data.citations : []).filter(item => item.group === 'library')
+          .sort((left, right) => left.id.localeCompare(right.id, undefined, { numeric: true }))
+        : (Array.isArray(data.other_references) ? data.other_references : [])
+          .filter(item => item.group === groupKey);
+      const groupRow = document.createElement('tr');
+      groupRow.className = 'citation-group';
+      const groupHeader = document.createElement('th');
+      groupHeader.scope = 'rowgroup';
+      groupHeader.colSpan = 2;
+      groupHeader.textContent = groupTitle;
+      groupRow.append(groupHeader);
+      tbody.append(groupRow);
+
+      items.forEach((item, index) => {
+        const key = item.id || `${groupKey}-${index + 1}`;
+        const rowId = `citation-${sourceSlug(key)}`;
+        const displayName = item.id
+          ? `${item.id} · ${sourceTitles.get(String(item.id)) || item.id}`
+          : item.label;
+        const text = citationPlainText(item.mla);
+        citationsInDisplayOrder.push({ groupKey, groupTitle, displayName, text });
+        const row = document.createElement('tr');
+        row.id = rowId;
+        const sourceCell = document.createElement('th');
+        sourceCell.scope = 'row';
+        const sourceLink = document.createElement('a');
+        sourceLink.href = item.id ? `#source-${sourceSlug(item.id)}` : `#${rowId}`;
+        sourceLink.textContent = displayName;
+        sourceCell.append(sourceLink);
+        row.append(sourceCell);
+
+        const citationCell = document.createElement('td');
+        const citationText = document.createElement('p');
+        citationText.className = 'citation-text';
+        if (item.mla === null) citationText.textContent = 'Citation to be added';
+        else appendItalicText(citationText, item.mla);
+        citationCell.append(citationText);
+        if (item.url) {
+          const sourceUrl = document.createElement('a');
+          sourceUrl.className = 'citation-url';
+          sourceUrl.href = item.url;
+          sourceUrl.target = '_blank';
+          sourceUrl.rel = 'noopener';
+          sourceUrl.textContent = 'Open source';
+          citationCell.append(sourceUrl);
+        }
+        const copyButton = document.createElement('button');
+        copyButton.type = 'button';
+        copyButton.className = 'citation-copy';
+        copyButton.textContent = 'Copy';
+        copyButton.setAttribute('aria-label', `Copy citation: ${displayName}`);
+        copyButton.addEventListener('click', () => copyCitation(text, `Copied citation for ${displayName}.`));
+        citationCell.append(copyButton);
+        row.append(citationCell);
+        tbody.append(row);
+      });
+    }
+    table.append(tbody);
+    citationHost.replaceChildren(table);
+  }
+
+  sourcePageDataPromise.then(data => sourcesPromise.then(sources => renderCitations(data, sources))
+    .catch(() => renderCitations(data, []))).catch(error => {
+    const message = document.createElement('p');
+    message.setAttribute('role', 'alert');
+    message.textContent = `Could not load citations. Expected file: content/sources-page-data.json. HTTP status: ${error.message.match(/HTTP (\d+)/)?.[1] || 'unavailable'}. ${error.message}`;
+    citationHost.replaceChildren(message);
+  });
+
+  document.getElementById('copy-all-citations').addEventListener('click', () => {
+    let previousGroup = '';
+    const lines = [];
+    for (const item of citationsInDisplayOrder) {
+      if (item.groupKey !== previousGroup) {
+        lines.push(item.groupTitle);
+        previousGroup = item.groupKey;
+      }
+      lines.push(`${item.displayName}: ${item.text}`);
+    }
+    const text = lines.join('\n');
+    if (!text) {
+      citationConfirmation.textContent = 'No citations are available to copy yet.';
+      return;
+    }
+    copyCitation(text, 'Copied all citations in displayed order.');
+  });
+
+  sourcesPromise.then(sources => {
     const tbody = document.getElementById('source-table');
     const rows = sources.map(s => {
       const tr = document.createElement('tr');
       tr.id = `source-${s.id.replaceAll('.', '-')}`;
-      [s.id, s.category, s.title, s.status].forEach(value => {
+      [s.id, s.category, s.title].forEach(value => {
         const cell = document.createElement('td');
         cell.textContent = value;
         tr.appendChild(cell);
@@ -77,6 +240,34 @@
       return tr;
     });
     tbody.replaceChildren(...rows);
+
+    sourcePageDataPromise.then(data => {
+      for (const source of sources) {
+        const noteText = data.source_notes?.[source.id];
+        if (!noteText) continue;
+        const sourceRow = document.getElementById(`source-${source.id.replaceAll('.', '-')}`);
+        if (!sourceRow || document.getElementById(`source-note-${source.id.replaceAll('.', '-')}`)) continue;
+        const noteRow = document.createElement('tr');
+        noteRow.id = `source-note-${source.id.replaceAll('.', '-')}`;
+        const noteCell = document.createElement('td');
+        noteCell.colSpan = 3;
+        const note = document.createElement('aside');
+        note.className = 'source-page-note';
+        note.setAttribute('role', 'note');
+        const heading = document.createElement('h3');
+        const icon = document.createElement('span');
+        icon.className = 'source-note-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.textContent = 'i';
+        heading.append(icon, document.createTextNode('About this source'));
+        const paragraph = document.createElement('p');
+        paragraph.textContent = noteText;
+        note.append(heading, paragraph);
+        noteCell.append(note);
+        noteRow.append(noteCell);
+        sourceRow.after(noteRow);
+      }
+    });
 
     const detailHost = document.getElementById('source-details');
     const details = sources.map(source => {
@@ -136,7 +327,7 @@
     detailHost.replaceChildren(...details);
   }).catch(err => {
     const cell = document.createElement('td');
-    cell.colSpan = 4;
+    cell.colSpan = 3;
     cell.className = 'source-load-error';
     cell.textContent = `Failed to load: ${err.message}`;
     const row = document.createElement('tr');

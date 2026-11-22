@@ -1,5 +1,6 @@
 from flask import Flask, Response, jsonify, send_from_directory, abort, request
 from pathlib import Path
+import json
 from .models import EconomicsData
 from .parser import parse_markdown
 
@@ -10,6 +11,7 @@ app.json.mimetype = 'application/json; charset=utf-8'
 BASE_DIR = Path(__file__).resolve().parent.parent
 CONTENT_PATH = BASE_DIR / 'content' / 'economics-library.md'
 FINANCIAL_EXAMPLE_PATH = BASE_DIR / 'content' / 'zayd_trading_example.json'
+SOURCES_PAGE_DATA_PATH = BASE_DIR / 'content' / 'sources-page-data.json'
 
 econ_data = parse_markdown(CONTENT_PATH)
 
@@ -44,6 +46,38 @@ def get_financial_example():
     if not FINANCIAL_EXAMPLE_PATH.is_file():
         abort(404)
     return Response(FINANCIAL_EXAMPLE_PATH.read_bytes(), mimetype='application/json')
+
+@app.route('/api/sources-page-data')
+def get_sources_page_data():
+    expected_path = 'content/sources-page-data.json'
+    try:
+        raw_data = SOURCES_PAGE_DATA_PATH.read_text(encoding='utf-8')
+    except FileNotFoundError:
+        return jsonify({
+            'error': 'Citation data file is missing.',
+            'expected_path': expected_path,
+        }), 404
+    except UnicodeDecodeError:
+        return jsonify({
+            'error': 'Citation data file is not valid UTF-8.',
+            'expected_path': expected_path,
+        }), 500
+
+    try:
+        data = json.loads(raw_data)
+    except json.JSONDecodeError:
+        return jsonify({
+            'error': 'Citation data file is not valid JSON.',
+            'expected_path': expected_path,
+        }), 500
+    if not isinstance(data, dict) or not isinstance(data.get('citations'), list) \
+            or not isinstance(data.get('other_references'), list) \
+            or not isinstance(data.get('source_notes'), dict):
+        return jsonify({
+            'error': 'Citation data file is missing required data.',
+            'expected_path': expected_path,
+        }), 500
+    return jsonify(data)
 
 @app.route('/')
 def serve_root():
